@@ -29,6 +29,7 @@ export default class Horario extends React.Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <h4 className="title">Creando mi Horario</h4>
+                                <button type="submit" class="btn btn-primary justify-content-end">Limpiar</button>
                             </div>
                             <table className="table table-bordered">
                                 <tr>
