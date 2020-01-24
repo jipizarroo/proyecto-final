@@ -1,0 +1,9 @@
+.container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.withScroll {
+    height: 100vh;
+    overflow-x: hidden; /* Hide horizontal scrollbar */   
+}
