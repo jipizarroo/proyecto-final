@@ -35,7 +35,7 @@ const Modal_menu = props => {
                                     </div>
                                 </div>
                                 <div className="row pb-3">
-                                    <div className="col md 8">
+                                    <div className="col-md-8">
                                         <div className="btn-group" role="group" aria-label="Basic example">
                                             <button type="button" className="btn btn-secondary ml-5">Detalles</button>
                                             <button type="button" className="btn btn-secondary ml-5 mr-5">Agregar</button>
