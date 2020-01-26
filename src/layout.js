@@ -20,6 +20,7 @@ import Menu from './views/menu';
 import NuevoUsuario from './views/nuevoUsuario';
 import Register from './views/register';
 
+
 const Layout = props => {
     return (
         <BrowserRouter>
