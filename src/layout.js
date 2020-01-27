@@ -30,11 +30,8 @@ const Layout = props => {
                 <Route exact path="/" component={Login} />
                 <Route exact path="/home/modal_ingredientes" component={Modal_ingredientes} />
                 <Route exact path="/home/modal_menu" component={Modal_menu} />
-<<<<<<< HEAD
                 <Route exact path="/home/modal_add_items" component={Modal_add_items} />
-=======
                 <Route exact path="/productos/modificar_item" component={Modificar_item} />
->>>>>>> e428bf3dbbdff10f1465bd8a53610c259beba884
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/dashboard" component={Home_admin} />
                 <Route exact path="/mensajeria" component={Mensajeria} />
