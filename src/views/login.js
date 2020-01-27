@@ -29,6 +29,7 @@ import { Context } from './../store/appContext';
                              onClick={() => actions.getLogin(props.history)}>
                                  Login
                              </button>
+                             <a className= "d-flex justify-content-center" href="">¿Olvidaste tu clave?</a>
                          </div>
                      </div>
                  </div>

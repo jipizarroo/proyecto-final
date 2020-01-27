@@ -5,7 +5,7 @@ const Home_admin = props => {
     return (
         <>
             <div className="container mt-5">
-                <div className="row d-flex justify-content-between">
+                <div className="row d-flex justify-content-between" id="HomeAmenus">
                     <div className="usuarios">
                         <button type="button" className="btn btn-outline-primary">Usuarios</button>
                     </div>
@@ -14,12 +14,12 @@ const Home_admin = props => {
                     </div>
                 </div>
 
-                <div className="row d-flex justify-content-center">
+                <div className="row d-flex justify-content-center" id="HomeAmenus">
                     <div className="horarios">
                         <button type="button" className="btn btn-outline-primary">Horarios</button>
                     </div>
                 </div>
-                <div className="row d-flex justify-content-between">
+                <div className="row d-flex justify-content-between" id="HomeAmenus">
                     <div className="inventarios">
                         <button type="button" className="btn btn-outline-primary">Inventarios</button>
                     </div>
