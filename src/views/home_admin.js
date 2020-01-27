@@ -9,7 +9,7 @@ const Home_admin = props => {
     return (
         <>
             <div className="container mt-5">
-                <div className="row d-flex justify-content-between">
+                <div className="row d-flex justify-content-between" id="HomeAmenus">
                     <div className="usuarios">
                     <Link  className="navbar-brand" to="/admi_Usuario"> <button type="button" className="btn btn-outline-primary">Usuarios
                     </button>
@@ -24,7 +24,7 @@ const Home_admin = props => {
 
                 </div>
 
-                <div className="row d-flex justify-content-center">
+                <div className="row d-flex justify-content-center" id="HomeAmenus">
                     <div className="horarios">
                       <Link className="navbar-brand" to="/horario"><button type="button" className="btn btn-outline-primary">
                           Horarios
@@ -33,7 +33,7 @@ const Home_admin = props => {
                           
                     </div>
                 </div>
-                <div className="row d-flex justify-content-between">
+                <div className="row d-flex justify-content-between" id="HomeAmenus">
                     <div className="inventarios">
                         <button type="button" className="btn btn-outline-primary">Inventarios</button>
                     </div>

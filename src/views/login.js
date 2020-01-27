@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { Context } from './../store/appContext';
+
+
  const Login = props => {
-     const {store, actions} = useContext(Context);
+     const {actions} = useContext(Context);
      return (
          <div className="container">
              <div className="row">
@@ -27,6 +29,7 @@ import { Context } from './../store/appContext';
                              onClick={() => actions.getLogin(props.history)}>
                                  Login
                              </button>
+                             <a className= "d-flex justify-content-center" href="">¿Olvidaste tu clave?</a>
                          </div>
                      </div>
                  </div>
@@ -35,6 +38,3 @@ import { Context } from './../store/appContext';
      )
  }
  export default Login;
-
-
-
