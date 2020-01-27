@@ -3,9 +3,7 @@ import React from 'react';
 class Modal_ingredientes extends React.Component {
     render() {
         return (
-            <div className="container">
                 <div className="modal-dialog modal-lg" role="document">
-                    <div className="modal-content">
                         <div className="container">
                             <nav className="navbar navbar-light bg-light mt-3">
                                 <span className="navbar-text">
@@ -55,9 +53,7 @@ class Modal_ingredientes extends React.Component {
                                 <button type="button" className="btn btn-secondary">Confirmar</button>
                             </div>
                         </div>
-                    </div>
                 </div>
-            </div>
         )
     }
 }
