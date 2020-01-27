@@ -16,6 +16,7 @@ import Horario from './views/horario';
 import Menu from './views/menu';
 import NuevoUsuario from './views/nuevoUsuario';
 import Register from './views/register';
+import Modal_add_items from './components/modal_add_items'
 
 const Layout = props => {
     return (
@@ -25,6 +26,7 @@ const Layout = props => {
                 <Route exact path="/" component={Login} />
                 <Route exact path="/home/modal_ingredientes" component={Modal_ingredientes} />
                 <Route exact path="/home/modal_menu" component={Modal_menu} />
+                <Route exact path="/home/modal_add_items" component={Modal_add_items} />
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/dashboard" component={Home_admin} />
                 <Route exact path="/mensajeria" component={Mensajeria} />
