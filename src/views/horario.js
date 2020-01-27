@@ -29,7 +29,7 @@ export default class Horario extends React.Component {
                         <div className="row">
                             <div className="col-md-12">
                                 <h4 className="title">Creando mi Horario</h4>
-                                <button type="submit" class="btn btn-primary justify-content-end">Limpiar</button>
+                                <button type="submit" class="btn btn-primary float-right">Limpiar</button>
                             </div>
                             <table className="table table-bordered">
                                 <tr>
@@ -127,8 +127,8 @@ export default class Horario extends React.Component {
                         </div>
 
                         
-                        <button type="submit" class="btn btn-primary">Go Back</button>
-                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                        <button type="submit" class="btn btn-primary float-left">Go Back</button>
+                        <button type="submit" class="btn btn-primary float-right">Aceptar</button>
                        
 
                     </div>

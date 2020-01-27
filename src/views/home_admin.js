@@ -1,22 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './../css/home_admin.css';
 
 const Home_admin = props => {
+
+
+   
     return (
         <>
             <div className="container mt-5">
                 <div className="row d-flex justify-content-between">
                     <div className="usuarios">
-                        <button type="button" className="btn btn-outline-primary">Usuarios</button>
+                    <Link  className="navbar-brand" to="/admi_Usuario"> <button type="button" className="btn btn-outline-primary">Usuarios
+                    </button>
+                    </Link>
                     </div>
                     <div className="productos">
-                        <button type="button" className="btn btn-outline-primary">Productos</button>
+                    <Link  className="navbar-brand" to="/menu"> <button type="button" className="btn btn-outline-primary">
+                        Productos
+                    </button>
+                    </Link>
                     </div>
+
                 </div>
 
                 <div className="row d-flex justify-content-center">
                     <div className="horarios">
-                        <button type="button" className="btn btn-outline-primary">Horarios</button>
+                      <Link className="navbar-brand" to="/horario"><button type="button" className="btn btn-outline-primary">
+                          Horarios
+                          </button>
+                          </Link>
+                          
                     </div>
                 </div>
                 <div className="row d-flex justify-content-between">

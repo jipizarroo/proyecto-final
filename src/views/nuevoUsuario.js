@@ -3,9 +3,9 @@ import './../css/nuevoUsuario.css'
 
 
 
-
-
 export default class NuevoUsuario extends React.Component {
+
+   
 
     render() {
         return (
@@ -21,7 +21,9 @@ export default class NuevoUsuario extends React.Component {
                             <div className="form-group">
 
                                 <label for="" className="form-label">Nombre</label>
-                                <input type="text" placeholder="ingrese su nombre" className="form-control" />
+                                <input type="text" placeholder="ingrese su nombre" className="form-control"
+                            />
+                               
 
                             </div>
                         </div>
@@ -30,12 +32,14 @@ export default class NuevoUsuario extends React.Component {
                             <div className="form-group">
 
                                 <label for="" className="form-label">Apellido</label>
-                                <input type="text" placeholder="ingrese su Apellido" className="form-control" />
+                                <input type="text"  placeholder="ingrese su Apellido" className="form-control"
+                               />
 
                             </div>
                         </div>
 
                         <div className="col-md-2">
+                             
                             <button type="submit" className="btn btn-primary">Limpiar</button>
                         </div>
                     </div>
@@ -56,13 +60,13 @@ export default class NuevoUsuario extends React.Component {
 
                         <div className="col-md-5">
                             <label for="" className="form-label">Email</label>
-                            <input type="text" placeholder="Enter you Email" className="form-control"></input>
+                            <input type="text"  placeholder="Enter you Email" className="form-control"></input>
                         </div>
                     </div>
 
                     <div className="row justify-content-end">
                         <div className="col-md-1">
-                            <button type="button" className="btn btn-outline-secondary">Agregar</button>
+                            <button type="submit" className="btn btn-outline-secondary">Agregar</button>
 
 
                         </div>
@@ -70,7 +74,7 @@ export default class NuevoUsuario extends React.Component {
                             <button type="button" className="btn btn-outline-secondary">Cancelar</button>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
 

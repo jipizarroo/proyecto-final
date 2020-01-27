@@ -1,5 +1,5 @@
 import React from 'react';
-import './../css/menu.css'
+
 
 
 
@@ -112,10 +112,80 @@ export default class Menu extends React.Component {
                                         <td>Cebolla</td>
                                         <td>$60.00</td>
                                     </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Cebolla</td>
+                                        <td>$60.00</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+
+
                                 </table>
                                 <div className="total-cuenta">
-                                    <label>Total Venta</label>
-                                    <input type="text" placeholder="monto final" />
+                                    <button type="submit" class="btn btn-primary float-center">Imprimir</button>
+                                <input type="text" class="float-right" placeholder="monto final" />
+                                    <label for="" class="float-right">Total Venta</label>
+                                    
                                 </div>
                             </div>
                         </div>
