@@ -2,11 +2,11 @@ import React from 'react';
 import './../css/add_item.css';
 
 
-const Add_item = () => {
+const Modificar_item = () => {
     return (
         <div className="container mt-5">
             <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
-                <span className="navbar-brand">Formulario Nuevo Item</span>
+                <span className="navbar-brand">Modificar Item</span>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -31,7 +31,7 @@ const Add_item = () => {
                 <div className="col-md-5">
                     <div className="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
+                            Sub Categoria
                         </button>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a className="dropdown-item" href="#">Action</a>
@@ -49,10 +49,10 @@ const Add_item = () => {
             </div>
             <div className="row pt-5">
                 <div className="col-md-1">
-                    <button type="button" className="btn btn-primary">Primary</button>
+                    
                 </div>
-                <div className="col-md-8 pt-3" id="info">
-                    <p>Texto Informativo</p>
+                <div className="col-md-8 pt-3">
+                   
                 </div>
                 <div className="col-md-3">
                 <button type="button" className="btn btn-secondary mr-3">Primary</button>
@@ -62,4 +62,4 @@ const Add_item = () => {
         </div>
     )
 }
-export default Add_item;
+export default Modificar_item;
