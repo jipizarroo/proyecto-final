@@ -55,8 +55,8 @@ const Modificar_item = () => {
                    
                 </div>
                 <div className="col-md-3">
-                <button type="button" className="btn btn-secondary mr-3">Primary</button>
-                <button type="button" className="btn btn-success">Primary</button>
+                <button type="button" className="btn btn-secondary mr-3">Agregar</button>
+                <button type="button" className="btn btn-success">Cancelar</button>
                 </div>
             </div>
         </div>

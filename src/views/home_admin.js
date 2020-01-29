@@ -17,9 +17,9 @@ class Home_admin extends React.Component {
                     </div>
                 </div>
                 <div className="row d-flex justify-content-center" id="HomeAmenus">
-                        <div className="horarios">
-                            <Link className="btn btn-outline-primary" to="/horario">Horarios</Link>
-                        </div>
+                    <div className="horarios">
+                        <Link className="btn btn-outline-primary" to="/horario">Horarios</Link>
+                    </div>
                     <div className="row d-flex justify-content-between" id="HomeAmenus">
                         <div className="inventarios">
                             <button type="button" className="btn btn-outline-primary">Inventarios</button>

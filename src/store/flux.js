@@ -1,4 +1,4 @@
-const getState = ({getStore, getActions, setStore}) => {
+const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
             path: 'http://localhost:5000',
@@ -6,8 +6,12 @@ const getState = ({getStore, getActions, setStore}) => {
             last_name: '',
             email: '',
             password: '',
-            current_user: {},
-            all_users:{}
+            currentUser: {},
+            nombreProducto: '',
+            precioProducto: '',
+            descripcionProducto: '',
+            productos: [],
+            all_users: {}
         },
         actions: {
             createUser: (history) => {
@@ -24,47 +28,87 @@ const getState = ({getStore, getActions, setStore}) => {
                     headers: {
                         'Content-Type': 'application/json'
                     }
+
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    console.log(data)
-                    setStore({
-                        name: '',
-                        last_name: '',
-                        email: '',
-                        password: '',
-                        current_user: data
-                    });
-                    history.push('/admin_dashboard')
-                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            name: '',
+                            last_name: '',
+                            email: '',
+                            password: ''
+                        });
+                        history.push('/admi_Usuario')
+                    })
             },
             handleChange: e => {
                 setStore({
                     [e.target.name]: e.target.value
                 })
             },
-            getUsers: (history) => {
+            listarProductos: () => {
+                const store = getStore();
+                fetch(store.path + '/api/data_productos', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            productos: data
+                        })
+                    })
+            },
+            agregarProducto: (history) => {
+                const store = getStore();
+                const data = {
+                    nombreProducto: store.nombreProducto,
+                    precioProducto: store.precioProducto,
+                    descripcionProducto: store.descripcionProducto
+                }
+
+                fetch(store.path + '/api/data_productos', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            nombreProducto: '',
+                            precioProducto: '',
+                            descripcionProducto: ''
+                        });
+                        getActions().listarProductos();
+                        history.push('/productos')
+                    })
+            },
+            getUsers: () => {
                 const store = getStore();
                 const data = {
                     all_users: store.all_users
                 }
                 fetch(store.path + '/api/users', {
                     method: 'GET',
-                    body: JSON.stringify(data),
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    console.log(data)
-                    setStore({
-                        all_users: data
-                    });
-                    history.push('/admi_Usuario')
-                })
-            }
-
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            all_users: data
+                        })
+                    })
+            },
         }
     };
 

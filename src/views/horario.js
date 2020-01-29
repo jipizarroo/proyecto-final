@@ -1,6 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './../css/horario.css';
-import { Link } from 'react-router-dom';
 
 export default class Horario extends React.Component {
 
@@ -114,6 +114,14 @@ export default class Horario extends React.Component {
                                 </tr>
                             </table>
                         </div>
+
+                        
+                      <Link className="navbar-brand" to="/dashboard"><button type="submit" class="btn btn-primary float-left">
+                          Go Back</button>
+                          </Link>
+                        <button type="submit" class="btn btn-primary float-right">Aceptar</button>
+                       
+
                         <Link className="btn btn-primary" to="/admin_dashboard/">Go Back</Link>
                         <button type="submit" className="btn btn-primary">Aceptar</button>
                     </div>
