@@ -7,13 +7,13 @@ const Productos = props => {
                 <div className="row mt-5">
                     <div className="col md-3"></div>
                     <div className="col md-2">
-                        <button type="button" className="btn btn-info">Agregar Sub_Categ</button>
+                        <button type="button" className="btn btn-info">Agregar Categoria</button>
                     </div>
                     <div className="col md-2">
                         <button type="button" className="btn btn-info  ml-4">Agregar Item</button>
                     </div>
                     <div className="col md-2">
-                        <button type="button" className="btn btn-info">Agregar Item</button>
+                        <button type="button" className="btn btn-info">Modificar Item</button>
                     </div>
                     <div className="col-md-3"></div>
                 </div>

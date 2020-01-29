@@ -33,26 +33,12 @@ export default class Admi_Usuario extends React.Component {
                                         <td>Nombre</td>
                                         <td>Tipo de Usurio</td>
                                         <td>UserName</td>
-
-
                                     </tr>
                                     <tr>
-
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-
-
-                                    </tr>
-
-                                    <tr>
-
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
                                     </tr>
 
                                     <tr>
@@ -60,13 +46,18 @@ export default class Admi_Usuario extends React.Component {
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                    </tr>
 
-                                    </tr>    
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>   
                             </table>
                         </div>
                     </div>
                 </div>
-
                     <div className="col-md-3">
                         <div className="row">
                             <div className="col-md-12">

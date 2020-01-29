@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const Add_sub_categoria = () => {
+const Add_categoria = () => {
     return (
         <div className="container mt-5">
             <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
@@ -11,7 +11,6 @@ const Add_sub_categoria = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
             </nav>
-
             <form>
                 <div className="row">
                     <div className="col-md-6">
@@ -43,4 +42,4 @@ const Add_sub_categoria = () => {
         </div>
     )
 }
-export default Add_sub_categoria;
+export default Add_categoria;
