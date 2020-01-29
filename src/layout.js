@@ -21,7 +21,6 @@ import Horario from './views/horario';
 import Menu from './views/menu';
 import users from './views/users';
 import NuevoUsuario from './views/nuevoUsuario';
-import Register from './components/register';
 import Admi_Usuario from './views/admi_Usuario';
 import Modal_add_items from './components/modal_add_items'
 
@@ -60,5 +59,4 @@ const Layout = props => {
         </BrowserRouter>
     )
 }
-
 export default injectContext(Layout);
