@@ -1,5 +1,6 @@
 import React from 'react';
-import './../css/nuevoUsuario.css'
+import { Link } from 'react-router-dom';
+//import './../css/nuevoUsuario.css'
 
 
 
@@ -54,7 +55,7 @@ export default class NuevoUsuario extends React.Component {
                             <button type="submit" className="btn btn-outline-secondary">Agregar</button>
                         </div>
                         <div className="col-md-1">
-                            <button type="button" className="btn btn-outline-secondary">Cancelar</button>
+                            <Link className="btn btn-primary" to="/admin_dashboard/users">Cancelar</Link>
                         </div>
                     </div>
 

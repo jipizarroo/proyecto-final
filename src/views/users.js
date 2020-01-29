@@ -18,11 +18,8 @@ export default class Users extends React.Component {
             <>
                 <div>{<Register />}</div>
                 <div className="container">
-
                     <div className="row">
-
                         <button className="btn btn-primary" onClick={this.showModalregister.bind()}>Limpiar</button>
-
                     </div>
 
                 </div>

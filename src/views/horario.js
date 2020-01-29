@@ -49,7 +49,6 @@ export default class Horario extends React.Component {
                                     <td>AM</td>
                                     <td>AM</td>
                                 </tr>
-
                                 <tr>
                                     <td>AM</td>
                                     <td>AM</td>
@@ -59,9 +58,7 @@ export default class Horario extends React.Component {
                                     <td>AM</td>
                                     <td>AM</td>
                                 </tr>
-
                                 <tr>
-
                                     <td>AM</td>
                                     <td>AM</td>
                                     <td>AM</td>
@@ -70,9 +67,7 @@ export default class Horario extends React.Component {
                                     <td>AM</td>
                                     <td>AM</td>
                                 </tr>
-
                                 <tr>
-
                                     <td>AM</td>
                                     <td>AM</td>
                                     <td>AM</td>
@@ -81,7 +76,6 @@ export default class Horario extends React.Component {
                                     <td>AM</td>
                                     <td>AM</td>
                                 </tr>
-
                                 <tr>
                                     <td>PM</td>
                                     <td>PM</td>
@@ -91,7 +85,6 @@ export default class Horario extends React.Component {
                                     <td>PM</td>
                                     <td>PM</td>
                                 </tr>
-
                                 <tr>
                                     <td>PM</td>
                                     <td>PM</td>
@@ -101,7 +94,6 @@ export default class Horario extends React.Component {
                                     <td>PM</td>
                                     <td>PM</td>
                                 </tr>
-
                                 <tr>
                                     <td>PM</td>
                                     <td>PM</td>
@@ -111,7 +103,6 @@ export default class Horario extends React.Component {
                                     <td>PM</td>
                                     <td>PM</td>
                                 </tr>
-
                                 <tr>
                                     <td>PM</td>
                                     <td>PM</td>
@@ -122,17 +113,12 @@ export default class Horario extends React.Component {
                                     <td>PM</td>
                                 </tr>
                             </table>
-
                         </div>
-                        <Link className="btn btn-primary" to="/dashboard">Go Back</Link>
+                        <Link className="btn btn-primary" to="/admin_dashboard/">Go Back</Link>
                         <button type="submit" className="btn btn-primary">Aceptar</button>
                     </div>
                 </div>
-
             </div>
-
-
-
         )
     }
 }

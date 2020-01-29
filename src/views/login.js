@@ -26,7 +26,7 @@ import { Link } from 'react-router-dom';
                              </div>
                          </div>
                          <div className="card-footer">
-                             <Link className="btn btn-primary btn-block" to="/dashboard">Login</Link>  
+                             <Link className="btn btn-primary btn-block" to="/admin_dashboard">Login</Link>  
                              <a className= "d-flex justify-content-center" href="">¿Olvidaste tu clave?</a>
                          </div>
                      </div>
