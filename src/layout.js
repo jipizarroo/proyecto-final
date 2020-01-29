@@ -23,6 +23,7 @@ import users from './views/users';
 import NuevoUsuario from './views/nuevoUsuario';
 import Admi_Usuario from './views/admi_Usuario';
 import Modal_add_items from './components/modal_add_items'
+import Register from './components/register'
 
 
 const Layout = props => {
@@ -51,8 +52,6 @@ const Layout = props => {
                 <Route exact path ="/horario" component={Horario}/>
                 <Route exact path ="/menu" component={Menu}/>
                 <Route exact path= "/users" component={users}/>
-                <Route exact path= "/register" component={Register}/>
-                <Route exact path= "/nuevoUsuario" component={NuevoUsuario}/>
                 {/* <Route render={() => <h1>Not Found</h1>} /> */}
             </Switch>
             <Footer />

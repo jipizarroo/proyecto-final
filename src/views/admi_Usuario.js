@@ -38,18 +38,19 @@ export default class Admi_Usuario extends React.Component {
                                                     <tr>
                                                         <th>ID</th>
                                                         <th>Nombre</th>
-                                                        <th>Tipo de Usurio</th>
-                                                        <th>UserName</th>
+                                                        <th>Apellido</th>
+                                                        <th>Email</th>
                                                     </tr>
                                                     <tr>
                                                         {
                                                             store.all_users.length  > 0 &&
-                                                            store.all_users.map((item, i) => {
+                                                            store.all_users.map((items, i) => {
                                                                 return (
                                                                     <>
-                                                                    <th key={i}>item.id</th>
-                                                                    <th key={i}>item.name</th>
-                                                                    <th key={i}>item.last_name</th>
+                                                                    <th key={i}>{items.id}</th>
+                                                                    <th key={i}>{items.name}</th>
+                                                                    <th key={i}>{items.last_name}</th>
+                                                                    <th key={i}>{items.email}</th>
                                                                     </>
                                                                 )
                                                             })
