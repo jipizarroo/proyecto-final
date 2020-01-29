@@ -16,7 +16,7 @@ const Home_admin = props => {
                     </Link>
                     </div>
                     <div className="productos">
-                    <Link  className="navbar-brand" to="/menu"> <button type="button" className="btn btn-outline-primary">
+                    <Link  className="navbar-brand" to="/add_items"> <button type="button" className="btn btn-outline-primary">
                         Productos
                     </button>
                     </Link>

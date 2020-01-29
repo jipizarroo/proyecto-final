@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -191,7 +192,10 @@ export default class Menu extends React.Component {
                         </div>
                     </div>
                     <div className="col-md-12">
-                        <button type="sumbit" className="btn btn-primary">Go Back</button>
+                     <Link className="navbar-brand" to="/dashboard"> <button type="sumbit" className="btn btn-primary">
+                         Go Back
+                     </button>
+                     </Link>
                     </div>
                 </div>
 

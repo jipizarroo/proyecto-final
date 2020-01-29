@@ -19,6 +19,7 @@ const injectContext = PassedComponent => {
 
         useEffect(() => {
             // Here execute any actions
+            state.actions.listarProductos()
         }, [])
 
         return (
