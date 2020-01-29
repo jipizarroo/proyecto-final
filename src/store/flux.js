@@ -2,18 +2,22 @@ const getState = ({getStore, getActions, setStore}) => {
     return {
         store: {
             path: 'http://localhost:5000',
-            username: '',
+            name: '',
+            last_name: '',
+            email: '',
             password: '',
             currentUser: {}
         },
         actions: {
-            getLogin: (history) => {
+            createUser: (history) => {
                 const store = getStore();
                 const data = {
-                    username: store.username,
+                    name: store.name,
+                    last_name: store.last_name,
+                    email: store.email,
                     password: store.password,
                 }
-                fetch(store.path + '/login', {
+                fetch(store.path + '/api/users', {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
@@ -24,11 +28,13 @@ const getState = ({getStore, getActions, setStore}) => {
                 .then(data => {
                     console.log(data)
                     setStore({
-                        username: '',
+                        name: '',
+                        last_name: '',
+                        email: '',
                         password: '',
                         currentUser: data
                     });
-                    history.push('/home')
+                    history.push('/admin_dashboard')
                 })
             },
             handleChange: e => {
