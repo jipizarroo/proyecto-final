@@ -1,5 +1,5 @@
 import React from 'react';
-import { Context } from './../store/appContext';
+import { Context } from '../store/appContext';
 import './../css/register.css';
 
 
