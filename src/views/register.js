@@ -4,8 +4,6 @@ import './../css/register.css';
 
 export default class Register extends React.Component {
 
-
-
     render() {
         return (
             <div id="modalregister" className="modal fade bd-example-modal-lg"
@@ -38,10 +36,6 @@ export default class Register extends React.Component {
                     </div>
                 </form>
             </div>
-
-
         )
     }
-
-
 }
