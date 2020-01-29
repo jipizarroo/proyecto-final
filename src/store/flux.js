@@ -6,7 +6,8 @@ const getState = ({getStore, getActions, setStore}) => {
             last_name: '',
             email: '',
             password: '',
-            currentUser: {}
+            current_user: {},
+            all_users:{}
         },
         actions: {
             createUser: (history) => {
@@ -32,7 +33,7 @@ const getState = ({getStore, getActions, setStore}) => {
                         last_name: '',
                         email: '',
                         password: '',
-                        currentUser: data
+                        current_user: data
                     });
                     history.push('/admin_dashboard')
                 })
@@ -41,9 +42,32 @@ const getState = ({getStore, getActions, setStore}) => {
                 setStore({
                     [e.target.name]: e.target.value
                 })
+            },
+            getUsers: (history) => {
+                const store = getStore();
+                const data = {
+                    all_users: store.all_users
+                }
+                fetch(store.path + '/api/users', {
+                    method: 'GET',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(resp => resp.json())
+                .then(data => {
+                    console.log(data)
+                    setStore({
+                        all_users: data
+                    });
+                    history.push('/admi_Usuario')
+                })
             }
+
         }
-    }
+    };
+
 }
 
 export default getState;
