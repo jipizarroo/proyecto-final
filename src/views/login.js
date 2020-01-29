@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from './../store/appContext';
+import { Link } from 'react-router-dom';
 
 
  const Login = props => {
@@ -25,10 +26,7 @@ import { Context } from './../store/appContext';
                              </div>
                          </div>
                          <div className="card-footer">
-                             <button className="btn btn-primary btn-block"
-                             onClick={() => actions.getLogin(props.history)}>
-                                 Login
-                             </button>
+                             <Link className="btn btn-primary btn-block" to="/dashboard">Login</Link>  
                              <a className= "d-flex justify-content-center" href="">¿Olvidaste tu clave?</a>
                          </div>
                      </div>

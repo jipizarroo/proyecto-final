@@ -11,13 +11,13 @@ import Home_admin from './views/home_admin';
 import Mensajeria from './components/modal_mensajeria';
 import Ventas_garzon from './views/ventas_garzon';
 import Add_item from './views/add_item';
-import Add_sub_categoria from './views/add_sub_categoria';
+import Add_categoria from './views/add_categoria';
 import Productos from './views/productos_admin';
 import Modificar_item from './views/modificar_item';
 import Juntar_mesa from './components/modal_juntar_mesa';
 import Horario from './views/horario';
 import Menu from './views/menu';
-import NuevoUsuario from './views/nuevoUsuario';
+import users from './views/users';
 import Register from './views/register';
 import Modal_add_items from './components/modal_add_items'
 
@@ -37,14 +37,13 @@ const Layout = props => {
                 <Route exact path="/mensajeria" component={Mensajeria} />
                 <Route exact path="/ventas_garzon" component={Ventas_garzon} />
                 <Route exact path="/add_items" component={Add_item} />
-                <Route exact path="/add_sub_categoria" component={Add_sub_categoria} />
+                <Route exact path="/add_categoria" component={Add_categoria} />
                 <Route exact path="/productos" component={Productos} />
                 <Route exact path="/juntar" component={Juntar_mesa} />
                 <Route exact path ="/horario" component={Horario}/>
                 <Route exact path ="/menu" component={Menu}/>
-                <Route exact path= "/nuevoUsuario" component={NuevoUsuario}/>
+                <Route exact path= "/users" component={users}/>
                 <Route exact path= "/register" component={Register}/>
-
                 {/* <Route render={() => <h1>Not Found</h1>} /> */}
             </Switch>
             <Footer />

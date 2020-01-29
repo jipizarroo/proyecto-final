@@ -1,7 +1,6 @@
 import React from 'react';
 import './../css/horario.css';
-
-
+import { Link } from 'react-router-dom';
 
 export default class Horario extends React.Component {
 
@@ -125,11 +124,9 @@ export default class Horario extends React.Component {
                             </table>
 
                         </div>
+                        <Link className="btn btn-primary" to="/dashboard">Go Back</Link>
+                        <button type="submit" className="btn btn-primary">Aceptar</button>
 
-                        
-                        <button type="submit" class="btn btn-primary">Go Back</button>
-                        <button type="submit" class="btn btn-primary">Aceptar</button>
-                       
 
                     </div>
                 </div>
