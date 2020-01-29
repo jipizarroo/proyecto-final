@@ -19,10 +19,9 @@ import Modificar_item from './views/modificar_item';
 import Juntar_mesa from './components/modal_juntar_mesa';
 import Horario from './views/horario';
 import Menu from './views/menu';
-import users from './views/users';
-import NuevoUsuario from './views/nuevoUsuario';
 import Admi_Usuario from './views/admi_Usuario';
 import Modal_add_items from './components/modal_add_items'
+import Register from './views/register';
 
 
 const Layout = props => {
@@ -50,9 +49,8 @@ const Layout = props => {
                 <Route exact path="/juntar" component={Juntar_mesa} />
                 <Route exact path ="/horario" component={Horario}/>
                 <Route exact path ="/menu" component={Menu}/>
-                <Route exact path= "/users" component={users}/>
+                
                 <Route exact path= "/register" component={Register}/>
-                <Route exact path= "/nuevoUsuario" component={NuevoUsuario}/>
                 {/* <Route render={() => <h1>Not Found</h1>} /> */}
             </Switch>
             <Footer />

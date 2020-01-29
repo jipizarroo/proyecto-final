@@ -10,10 +10,10 @@ class Home_admin extends React.Component {
             <div className="container mt-5">
                 <div className="row d-flex justify-content-between" id="HomeAmenus">
                     <div className="usuarios">
-                        <Link className="navbar-brand" to="/admin_dashboard/users" className="btn btn-outline-primary">Usuarios</Link>
+                        <Link className="navbar-brand" to="/admi_Usuario" className="btn btn-outline-primary">Usuarios</Link>
                     </div>
                     <div className="productos">
-                        <Link className="navbar-brand" to="/menu"> <button type="button" className="btn btn-outline-primary">Productos</button></Link>
+                        <Link className="btn btn-outline-primary" to="/productos">Productos</Link>
                     </div>
                 </div>
                 <div className="row d-flex justify-content-center" id="HomeAmenus">
