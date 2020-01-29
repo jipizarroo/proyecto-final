@@ -21,12 +21,9 @@ import Horario from './views/horario';
 import Menu from './views/menu';
 import NuevoUsuario from './views/nuevoUsuario';
 import Register from './views/register';
-<<<<<<< HEAD
 import Admi_Usuario from './views/admi_Usuario';
-=======
 import Modal_add_items from './components/modal_add_items'
 
->>>>>>> 9211e9977d0a47d72cb7e2ab2221edf60a86a766
 
 const Layout = props => {
     return (
@@ -36,15 +33,12 @@ const Layout = props => {
                 <Route exact path="/" component={Login} />
                 <Route exact path="/home/modal_ingredientes" component={Modal_ingredientes} />
                 <Route exact path="/home/modal_menu" component={Modal_menu} />
-<<<<<<< HEAD
                 <Route exact path="/modalConfiguracion" component={ModalConfiguracion}/>
                 <Route exact path ="/modalEliminar" component={ModalEliminar}/>
                 <Route exact path ="/admi_Usuario" component={Admi_Usuario}/>
                 <Route exact path="/login" component={Login} />
-=======
                 <Route exact path="/home/modal_add_items" component={Modal_add_items} />
                 <Route exact path="/productos/modificar_item" component={Modificar_item} />
->>>>>>> 9211e9977d0a47d72cb7e2ab2221edf60a86a766
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/dashboard" component={Home_admin} />
                 <Route exact path="/mensajeria" component={Mensajeria} />
