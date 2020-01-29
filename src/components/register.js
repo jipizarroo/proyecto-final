@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Context } from './../store/appContext';
 import './../css/register.css';
 
@@ -43,7 +43,7 @@ export default class Register extends React.Component {
                                 </div>
                                 <div className="form-row">
                                     <div className="form-group col-11">
-                                        <button type="submit" className="btn btn-primary float-right">Agregar</button>
+                                        <button type="submit" className="btn btn-primary float-right" onClick={() => actions.createUser(this.props.history)}>Agregar</button>
                                         <button type="submit" className="btn btn-primary float-right mr-5">Cancelar</button>
                                     </div>
                                 </div>

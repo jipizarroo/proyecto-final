@@ -20,7 +20,6 @@ import Juntar_mesa from './components/modal_juntar_mesa';
 import Horario from './views/horario';
 import Menu from './views/menu';
 import users from './views/users';
-import Register from './views/register';
 import NuevoUsuario from './views/nuevoUsuario';
 import Admi_Usuario from './views/admi_Usuario';
 import Modal_add_items from './components/modal_add_items'
@@ -33,7 +32,7 @@ const Layout = props => {
             <Switch>
                 <Route exact path="/" component={Login} />
                 <Route exact path="/admin_dashboard" component={Home_admin} />
-                <Route exact path ="/admin_dashboard/users" component={Admi_Usuario}/>
+                <Route exact path ="/admi_Usuario" component={Admi_Usuario}/>
                 <Route exact path= "/admin_dashboard/users/register" component={Register}/>
                 <Route exact path="/home/modal_ingredientes" component={Modal_ingredientes} />
                 <Route exact path="/home/modal_menu" component={Modal_menu} />
