@@ -1,19 +1,35 @@
 import React, { useContext } from 'react';
 import { Context } from './../store/appContext';
 import {Link} from 'react-router-dom';
+import $ from 'jquery';
+import Add_categoria from './add_categoria'
+import Add_item from './add_item'
 
 const Productos = props => {
+
     const { store, actions } = useContext(Context);
+
+    function showModalPedido(){
+        $('#addcategory').modal('show');
+    }
+    function showModalItem(){
+        $('#additem').modal('show');
+    }
+
     return (
         <>
             <div className="container">
                 <div className="row mt-5">
                     <div className="col md-3"></div>
                     <div className="col md-2">
+<<<<<<< HEAD
                         <button type="button" className="btn btn-info">Agregar Categoria</button>
+=======
+                        <button type="button" className="btn btn-info" onClick={() => {showModalPedido() }}>Agregar Categoria</button>
+>>>>>>> master
                     </div>
                     <div className="col md-2">
-                        <button type="button" className="btn btn-info  ml-4">Agregar Item</button>
+                        <button type="button" className="btn btn-info ml-4" onClick={() => {showModalItem() }}>Agregar Item</button>
                     </div>
 
                     <div className="col-md-3"></div>
@@ -35,11 +51,11 @@ const Productos = props => {
                                 store.productos.map((producto, i) => {
                                     return (
                                         <tr key={i}>
-                                            <th scope="row">{producto.id}</th>
-                                            <td>{producto.nombre}</td>
-                                            <td>{producto.descripcion}</td>
-                                            <td>{producto.precio}</td>
-                                            <td><Link to={"/productos/"+producto.id+"/edit"} className="btn btn-info">Editar</Link></td>
+                                                <th scope="row">{producto.id}</th>
+                                                <td>{producto.nombre}</td>
+                                                <td>{producto.descripcion}</td>
+                                                <td>{producto.precio}</td>
+                                                <td><Link to={"/productos/"+producto.id+"/edit"} className="btn btn-info">Editar</Link></td>
                                             <td><Link to={"/productos/"+producto.id+"/delete"}  className="btn btn-danger">Eliminar</Link></td>
                                         </tr>
                                     )
@@ -49,7 +65,8 @@ const Productos = props => {
                     </table>
                 </div>
             </div>
-
+            <Add_categoria />
+            <Add_item />
         </>
     )
 }
