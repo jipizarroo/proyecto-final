@@ -26,10 +26,6 @@ const Layout = props => {
 
 
                 <Route exact path="/admin_home/productos/add_categoria" component={Add_categoria} />
-<<<<<<< HEAD
-=======
-                <Route exact path= "/admin_home/users/register" component={Register}/>
->>>>>>> 8977b635d4a6f809edab3152096d6ce5e121dd0a
                 <Route exact path="/admin_home/productos" component={Productos} />
                 <Route exact path ="/admin_home/users" component={Admi_Usuario}/>
                 <Route exact path ="/admin_home/horario" component={Horario}/>
