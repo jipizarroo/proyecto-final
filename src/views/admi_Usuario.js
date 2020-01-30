@@ -28,7 +28,6 @@ export default class Admi_Usuario extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
-<<<<<<< HEAD
 
                                     </div>
 
@@ -60,34 +59,6 @@ export default class Admi_Usuario extends React.Component {
                                                         }
                                                     </tr>
                                                 </table>
-=======
-                                        <div className="col-md-6">
-                                            <div className="row">
-                                                <div className="col-md-12">
-                                                    <table className="table table-bordered">
-                                                        <tr>
-                                                            <th>ID</th>
-                                                            <th>Nombre</th>
-                                                            <th>Tipo de Usurio</th>
-                                                            <th>UserName</th>
-                                                        </tr>
-                                                        <tr>
-                                                            {
-                                                                store.all_users.length > 0 &&
-                                                                store.all_users.map((item, i) => {
-                                                                    return (
-                                                                        <>
-                                                                            <th key={i}>item.id</th>
-                                                                            <th key={i}>item.name</th>
-                                                                            <th key={i}>item.last_name</th>
-                                                                        </>
-                                                                    )
-                                                                })
-                                                            }
-                                                        </tr>
-                                                    </table>
-                                                </div>
->>>>>>> af1748d233dad9005884621736be7d582b97a1db
                                             </div>
                                         </div>
                                         <div className="col-md-3">
