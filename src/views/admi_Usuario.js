@@ -1,6 +1,6 @@
 import React from 'react';
 import { Context } from './../store/appContext';
-import Register from './register';
+import Register from './../components/register';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
