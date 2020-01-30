@@ -43,7 +43,7 @@ export default class Admi_Usuario extends React.Component {
                                                         <th>Apellido</th>
                                                         <th>Email</th>
                                                     </tr>
-                                                    <tr>
+                                                    <tr>g
                                                         {
                                                             store.all_users.length  > 0 &&
                                                             store.all_users.map((items, i) => {
