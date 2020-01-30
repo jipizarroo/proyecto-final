@@ -1,6 +1,6 @@
 import React from 'react';
 import { Context } from './../store/appContext';
-import Register from './../components/register';
+import Register from '../components/modal_register';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
@@ -37,39 +37,41 @@ export default class Admi_Usuario extends React.Component {
                                             <div className="col-md-12">
                                                 <table className="table table-bordered">
                                                     <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Nombre</th>
-                                                        <th>Apellido</th>
-                                                        <th>Email</th>
-                                                    </tr>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Nombre</th>
+                                                            <th>Apellido</th>
+                                                            <th>Email</th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
-                                                    {
-                                                            store.all_users.length  > 0 &&
+                                                        {
+                                                            store.all_users.length > 0 &&
                                                             store.all_users.map((items, i) => {
                                                                 return (
                                                                     <>
-                                                                    <tr key={i}>
-                                                                        <td scope ="row">{items.id}</td>        
+                                                                        <tr key={i}>
+                                                                            <td scope="row">{items.id}</td>
                                                                             <td>{items.name}</td>
                                                                             <td>{items.last_name}</td>
                                                                             <td>{items.email}</td>
-                                                                    </tr>
-                                                                        </>
+                                                                            <td className="btn btn-primary" onClick={this.showModalregister.bind()}>Modificar</td>
+                                                                            <td><i className="fa fa-trash-alt"></i></td>
+                                                                        </tr>
+                                                                    </>
                                                                 )
                                                             })
                                                         }
                                                     </tbody>
-                                                    </table>
+                                                </table>
                                             </div>
                                         </div>
-                                            <div className="row">
-                                                <div className="col-md-12">
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-md-12">
 
-                                                    <Link className="btn btn-primary float-right" to="/admin_dashboard">Regresar </Link>
-                                                </div>
-                                            </div>  
+                                            <Link className="btn btn-primary float-right" to="/admin_dashboard">Regresar </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </>

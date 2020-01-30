@@ -1,6 +1,6 @@
 import React from 'react';
 import './../css/users.css'
-import Register from './../components/register';
+import Register from './../components/modal_register';
 import $ from 'jquery';
 
 

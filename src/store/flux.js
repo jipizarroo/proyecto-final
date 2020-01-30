@@ -39,7 +39,34 @@ const getState = ({ getStore, getActions, setStore }) => {
                             email: '',
                             password: ''
                         });
-                        history.push('/admi_Usuario')
+                        history.push('/admin_home/users')
+                    })
+            },
+            modifyUser: (history) => {
+                const store = getStore();
+                const data = {
+                    name: store.name,
+                    last_name: store.last_name,
+                    email: store.email,
+                    password: store.password,
+                }
+                fetch(store.path +'api/users', {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type:': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            name:'',
+                            last_name:'',
+                            email:'',
+                            password:''
+                        });
+                        history.push('/admin_home/users')
                     })
             },
             handleChange: e => {

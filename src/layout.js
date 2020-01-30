@@ -10,12 +10,11 @@ import Home_admin from './views/home_admin';
 import Ventas_garzon from './views/ventas_garzon';
 import Productos from './views/productos';
 import Add_categoria from './views/add_categoria';
-import Modificar_item from './views/modificar_item';
 import Horario from './views/horario';
 import Menu from './views/menu';
 import users from './views/users';
 import Admi_Usuario from './views/admi_Usuario';
-import Register from './components/register'
+import Register from './components/modal_register'
 
 
 const Layout = props => {
@@ -30,7 +29,6 @@ const Layout = props => {
                 <Route exact path ="/admin_home/users" component={Admi_Usuario}/>
                 <Route exact path= "/admin_home/users/register" component={Register}/>
                 <Route exact path="/admin_home/productos/add_categoria" component={Add_categoria} />
-                <Route exact path= "/admin_home/productos/:id/edit" component={Modificar_item}/>
                 <Route exact path="/admin_home/productos" component={Productos} />
                 <Route exact path="/admin_home" component={Home_admin} />
 
