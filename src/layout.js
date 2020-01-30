@@ -17,7 +17,6 @@ import users from './views/users';
 import Admi_Usuario from './views/admi_Usuario';
 import Register from './components/register'
 
-
 const Layout = props => {
     return (
         <BrowserRouter>

@@ -11,7 +11,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             precioProducto: '',
             descripcionProducto: '',
             productos: [],
-            all_users: {}
+            all_users: {},
+            description: '',
+            icon: '',
         },
         actions: {
             createUser: (history) => {
@@ -107,6 +109,33 @@ const getState = ({ getStore, getActions, setStore }) => {
                         setStore({
                             all_users: data
                         })
+                    })
+            },
+
+            addCategory: (history) => {
+                const store = getStore();
+                const data = {
+                    name: store.name,
+                    description: store.description,
+                    icon: store.icon,
+                }
+                fetch(store.path + '/api/categories', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            name: '',
+                            description: '',
+                            icon: '',
+                        });
+                        history.push('/admin_home/productos')
                     })
             },
         }
