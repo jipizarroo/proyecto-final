@@ -162,7 +162,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             description: '',
                             icon: '',
                         });
-                        history.push('/admin_home/productos')
+                        //history.push('/admin_home/productos')
                     })
             },
         }

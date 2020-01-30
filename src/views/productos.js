@@ -22,11 +22,7 @@ const Productos = props => {
                 <div className="row mt-5">
                     <div className="col md-3"></div>
                     <div className="col md-2">
-<<<<<<< HEAD
-                        <button type="button" className="btn btn-info">Agregar Categoria</button>
-=======
                         <button type="button" className="btn btn-info" onClick={() => {showModalPedido() }}>Agregar Categoria</button>
->>>>>>> master
                     </div>
                     <div className="col md-2">
                         <button type="button" className="btn btn-info ml-4" onClick={() => {showModalItem() }}>Agregar Item</button>
