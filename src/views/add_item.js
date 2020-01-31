@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, {useContext} from 'react';
 import { Context } from './../store/appContext';
 import './../css/add_item.css';
 
@@ -39,17 +39,17 @@ const Add_item = (props) => {
                             </form>
                             <div className="row pt-5">
                                 <div className="col-md-5">
-                                    {/* <select name="categories" id="" onChange={e => actions.getCategories()}>
+                                     <select name="category_id" onChange={e => actions.handleChange(e)}>
                                         <option>Seleccione Categoria</option>
                                         {store.all_categories.length > 0 &&
                                             store.all_categories.map((item, i) => {
                                                 return (
-                                                    <option key={i} value={item}>
+                                                    <option key={i} value={item.id}>
                                                         {item.description}
                                                     </option>
                                                 );
                                             })}
-                                    </select> */}
+                                    </select>
                                 </div>
                                 <div className="col-md-3">
                                     <label for="formGroupExampleInput">Descripcion</label>

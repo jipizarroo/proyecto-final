@@ -21,6 +21,7 @@ const injectContext = PassedComponent => {
             // Here execute any actions
             state.actions.getUsers();
             state.actions.getCategories();
+            state.actions.getItem();
         }, [])
 
         return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Context } from './../store/appContext';
-import Register from '../components/modal_register';
 import { Link } from 'react-router-dom';
+import Register from '../components/modal_register';
 import $ from 'jquery';
 
 

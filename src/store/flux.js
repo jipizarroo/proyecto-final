@@ -10,10 +10,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             nombre: '',
             precio: '',
             descripcion: '',
-            productos: [],
             all_users: {},
+            all_items: {},
             description: '',
             icon: '',
+            category_id: 0,
             all_categories: [],
         },
         actions: {
@@ -42,6 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             email: '',
                             password: ''
                         });
+                        getActions().getUsers();
                         history.push('/admin_home/users')
                     })
             },
@@ -75,14 +77,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             handleChange: e => {
                 setStore({
                     [e.target.name]: e.target.value
-                })
+                });
             },
             
             getUsers: () => {
                 const store = getStore();
-                const data = {
-                    all_users: store.all_users
-                }
                 fetch(store.path + '/api/users', {
                     method: 'GET',
                     headers: {
@@ -120,7 +119,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                             description: '',
                             icon: '',
                         });
-                        //history.push('/admin_home/productos')
                     })
             },
 
@@ -137,6 +135,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         console.log(data)
                         setStore({all_categories: data})
                     })
+                    
             },
 
              addItem: (history) => {
@@ -144,7 +143,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                  const data = {
                      nombre: store.nombre,
                      precio: store.precio,
-                     descripcion: store.descripcion
+                     descripcion: store.descripcion,
+                     category_id: store.category_id
                  }
                  fetch(store.path + '/api/items', {
                      method: 'POST',
@@ -161,10 +161,46 @@ const getState = ({ getStore, getActions, setStore }) => {
                              nombre: '',
                              precio: '',
                              descripcion: '',
+                             category_id: '',
                          });
-                         //history.push('/admin_home/productos')
+                         getActions().getItem();
                      })
              },
+
+             getItem: () => {
+                const store = getStore();
+                fetch(store.path + '/api/items', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            all_items: data
+                        })
+                    })
+            },
+
+            delItem: (id) => {
+                const store = getStore();
+                fetch(store.path + '/api/items/' + id, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            all_items: data
+                        })
+                        getActions().getItem();
+                    })
+            },
         }
     };
 
