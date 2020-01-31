@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Context } from './../store/appContext';
-import { Link } from 'react-router-dom';
-
 import './../css/add_item.css';
-import { arrowFunctionExpression } from '@babel/types';
+
 
 
 
 const Add_item = (props) => {
-    const { actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
+    
     return (
         <div className="modal fade" id="additem" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
@@ -40,18 +39,21 @@ const Add_item = (props) => {
                             </form>
                             <div className="row pt-5">
                                 <div className="col-md-5">
-                                    <div className="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Categoria</button>
-                                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a className="dropdown-item" href="#">Action</a>
-                                            <a className="dropdown-item" href="#">Another action</a>
-                                            <a className="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <select name="categories" id="" onChange={e => actions.getCategories()}>
+                                        <option>Seleccione Categoria</option>
+                                        {store.all_categories.length > 0 &&
+                                            store.all_categories.map((item, i) => {
+                                                return (
+                                                    <option key={i} value={item}>
+                                                        {item.description}
+                                                    </option>
+                                                );
+                                            })}
+                                    </select>
                                 </div>
                                 <div className="col-md-3">
                                     <label for="formGroupExampleInput">Descripcion</label>
-                                    <textarea rows="10" cols="50" placeholder="Agregar Descripcion" name="descripcionProducto" onChange={e => actions.handleChange(e)}></textarea>
+                                    <textarea rows="10" cols="30" placeholder="Agregar Descripcion" name="descripcionProducto" onChange={e => actions.handleChange(e)}></textarea>
                                 </div>
                             </div>
                             <div className="row pt-5">
@@ -63,7 +65,7 @@ const Add_item = (props) => {
                                 </div>
                                 <div className="col-md-3">
                                     <button type="submit" onClick={e => actions.agregarProducto(props.history)} className="btn btn-secondary mr-3">Agregar</button>
-                                    <Link className="navbar-brand" to="/productos" type="submit" className="btn btn-success">Cancelar</Link>
+                                    <button data-dismiss='modal' to="/productos" type="submit" className="btn btn-success">Cancelar</button>
                                 </div>
                             </div>
                         </div>

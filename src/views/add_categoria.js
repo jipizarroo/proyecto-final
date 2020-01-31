@@ -21,7 +21,7 @@ class Add_categoria extends React.Component {
                                                     <div className="row">
                                                         <div className="col-md-6">
                                                             <label for="formGroupExampleInput">Nombre</label>
-                                                            <input type="text" name="name" className="form-control" placeholder="xxxxxxxxxxx" onChange={e => actions.handleChange(e)} />
+                                                            <input type="text" name="description" className="form-control" placeholder="xxxxxxxxxxx" onChange={e => actions.handleChange(e)} />
                                                         </div>
                                                     </div>
                                                 </form>

@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             all_users: {},
             description: '',
             icon: '',
+            all_categories: [],
         },
         actions: {
             createUser: (history) => {
@@ -61,14 +62,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             name:'',
                             last_name:'',
                             email:'',
                             password:''
                         });
-                        history.push('/admin_home/users')
+                        //history.push('/admin_home/users')
                     })
             },
             handleChange: e => {
@@ -142,7 +143,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             addCategory: (history) => {
                 const store = getStore();
                 const data = {
-                    name: store.name,
                     description: store.description,
                     icon: store.icon,
                 }
@@ -165,6 +165,48 @@ const getState = ({ getStore, getActions, setStore }) => {
                         //history.push('/admin_home/productos')
                     })
             },
+
+            getCategories: () => {
+                const store = getStore();
+                fetch(store.path + '/api/categories', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({all_categories: data})
+                    })
+            },
+
+            // addItem: (history) => {
+            //     const store = getStore();
+            //     const data = {
+            //         nombre: store.nombre,
+            //         precio: store.precio,
+            //         descripcion: store.descripcion
+            //     }
+            //     fetch(store.path + '/api/categories', {
+            //         method: 'POST',
+            //         body: JSON.stringify(data),
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         }
+
+            //     })
+            //         .then(resp => resp.json())
+            //         .then(data => {
+            //             console.log(data)
+            //             setStore({
+            //                 nombre: '',
+            //                 precio: '',
+            //                 descripcion: '',
+            //             });
+            //             //history.push('/admin_home/productos')
+            //         })
+            // },
         }
     };
 

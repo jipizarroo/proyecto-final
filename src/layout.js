@@ -14,7 +14,6 @@ import Horario from './views/horario';
 import Menu from './views/menu';
 import users from './views/users';
 import Admi_Usuario from './views/admi_Usuario';
-import Register from './components/modal_register'
 
 const Layout = props => {
     return (
