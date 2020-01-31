@@ -7,9 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             email: '',
             password: '',
             currentUser: {},
-            nombreProducto: '',
-            precioProducto: '',
-            descripcionProducto: '',
+            nombre: '',
+            precio: '',
+            descripcion: '',
             productos: [],
             all_users: {},
             description: '',
@@ -77,49 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     [e.target.name]: e.target.value
                 })
             },
-            listarProductos: () => {
-                const store = getStore();
-                fetch(store.path + '/api/data_productos', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then(resp => resp.json())
-                    .then(data => {
-                        console.log(data)
-                        setStore({
-                            productos: data
-                        })
-                    })
-            },
-            agregarProducto: (history) => {
-                const store = getStore();
-                const data = {
-                    nombreProducto: store.nombreProducto,
-                    precioProducto: store.precioProducto,
-                    descripcionProducto: store.descripcionProducto
-                }
-
-                fetch(store.path + '/api/data_productos', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then(resp => resp.json())
-                    .then(data => {
-                        console.log(data)
-                        setStore({
-                            nombreProducto: '',
-                            precioProducto: '',
-                            descripcionProducto: ''
-                        });
-                        getActions().listarProductos();
-                        history.push('/productos')
-                    })
-            },
+            
             getUsers: () => {
                 const store = getStore();
                 const data = {
@@ -181,32 +139,32 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
             },
 
-            // addItem: (history) => {
-            //     const store = getStore();
-            //     const data = {
-            //         nombre: store.nombre,
-            //         precio: store.precio,
-            //         descripcion: store.descripcion
-            //     }
-            //     fetch(store.path + '/api/categories', {
-            //         method: 'POST',
-            //         body: JSON.stringify(data),
-            //         headers: {
-            //             'Content-Type': 'application/json'
-            //         }
+             addItem: (history) => {
+                 const store = getStore();
+                 const data = {
+                     nombre: store.nombre,
+                     precio: store.precio,
+                     descripcion: store.descripcion
+                 }
+                 fetch(store.path + '/api/items', {
+                     method: 'POST',
+                     body: JSON.stringify(data),
+                     headers: {
+                         'Content-Type': 'application/json'
+                     }
 
-            //     })
-            //         .then(resp => resp.json())
-            //         .then(data => {
-            //             console.log(data)
-            //             setStore({
-            //                 nombre: '',
-            //                 precio: '',
-            //                 descripcion: '',
-            //             });
-            //             //history.push('/admin_home/productos')
-            //         })
-            // },
+                 })
+                     .then(resp => resp.json())
+                     .then(data => {
+                         console.log(data)
+                         setStore({
+                             nombre: '',
+                             precio: '',
+                             descripcion: '',
+                         });
+                         //history.push('/admin_home/productos')
+                     })
+             },
         }
     };
 

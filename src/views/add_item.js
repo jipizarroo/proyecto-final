@@ -24,12 +24,12 @@ const Add_item = (props) => {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <label for="formGroupExampleInput">Nombre</label>
-                                        <input type="text" class="form-control" name="nombreProducto" placeholder="xxxxxxxxxxx"
+                                        <input type="text" class="form-control" name="nombre" placeholder="xxxxxxxxxxx"
                                             onChange={e => actions.handleChange(e)} />
                                     </div>
                                     <div className="col-md-3">
                                         <label for="formGroupExampleInput">Precio</label>
-                                        <input type="text" class="form-control" name="precioProducto" placeholder="xxxxxxxxxxxxx"
+                                        <input type="text" class="form-control" name="precio" placeholder="xxxxxxxxxxxxx"
                                             onChange={e => actions.handleChange(e)} />
                                     </div>
                                     <div className="button col-md-3">
@@ -39,7 +39,7 @@ const Add_item = (props) => {
                             </form>
                             <div className="row pt-5">
                                 <div className="col-md-5">
-                                    <select name="categories" id="" onChange={e => actions.getCategories()}>
+                                    {/* <select name="categories" id="" onChange={e => actions.getCategories()}>
                                         <option>Seleccione Categoria</option>
                                         {store.all_categories.length > 0 &&
                                             store.all_categories.map((item, i) => {
@@ -49,11 +49,11 @@ const Add_item = (props) => {
                                                     </option>
                                                 );
                                             })}
-                                    </select>
+                                    </select> */}
                                 </div>
                                 <div className="col-md-3">
                                     <label for="formGroupExampleInput">Descripcion</label>
-                                    <textarea rows="10" cols="30" placeholder="Agregar Descripcion" name="descripcionProducto" onChange={e => actions.handleChange(e)}></textarea>
+                                    <textarea rows="10" cols="20" placeholder="Agregar Descripcion" name="descripcion" onChange={e => actions.handleChange(e)}></textarea>
                                 </div>
                             </div>
                             <div className="row pt-5">
@@ -64,7 +64,7 @@ const Add_item = (props) => {
                                     <p>Texto Informativo</p>
                                 </div>
                                 <div className="col-md-3">
-                                    <button type="submit" onClick={e => actions.agregarProducto(props.history)} className="btn btn-secondary mr-3">Agregar</button>
+                                    <button type="submit" onClick={() => actions.addItem()} data-dismiss='modal' className="btn btn-secondary mr-3">Agregar</button>
                                     <button data-dismiss='modal' to="/productos" type="submit" className="btn btn-success">Cancelar</button>
                                 </div>
                             </div>
