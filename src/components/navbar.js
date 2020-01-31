@@ -12,7 +12,7 @@ const Navbar = () => {
   <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
     <ul className="navbar-nav">
       <li className="nav-item active">
-        <Link className="nav-link">Bienvenido: xxxxxxxxxx</Link>
+        <Link className="nav-link" to="/#">Bienvenido: xxxxxxxxxx</Link>
       </li>
       <li className="nav-item active">
         <Link className="nav-link" to="/config">Configuracion</Link>

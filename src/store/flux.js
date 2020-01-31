@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             all_users: {}
         },
         actions: {
-            createUser: (history) => {
+            createUser: () => {
                 const store = getStore();
                 const data = {
                     name: store.name,
@@ -39,10 +39,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                             email: '',
                             password: ''
                         });
-                        history.push('/admin_home/users')
+                        getActions().getUsers();
                     })
             },
-            modifyUser: (history) => {
+            modifyUser: (id) => {
                 const store = getStore();
                 const data = {
                     name: store.name,
@@ -50,24 +50,24 @@ const getState = ({ getStore, getActions, setStore }) => {
                     email: store.email,
                     password: store.password,
                 }
-                fetch(store.path +'api/users', {
+                fetch(store.path + '/api/users/' + id, {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type:': 'application/json'
+                        'Content-Type': 'application/json'
                     }
                 })
                     .then(resp => resp.json())
                     .then(data => {
                         console.log(data)
                         setStore({
-                            name:'',
-                            last_name:'',
-                            email:'',
-                            password:''
+                            name: '',
+                            last_name: '',
+                            email: '',
+                            password: ''
                         });
-                        history.push('/admin_home/users')
                     })
+                    getActions().getUsers();
             },
             handleChange: e => {
                 setStore({
@@ -135,6 +135,26 @@ const getState = ({ getStore, getActions, setStore }) => {
                             all_users: data
                         })
                     })
+            },
+            deleteUser: (id) => {
+                const store = getStore();
+                const data = {
+                    all_users: store.all_users
+                }
+                fetch(store.path + '/api/users/' + id, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            all_users: data
+                        })
+                    })
+                    getActions().getUsers();
             },
         }
     };

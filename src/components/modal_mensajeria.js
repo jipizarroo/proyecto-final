@@ -6,7 +6,7 @@ class Mensajeria extends React.Component {
         return (
             <div className="container">
                 <form>
-                    <div id= "modalMensajeria" className="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div id= "modalMensajeria" className="modal fade bd-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div className="modal-dialog modal-lg" role="document">
                             <div className="modal-content">
                                 <div className="container">
