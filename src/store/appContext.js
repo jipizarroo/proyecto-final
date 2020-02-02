@@ -19,8 +19,9 @@ const injectContext = PassedComponent => {
 
         useEffect(() => {
             // Here execute any actions
-            //state.actions.listarProductos();
             state.actions.getUsers();
+            state.actions.getCategories();
+            state.actions.getItem();
         }, [])
 
         return (
