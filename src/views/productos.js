@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Context } from './../store/appContext';
 import $ from 'jquery';
 import Add_categoria from './add_categoria'
 import Add_item from './add_item'
 
-const Productos = (props) => {
+const Productos = () => {
 
     const { store, actions } = useContext(Context);
 
@@ -30,7 +30,7 @@ const Productos = (props) => {
                     <div className="col-md-3"></div>
                 </div>
                 <div className="row mt-2">
-                    <table class="table table-bordered">
+                    <table className="table table-bordered" id="table">
                         <thead>
                             <tr>
                                 <th className="columna1" scope="col">ID</th>
@@ -54,7 +54,7 @@ const Productos = (props) => {
                                                 <td>{items.descripcion}</td>
                                                 <td>{items.precio}</td>
                                                 <td className="btn btn-primary" onClick={showModalItem}>Modificar</td>
-                                                <td onClick = {() => actions.delItem(items.id)}><i className="fa fa-trash-alt"></i></td>
+                                                <td onClick={() => actions.delItem(items.id)}><i className="fa fa-trash-alt"></i></td>
                                             </tr>
                                         </>
                                     )

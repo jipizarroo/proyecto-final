@@ -5,7 +5,7 @@ import './../css/add_item.css';
 
 
 
-const Add_item = (props) => {
+const Add_item = () => {
     const { store, actions } = useContext(Context);
     
     return (

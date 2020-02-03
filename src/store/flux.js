@@ -118,6 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             description: '',
                             icon: '',
                         });
+                        getActions().getCategories();
                     })
             },
 
