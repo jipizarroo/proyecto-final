@@ -3,6 +3,7 @@ import { Context } from './../store/appContext';
 import $ from 'jquery';
 import Add_categoria from './add_categoria'
 import Add_item from './add_item'
+import ModalEliminar from '../components/modalEliminar';
 
 const Productos = () => {
 
@@ -54,7 +55,9 @@ const Productos = () => {
                                                 <td>{items.descripcion}</td>
                                                 <td>{items.precio}</td>
                                                 <td className="btn btn-primary" onClick={showModalItem}>Modificar</td>
-                                                <td onClick={() => actions.delItem(items.id)}><i className="fa fa-trash-alt"></i></td>
+                                                <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop"+items.id}></i>
+                                                <ModalEliminar items={items} />
+                                                </td>
                                             </tr>
                                         </>
                                     )
