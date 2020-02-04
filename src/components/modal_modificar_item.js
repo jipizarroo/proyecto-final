@@ -7,13 +7,13 @@ const Modificar_item = (props) => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="modal fade" id="moditem" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal fade" id={"moditem"+props.items.id} tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
                         <div className="container mt-5">
                             <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
-                                <span className="navbar-brand">Modificar Item</span>
+                                <span className="navbar-brand">Modificar Item {props.items.nombre}</span>
                                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                     <span className="navbar-toggler-icon"></span>
                                 </button>
@@ -22,11 +22,11 @@ const Modificar_item = (props) => {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <label for="formGroupExampleInput">Nombre</label>
-                                        <input type="text" className="form-control" placeholder={props.nombre} onChange={e => actions.handleChange(e)} />
+                                        <input type="text" className="form-control" placeholder={props.items.nombre} onChange={e => actions.handleChange(e)} />
                                     </div>
                                     <div className="col-md-3">
                                         <label for="formGroupExampleInput">Precio</label>
-                                        <input type="text" className="form-control" placeholder={props.precio} onChange={e => actions.handleChange(e)} />
+                                        <input type="text" className="form-control" placeholder={props.items.precio} onChange={e => actions.handleChange(e)} />
                                     </div>
                                 </div>
                             </form>
@@ -46,7 +46,7 @@ const Modificar_item = (props) => {
                                 </div>
                                 <div className="col-md-3">
                                     <label for="formGroupExampleInput">Descripcion</label>
-                                    <textarea rows="10" cols="30" placeholder={props.description} name="descripcion" onChange={e => actions.handleChange(e)}></textarea>
+                                    <textarea rows="10" cols="30" placeholder={props.items.descripcion} name="descripcion" onChange={e => actions.handleChange(e)}></textarea>
                                 </div>
                             </div>
                             <div className="row pt-5">
@@ -54,10 +54,10 @@ const Modificar_item = (props) => {
                                     <button type="button" className="btn btn-dark">Limpiar</button>
                                 </div>
                                 <div className="col-md-3">
-                                    <button type="button" className="btn btn-secondary">Cancelar</button>
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 </div>
                                 <div className="col-md-3">
-                                    <button type="button" className="btn btn-success mr-3">Modificar</button>
+                                    <button type="submit" className="btn btn-success mr-3" onClick={() => actions.modifyItem(props.items.id)} data-dismiss="modal">Modificar</button>
                                 </div>
                             </div>
                         </div>

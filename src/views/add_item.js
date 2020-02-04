@@ -22,12 +22,12 @@ const Add_item = () => {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <label for="formGroupExampleInput">Nombre</label>
-                                        <input type="text" class="form-control" name="nombre" placeholder="xxxxxxxxxxx"
+                                        <input type="text" className="form-control" name="nombre" placeholder="xxxxxxxxxxx"
                                             onChange={e => actions.handleChange(e)} />
                                     </div>
                                     <div className="col-md-3">
                                         <label for="formGroupExampleInput">Precio</label>
-                                        <input type="text" class="form-control" name="precio" placeholder="xxxxxxxxxxxxx"
+                                        <input type="text" className="form-control" name="precio" placeholder="xxxxxxxxxxxxx"
                                             onChange={e => actions.handleChange(e)} />
                                     </div>
                                     <div className="button col-md-3">

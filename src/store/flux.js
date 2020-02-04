@@ -63,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
+                        console.log(data)
                         setStore({
                             name: '',
                             last_name: '',
@@ -202,14 +202,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
+                        console.log(data)
                         setStore({
                             nombre: '',
                             precio: '',
                             descripcion: '',
                             category_id: ''
                         });
+                        getActions().getItem();
                     })
-                    getActions().getItem();
             },
 
             delItem: (id) => {

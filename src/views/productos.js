@@ -7,20 +7,16 @@ import ModalEliminar from '../components/modalEliminar';
 import Modificar_item from '../components/modal_modificar_item';
 import { Link } from 'react-router-dom';
 
-const Productos = () => {
+const Productos = (props) => {
 
     const { store } = useContext(Context);
 
     function showModalPedido() {
         $('#addcategory').modal('show');
     }
-    
+
     function showModalItem() {
         $('#additem').modal('show');
-    }
-
-    function showModalmodItem() {
-        $('#moditem').modal('show');
     }
 
     return (
@@ -63,7 +59,10 @@ const Productos = () => {
                                                 <td>{items.nombre}</td>
                                                 <td>{items.descripcion}</td>
                                                 <td>{items.precio}</td>
-                                                <td className="btn btn-primary" onClick={showModalmodItem}>Modificar</td>
+                                                <td>
+                                                    <button className="btn btn-primary" data-toggle="modal" data-target={"#moditem" +items.id}>Modificar </button>
+                                                    <Modificar_item items={items} />
+                                                </td>
                                                 <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + items.id}></i>
                                                     <ModalEliminar items={items} />
                                                 </td>
@@ -78,7 +77,6 @@ const Productos = () => {
             </div>
             <Add_categoria />
             <Add_item />
-            <Modificar_item />
         </>
     )
 }
