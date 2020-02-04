@@ -12,7 +12,6 @@ import Productos from './views/productos';
 import Add_categoria from './views/add_categoria';
 import Horario from './views/horario';
 import Menu from './views/menu';
-import users from './views/users';
 import Admi_Usuario from './views/admi_Usuario';
 
 const Layout = props => {
@@ -42,7 +41,6 @@ const Layout = props => {
 
 
 
-                <Route exact path= "/admin/users/add_user" component={users}/>
                 <Route exact path="/home/modal_ingredientes" component={Modal_ingredientes} />
                 {/* <Route render={() => <h1>Not Found</h1>} /> */}
             </Switch>
