@@ -14,6 +14,7 @@ const Productos = () => {
     function showModalPedido() {
         $('#addcategory').modal('show');
     }
+    
     function showModalItem() {
         $('#additem').modal('show');
     }

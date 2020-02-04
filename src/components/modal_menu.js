@@ -44,7 +44,7 @@ class Modal_menu extends React.Component {
                                                 <button type="button" className="btn btn-secondary ml-5 mr-5" data-toggle="collapse" data-target="#collapseIngrediente2">Agregar</button>
                                                 <button type="button" className="btn btn-secondary">Msg</button>
                                             </div>
-                                            <div class="collapse" id="collapseIngrediente2">
+                                            <div className="collapse" id="collapseIngrediente2">
                                                 <Modal_ingredientes />
                                             </div>
                                         </div>
