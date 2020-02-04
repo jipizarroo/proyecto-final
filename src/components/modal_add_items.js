@@ -41,7 +41,7 @@ const Modal_add_items = props => {
                                 <div className="row pt-5">
                                     <div className="col-md-2">
                                         <label for="formGroupExampleInput">Descripcion</label>
-                                        <textarea rows="4" cols="20">
+                                        <textarea rows="4" cols="30">
                                             xxxxxxxxxxx
                                         </textarea>
                                     </div>

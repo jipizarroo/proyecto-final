@@ -7,7 +7,7 @@ export default class Mod_user extends React.Component {
 
 
     render() {
-        //const {store, actions} = useContext(Context);
+        
         return (
             <Context.Consumer>
                 {

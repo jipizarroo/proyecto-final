@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Context } from './../store/appContext';
 import $ from 'jquery';
-import Add_categoria from './add_categoria'
-import Add_item from './add_item'
+import Add_categoria from './add_categoria';
+import Add_item from './add_item';
 import ModalEliminar from '../components/modalEliminar';
+import Modificar_item from '../components/modal_modificar_item';
+import { Link } from 'react-router-dom';
 
 const Productos = () => {
 
-    const { store, actions } = useContext(Context);
+    const { store } = useContext(Context);
 
     function showModalPedido() {
         $('#addcategory').modal('show');
@@ -16,19 +18,24 @@ const Productos = () => {
         $('#additem').modal('show');
     }
 
+    function showModalmodItem() {
+        $('#moditem').modal('show');
+    }
+
     return (
         <>
             <div className="container">
                 <div className="row mt-5">
-                    <div className="col md-3"></div>
-                    <div className="col md-2">
+                    <div className="col-md-3"></div>
+                    <div className="col md-3">
                         <button type="button" className="btn btn-info" onClick={() => { showModalPedido() }}>Agregar Categoria</button>
                     </div>
                     <div className="col md-2">
                         <button type="button" className="btn btn-info ml-4" onClick={() => { showModalItem() }}>Agregar Item</button>
                     </div>
-
-                    <div className="col-md-3"></div>
+                    <div className="col md-2">
+                        <Link to="/admin_home"><button type="button" className="btn btn-primary">Regresar</button></Link>
+                    </div>
                 </div>
                 <div className="row mt-2">
                     <table className="table table-bordered" id="table">
@@ -46,6 +53,7 @@ const Productos = () => {
                             {
                                 store.all_items.length > 0 &&
                                 store.all_items.map((items, i) => {
+
                                     return (
                                         <>
                                             <tr key={i}>
@@ -54,9 +62,9 @@ const Productos = () => {
                                                 <td>{items.nombre}</td>
                                                 <td>{items.descripcion}</td>
                                                 <td>{items.precio}</td>
-                                                <td className="btn btn-primary" onClick={showModalItem}>Modificar</td>
-                                                <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop"+items.id}></i>
-                                                <ModalEliminar items={items} />
+                                                <td className="btn btn-primary" onClick={showModalmodItem}>Modificar</td>
+                                                <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + items.id}></i>
+                                                    <ModalEliminar items={items} />
                                                 </td>
                                             </tr>
                                         </>
@@ -69,6 +77,7 @@ const Productos = () => {
             </div>
             <Add_categoria />
             <Add_item />
+            <Modificar_item />
         </>
     )
 }

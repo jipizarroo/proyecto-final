@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import {Context} from './../store/appContext';
 
 const ModalEliminar = props => {
-    const {store, actions} = useContext(Context);
+    const {actions} = useContext(Context);
     return (
 
         <div className="container">

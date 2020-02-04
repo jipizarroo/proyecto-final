@@ -73,6 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     getActions().getUsers();
             },
+
             handleChange: e => {
                 setStore({
                     [e.target.name]: e.target.value
@@ -184,6 +185,33 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
             },
 
+            modifyItem: (id) => {
+                const store = getStore();
+                const data = {
+                    nombre: store.nombre,
+                     precio: store.precio,
+                     descripcion: store.descripcion,
+                     category_id: store.category_id
+                }
+                fetch(store.path + '/api/items/' + id, {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            nombre: '',
+                            precio: '',
+                            descripcion: '',
+                            category_id: ''
+                        });
+                    })
+                    getActions().getItem();
+            },
+
             delItem: (id) => {
                 const store = getStore();
                 fetch(store.path + '/api/items/' + id, {
@@ -203,9 +231,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             deleteUser: (id) => {
                 const store = getStore();
-                const data = {
-                    all_users: store.all_users
-                }
+                // const data = {
+                //     all_users: store.all_users
+                // }
                 fetch(store.path + '/api/users/' + id, {
                     method: 'DELETE',
                     headers: {
