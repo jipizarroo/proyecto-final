@@ -16,6 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             icon: '',
             category_id: 0,
             all_categories: [],
+            category_items: [],
         },
         actions: {
             createUser: () => {
@@ -71,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             password: ''
                         });
                     })
-                    getActions().getUsers();
+                getActions().getUsers();
             },
 
             handleChange: e => {
@@ -79,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     [e.target.name]: e.target.value
                 });
             },
-            
+
             getUsers: () => {
                 const store = getStore();
                 fetch(store.path + '/api/users', {
@@ -134,41 +135,41 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .then(resp => resp.json())
                     .then(data => {
                         console.log(data)
-                        setStore({all_categories: data})
+                        setStore({ all_categories: data })
                     })
-                    
+
             },
 
-             addItem: (history) => {
-                 const store = getStore();
-                 const data = {
-                     nombre: store.nombre,
-                     precio: store.precio,
-                     descripcion: store.descripcion,
-                     category_id: store.category_id
-                 }
-                 fetch(store.path + '/api/items', {
-                     method: 'POST',
-                     body: JSON.stringify(data),
-                     headers: {
-                         'Content-Type': 'application/json'
-                     }
+            addItem: (history) => {
+                const store = getStore();
+                const data = {
+                    nombre: store.nombre,
+                    precio: store.precio,
+                    descripcion: store.descripcion,
+                    category_id: store.category_id
+                }
+                fetch(store.path + '/api/items', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
 
-                 })
-                     .then(resp => resp.json())
-                     .then(data => {
-                         console.log(data)
-                         setStore({
-                             nombre: '',
-                             precio: '',
-                             descripcion: '',
-                             category_id: '',
-                         });
-                         getActions().getItem();
-                     })
-             },
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            nombre: '',
+                            precio: '',
+                            descripcion: '',
+                            category_id: '',
+                        });
+                        getActions().getItem();
+                    })
+            },
 
-             getItem: () => {
+            getItem: () => {
                 const store = getStore();
                 fetch(store.path + '/api/items', {
                     method: 'GET',
@@ -185,13 +186,30 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
             },
 
+            getCategoryItems: (id) => {
+                const store = getStore();
+                return fetch(store.path + '/api/categories/' + id, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            category_items: data
+                        })
+                    })
+            },
+
             modifyItem: (id) => {
                 const store = getStore();
                 const data = {
                     nombre: store.nombre,
-                     precio: store.precio,
-                     descripcion: store.descripcion,
-                     category_id: store.category_id
+                    precio: store.precio,
+                    descripcion: store.descripcion,
+                    category_id: store.category_id
                 }
                 fetch(store.path + '/api/items/' + id, {
                     method: 'PUT',
@@ -230,6 +248,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         getActions().getItem();
                     })
             },
+
             deleteUser: (id) => {
                 const store = getStore();
                 // const data = {
@@ -248,7 +267,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                             all_users: data
                         })
                     })
-                    getActions().getUsers();
+                getActions().getUsers();
             },
         }
     };

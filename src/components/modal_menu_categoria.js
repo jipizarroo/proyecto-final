@@ -5,7 +5,7 @@ import React from 'react';
 
 const Agregar_menu = (props) => {
     //const { store, actions } = useContext(Context);
-    
+
     return (
         <div className="container">
             <div class="modal fade" id="menu_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -19,20 +19,26 @@ const Agregar_menu = (props) => {
                             </div>
                         </div>
                         <div className="container">
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <table className="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">xxxxxxxxx</th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div className="col-md-3 pt-2">
-                                    <input type="number" name="quantity" min="1" max="99" />
-                                </div>
-                            </div>
+                            {
+                                props.items.map((item, i) => {
+                                    return (
+                                        <div className="row">
+                                            <div className="col-md-9">
+                                                <table className="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">{item.nombre}</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div className="col-md-3 pt-2">
+                                                <input type="number" name="quantity" min="0" max="99" defaultValue="0"/>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                         <div class="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>

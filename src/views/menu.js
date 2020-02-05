@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './../store/appContext';
 import Agregar_menu from '../components/modal_menu_categoria';
@@ -7,10 +7,19 @@ import $ from 'jquery';
 
 const Menu = () => {
     const { store, actions } = useContext(Context);
+    const [categoryDesc, setCategoryDesc] = useState("")
+    const [categoryItems, setCategoryItems] = useState([])
 
-    function showModalPedido() {
+
+    async function showModalPedido(item) {
+        await actions.getCategoryItems(item.id);
+
+        setCategoryDesc(() => item.description);
+        setCategoryItems(() => store.category_items);
+
         $('#menu_add').modal('show');
     }
+
 
     return (
         <div className="container mt-5">
@@ -21,7 +30,7 @@ const Menu = () => {
                             store.all_categories.map((item, i) => {
                                 return (
                                     <div className="col-md-6" key={i}>
-                                        <div className="card" onClick={showModalPedido}>
+                                        <div className="card" onClick={() => showModalPedido(item)}>
                                             <img src="http://placehold.it/200x100" className="card-img-top" alt="..." />
                                             <div className="card-body">
                                                 <h5 className="card-title">{item.description}</h5>
@@ -63,7 +72,7 @@ const Menu = () => {
                     </Link>
                 </div>
 
-                <Agregar_menu />
+                <Agregar_menu description = {categoryDesc} items = {categoryItems} />
             </div>
         </div>
     )
