@@ -23,8 +23,8 @@ class Home_admin extends React.Component {
                 </div>
                 <div className="row d-flex justify-content-center" id="HomeAmenus">
                     <div className="horarios">
-                        <Link to="/garzon_home/:id/menu"><button type="button" className="btn btn-outline-primary">
-                            Vender
+                        <Link to="/admin_home/mesas"><button type="button" className="btn btn-outline-primary">
+                            Mesas
                           </button>
                         </Link>
                     </div>
