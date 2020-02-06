@@ -60,7 +60,7 @@ const Productos = (props) => {
                                                 <td>{items.descripcion}</td>
                                                 <td>{items.precio}</td>
                                                 <td>
-                                                    <button className="btn btn-primary" data-toggle="modal" data-target={"#moditem" +items.id}>Modificar </button>
+                                                    <button className="btn btn-primary" data-toggle="modal" data-target={"#moditem" + items.id}>Modificar </button>
                                                     <Modificar_item items={items} />
                                                 </td>
                                                 <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + items.id}></i>

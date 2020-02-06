@@ -1,17 +1,24 @@
 import React from 'react';
-//import { Context } from './../store/appContext';
-
-
 
 const Agregar_menu = (props) => {
-    //const { store, actions } = useContext(Context);
+
+    async function updateCantidades() {
+        await props.setCategoryItems(() => {
+            return props.items.map((item, i) => {
+                item.cantidad = document.getElementById("item-" + i).value;
+                return item;
+            });
+        });
+
+        props.updateTotal();
+    }
 
     return (
         <div className="container">
-            <div class="modal fade" id="menu_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
+            <div className="modal fade" id="menu_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
                             <div className="container mt-2">
                                 <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
                                     <span className="navbar-brand">{props.description}</span>
@@ -20,7 +27,7 @@ const Agregar_menu = (props) => {
                         </div>
                         <div className="container">
                             {
-                                props.items.map((item, i) => {
+                               props.items.map((item, i) => {
                                     return (
                                         <div className="row">
                                             <div className="col-md-9">
@@ -33,7 +40,7 @@ const Agregar_menu = (props) => {
                                                 </table>
                                             </div>
                                             <div className="col-md-3 pt-2">
-                                                <input type="number" name="quantity" min="0" max="99" defaultValue="0"/>
+                                                <input type="number" name="quantity" min="0" max="99" defaultValue="0" id={"item-" + i}/>
                                             </div>
                                         </div>
                                     )
@@ -42,7 +49,7 @@ const Agregar_menu = (props) => {
                         </div>
                         <div class="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" className="btn btn-primary">Aplicar</button>
+                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={updateCantidades} >Aplicar</button>
                         </div>
                     </div>
                 </div>

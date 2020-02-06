@@ -124,6 +124,19 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
             },
 
+            addPedido: (request) => {
+                const store = getStore();
+                const data = request
+                fetch(store.path + '/api/pedidos', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+
+                })
+            },
+
             getCategories: () => {
                 const store = getStore();
                 fetch(store.path + '/api/categories', {
