@@ -3,7 +3,7 @@ import '../css/home.css';
 import Modal_menu from '../components/modal_menu'
 import $ from 'jquery';
 
-class Home extends React.Component {
+class Home_garzon extends React.Component {
 
     showModalPedido() {
         $('#modalReserva').modal('show');
@@ -80,4 +80,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default Home_garzon;
