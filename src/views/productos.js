@@ -55,12 +55,12 @@ const Productos = (props) => {
                                         <>
                                             <tr key={i}>
                                                 <td scope="row">{items.id}</td>
-                                                <td>{items.category.description}</td>
+                                                <td>{items.category_descripcion}</td>
                                                 <td>{items.nombre}</td>
                                                 <td>{items.descripcion}</td>
                                                 <td>{items.precio}</td>
                                                 <td>
-                                                    <button className="btn btn-primary" data-toggle="modal" data-target={"#moditem" + items.id}>Modificar </button>
+                                                    <button className="btn btn-primary" data-toggle="modal" data-target={"#moditem"}>Modificar </button>
                                                     <Modificar_item items={items} />
                                                 </td>
                                                 <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + items.id}></i>
