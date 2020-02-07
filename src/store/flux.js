@@ -325,6 +325,45 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 getActions().getMesas();
             },
+            putMesa: (id) => {
+                const store = getStore();
+                const data = {
+                    nombre_mesa: store.nombre_mesa,
+
+                }
+                fetch(store.path + '/api/mesas/' + id , {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(resp => resp.json())
+                .then(data => {
+                    console.log(data)
+                    setStore({
+                        nombre_mesa: '',
+                    });
+                })
+                getActions().getMesas();
+            },
+            delMesa: (id) => {
+                const store = getStore();
+                fetch(store.path + '/api/mesas/'+ id, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            all_mesas: data
+                        })
+                    })
+                    getActions().getMesas();
+            },
             getPlazas: () => {
                 const store = getStore();
                 fetch(store.path + '/api/plazas', {
@@ -354,11 +393,34 @@ const getState = ({ getStore, getActions, setStore }) => {
               })
               .then(resp => resp.json())
               .then(data => {
+                  console.log(data)
                   setStore({
-                      nombre_plaza: store.nombre_plaza
+                      nombre_plaza: '',
                   })
               })
               getActions().getPlazas();
+            },
+            putPlaza: (id) => {
+                const store = getStore();
+                const data = {
+                    nombre_plaza: store.nombre_plaza,
+
+                }
+                fetch(store.path + '/api/plazas/' + id , {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(resp => resp.json())
+                .then(data => {
+                    console.log(data)
+                    setStore({
+                        nombre_plaza: '',
+                    });
+                })
+                getActions().getPlazas();
             },
         }
     };

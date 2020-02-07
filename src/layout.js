@@ -4,7 +4,6 @@ import Login from './views/login';
 import Navbar from './components/navbar'
 import injectContext from './store/appContext'
 import Footer from './components/footer';
-import Modal_ingredientes from './components/modal_ingredientes';
 import Home_admin from './views/home_admin';
 import Ventas_garzon from './views/ventas_garzon';
 import Productos from './views/productos';
@@ -43,7 +42,6 @@ const Layout = props => {
 
 
 
-                <Route exact path="/home/modal_ingredientes" component={Modal_ingredientes} />
                 {/* <Route render={() => <h1>Not Found</h1>} /> */}
             </Switch>
             <Footer />

@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import { Context } from '../store/appContext';
+import { Context } from '../../store/appContext';
 
 
-const Modal_mod_mesa = props => {
+const Modal_add_mesa = () => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="modal fade" id="mod_mesa" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal fade" id="add_mesa" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Formulario registro de usuario.</h5>
+                        <h5 className="modal-title" id="exampleModalLabel">Formulario creacion mesas.</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -19,7 +19,7 @@ const Modal_mod_mesa = props => {
                         <form>
                             <div className="form-row">
                                 <div className="form-group col-8">
-                                    <label htmlFor="name">Nombre Plaza: {props.item.nombre_mesa}</label>
+                                    <label htmlFor="name">Cantidad de mesas que desea crear</label>
                                     <input type="name" name="name" className="form-control" id="name_form" onChange={e => actions.handleChange(e)} />
                                 </div>
                                 <div className="col-4">
@@ -43,7 +43,7 @@ const Modal_mod_mesa = props => {
                             </div>
                             <div className="modal-footer d-flex justify-content-between">
                                 <button type="submit" className="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" className="btn btn-primary" onClick={() => actions.createUser(this.props.history)} data-dismiss="modal">Agregar</button>
+                                <button type="submit" className="btn btn-primary" onClick={() => actions.createMesa()} data-dismiss="modal">Agregar</button>
                             </div>
                         </form>
                     </div>
@@ -52,4 +52,4 @@ const Modal_mod_mesa = props => {
         </div>
     )
 }
-export default Modal_mod_mesa;
+export default Modal_add_mesa;

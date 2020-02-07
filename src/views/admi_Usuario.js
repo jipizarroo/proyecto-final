@@ -1,8 +1,8 @@
 import React from 'react';
 import { Context } from './../store/appContext';
-import Register from '../components/modal_register';
-import Mod_user from '../components/modal_mod_users';
-import Mod_delete_user from '../components/modal_delete_user';
+import Register from '../components/users/modal_register';
+import Mod_user from '../components/users/modal_mod_users';
+import Mod_delete_user from '../components/users/modal_delete_user';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
