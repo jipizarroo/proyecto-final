@@ -13,6 +13,7 @@ import Menu from './views/menu';
 import Admi_Usuario from './views/admi_Usuario';
 import Admin_mesas from './views/admin_mesas';
 import Settings_mesas from './views/settings_mesas';
+import Resumen from './components/resumen_pedido';
 
 const Layout = props => {
     return (
@@ -29,6 +30,7 @@ const Layout = props => {
                 <Route exact path ="/admin_home/mesas/settings" component={Settings_mesas}/>
                 <Route exact path ="/admin_home/mesas" component={Admin_mesas}/>
                 <Route exact path="/admin_home" component={Home_admin} />
+                <Route exact path="/resumen" component={Resumen} />
 
 
 
