@@ -16,7 +16,7 @@ const Modal_add_plaza = () => {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form>
+                        <div>
                             <div className="form-row">
                                 <div className="form-group col-12">
                                     <label htmlFor="name">Nombre de la plaza</label>
@@ -30,7 +30,7 @@ const Modal_add_plaza = () => {
                                 <button type="submit" className="btn btn-primary" data-dismiss="modal" >Cancelar</button>
                                 <button type="submit" className="btn btn-primary"  data-dismiss="modal"onClick={() => actions.postPlazas() }>Agregar</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

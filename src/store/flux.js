@@ -422,6 +422,28 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 getActions().getPlazas();
             },
+            filtrarMesas: (id) => {
+                if (!id > 0){
+                    getActions().getMesas();
+                }
+                else {
+                    const store = getStore();
+                    fetch(store.path + '/api/filtros/' + id, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }                    
+                    })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            all_mesas: data
+                        });
+                    })                
+                }
+                    
+            },
         }
     };
 

@@ -20,7 +20,7 @@ const Modal_add_mesa = () => {
                             <div className="form-row">
                                 <div className="form-group col-8">
                                     <label htmlFor="name">Cantidad de mesas que desea crear</label>
-                                    <input type="name" name="name" className="form-control" id="name_form" onChange={e => actions.handleChange(e)} />
+                                    <input type="name" name="cantidad_mesa" className="form-control" id="name_form" onChange={e => actions.handleChange(e)} />
                                 </div>
                                 <div className="col-4">
                                     <button type="reset" value="Reset" className="float-right btn btn-primary">Limpiar</button>
