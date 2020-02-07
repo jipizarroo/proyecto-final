@@ -10,12 +10,12 @@ const Agregar_menu = (props) => {
             });
         });
 
-        props.updateTotal();
+        props.updateTotalParent();
     }
 
     return (
         <div className="container">
-            <div className="modal fade" id="menu_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id={"menu_add"} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -27,7 +27,8 @@ const Agregar_menu = (props) => {
                         </div>
                         <div className="container">
                             {
-                               props.items.map((item, i) => {
+                                props.items.length > 0 &&
+                                props.items.map((item, i) => {
                                     return (
                                         <div className="row">
                                             <div className="col-md-9">

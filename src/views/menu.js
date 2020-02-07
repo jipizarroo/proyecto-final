@@ -9,26 +9,46 @@ const Menu = () => {
     const { store, actions } = useContext(Context);
     const [categoryDesc, setCategoryDesc] = useState("")
     const [categoryItems, setCategoryItems] = useState([])
+    const [pedidos, setPedidos] = useState([])
     const [total, setTotal] = useState(0)
 
 
-    async function showModalPedido(item) {
-
-        if (categoryItems.length == 0) {
-            await actions.getCategoryItems(item.id);
-            setCategoryItems(() => store.category_items);
-        }
-
+    function showModalPedido(item) {
+        setCategoryItems(() => store.all_items.filter(i => i.category_id == item.id));
         setCategoryDesc(() => item.description);
+
+        console.log(store.all_items);
 
         $('#menu_add').modal('show');
     }
 
     function updateTotal() {
+
+        if (pedidos.length > 0) {
+            console.log(categoryItems)
+            for (let i = 0; i < categoryItems.length; i++) {
+                let tmp = categoryItems[i];
+                let j;
+                for (j = 0; j < pedidos.length; j++) {
+                    let final = pedidos[j];
+                    if (final.id == tmp.id) {
+                        final.cantidad = tmp.cantidad;
+                        break;
+                    }
+                }
+                if (j == pedidos.length && tmp.cantidad > 0)
+                    pedidos.push(tmp);
+            }
+        }
+        else
+            setPedidos(() => categoryItems.filter(i => i.cantidad > 0));
+
+
+
         let suma = 0;
 
-        categoryItems.forEach(i => {
-            if(parseInt(i.cantidad) > 0) {
+        pedidos.forEach(i => {
+            if (parseInt(i.cantidad) > 0) {
                 suma += parseInt(i.cantidad) * parseInt(i.precio);
             }
         });
@@ -36,11 +56,24 @@ const Menu = () => {
         setTotal(() => suma);
     }
 
+    let productos = [];
+    pedidos.forEach(p => {
+        if(p.cantidad > 0) {
+            let producto = {
+                "id_producto": p.id,
+                "cantidad": p.cantidad
+            }
+            productos.push(producto);
+        }
+    });
+
+
     function imprimir() {
         let request = {
-            "id_mesa": 1,
-            "productos": categoryItems.filter(item => item.cantidad > 0)
-        };
+           "id_mesa": 6,
+           "productos": productos
+         };
+
         actions.addPedido(request);
     }
 
@@ -54,7 +87,10 @@ const Menu = () => {
                             store.all_categories.map((item, i) => {
                                 return (
                                     <div className="col-md-6" key={i}>
-                                        <div className="card" onClick={() => showModalPedido(item)}>
+                                        <div className="card"
+                                            onClick={() => showModalPedido(item)}
+                                        >
+
                                             <img src="http://placehold.it/200x100" className="card-img-top" alt="..." />
                                             <div className="card-body">
                                                 <h5 className="card-title">{item.description}</h5>
@@ -77,7 +113,7 @@ const Menu = () => {
                         </thead>
                         <tbody>
                             {
-                                store.category_items.map((item, i) => {
+                                pedidos.map((item, i) => {
 
                                     if (item.cantidad != undefined && item.cantidad != 0) {
                                         return (
@@ -98,7 +134,7 @@ const Menu = () => {
                     </table>
                     <div className="total-cuenta">
                         <button type="submit" className="btn btn-primary float-center" onClick={imprimir}>Imprimir</button>
-                        <input readOnly className="float-right" placeholder="monto final" value={total}/>
+                        <input readOnly className="float-right" placeholder="monto final" value={total} />
                         <label className="float-right pr-3 pt-1">TOTAL</label>
                     </div>
                 </div>
@@ -108,7 +144,7 @@ const Menu = () => {
                         </button>
                     </Link>
                 </div>
-                <Agregar_menu description={categoryDesc} items={categoryItems} setCategoryItems={setCategoryItems} updateTotal={updateTotal}/>
+                <Agregar_menu description={categoryDesc} items={categoryItems} setCategoryItems={setCategoryItems} updateTotalParent={updateTotal} />
             </div>
         </div>
     )
