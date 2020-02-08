@@ -5,7 +5,6 @@ import Navbar from './components/navbar'
 import injectContext from './store/appContext'
 import Footer from './components/footer';
 import Home_admin from './views/home_admin';
-import Ventas_garzon from './views/ventas_garzon';
 import Productos from './views/productos';
 import Add_categoria from './views/add_categoria';
 import Horario from './views/horario';
@@ -13,6 +12,7 @@ import Menu from './views/menu';
 import Admi_Usuario from './views/admi_Usuario';
 import Admin_mesas from './views/admin_mesas';
 import Settings_mesas from './views/settings_mesas';
+import Home_garzon from './views/home_garzon';
 
 const Layout = props => {
     return (
@@ -35,7 +35,7 @@ const Layout = props => {
 
 
 
-                <Route exact path="/garzon_home/config/ventas" component={Ventas_garzon} />
+                <Route exact path="/garzon_home" component={Home_garzon} />
                 <Route exact path ="/garzon_home/:id/menu" component={Menu}/>
 
 
@@ -44,7 +44,7 @@ const Layout = props => {
 
                 {/* <Route render={() => <h1>Not Found</h1>} /> */}
             </Switch>
-            <Footer />
+            {/*<Footer />*/}
         </BrowserRouter>
     )
 }

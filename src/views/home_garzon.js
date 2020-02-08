@@ -1,9 +1,9 @@
 import React from 'react';
 import '../css/home.css';
-import Modal_menu from '../components/modal_menu'
 import $ from 'jquery';
+import { Context } from '../store/appContext';
 
-class Home_garzon extends React.Component {
+export default class Home_garzon extends React.Component {
 
     showModalPedido() {
         $('#modalReserva').modal('show');
@@ -11,73 +11,49 @@ class Home_garzon extends React.Component {
 
     render() {
         return (
-            <>
-                <div>{<Modal_menu />}</div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-2 mt-5 card ml-3 mr-3 bg-danger" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                            <div className="border border-dark text-center"> <span>00:23</span></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3 bg-danger" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                            <div className="border border-dark text-center"> <span>10:06</span></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x" ></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-2 mt-5 card ml-3 mr-3 bg-danger" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                            <div className="border border-dark text-center"> <span>05:43</span></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                        </div>
-                        <div className="col-md-2 mt-5 card ml-3 mr-3 bg-danger" onClick={this.showModalPedido.bind()}>
-                            <div className="table1 fa fa-cutlery fa-2x"></div>
-                            <div className="border border-dark text-center"> <span>00:48</span></div>
-                        </div>
-                    </div>
-                </div>
-            </>
+            <Context.Consumer>
+                {
+                    ({ store, actions, }) => {
+
+                        return (
+                            <>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <select name="plaza_id" onChange={e => actions.filtrarMesas(e.target.value)} >
+                                                <option value="">Seleccionar Plaza</option>
+                                                {store.all_plazas.length > 0 &&
+                                                    store.all_plazas.map((item, i) => {
+                                                        return (
+                                                            <option key={i} value={item.id}>
+                                                                {item.nombre_plaza}
+                                                            </option>
+                                                        )
+                                                    })}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="container">
+                                <div className="row">
+                                {
+                                    store.all_mesas.length > 0 &&
+                                    store.all_mesas.map((items, i) => {
+                                        return (
+                                                    <div className="col-2 border border-dark mt-5 ml-1" key={i} >
+                                                        <div className="table1"><i id="icono_utensils" className="fas fa-utensils fa-3x"></i></div>
+                                                        <p>{items.nombre_mesa}</p>
+                                                    </div>
+                                        )
+                                    })
+                                }
+                                </div>
+                                </div>
+                            </>
+                        )
+                    }
+                }
+            </Context.Consumer>
         )
     }
 }
-
-export default Home_garzon;

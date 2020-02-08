@@ -10,6 +10,7 @@ class Admin_mesas extends React.Component {
                 <div className="row d-flex justify-content-between">
                     <Link className="btn btn-outline-primary" to="/admin_home/mesas/settings">Configuracion Mesas </ Link>
                     <Link className="btn btn-outline-primary" to="/garzon_home/:id/menu">Live Mesas </ Link>
+                    <Link className="btn btn-outline-primary" to="/garzon_home">Testing live-garzones </ Link>
                 </div>
             </div>
         )
