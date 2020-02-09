@@ -139,7 +139,7 @@ const Menu = () => {
                     </div>
                 </div>
                 <div className="col-md-12">
-                    <Link className="navbar-brand" to="/admin_home"> <button type="sumbit" className="btn btn-primary">
+                    <Link className="navbar-brand" to="/garzon_home"> <button type="sumbit" className="btn btn-primary">
                         Go Back
                         </button>
                     </Link>

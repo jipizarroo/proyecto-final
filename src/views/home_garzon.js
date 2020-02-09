@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/home.css';
 import $ from 'jquery';
 import { Context } from '../store/appContext';
+import { Link } from 'react-router-dom';
 
 export default class Home_garzon extends React.Component {
 
@@ -21,7 +22,7 @@ export default class Home_garzon extends React.Component {
                                     <div className="row">
                                         <div className="col-12">
                                             <select name="plaza_id" onChange={e => actions.filtrarMesas(e.target.value)} >
-                                                <option value="">Seleccionar Plaza</option>
+                                                <option value="">Todas Las Plazas</option>
                                                 {store.all_plazas.length > 0 &&
                                                     store.all_plazas.map((item, i) => {
                                                         return (
@@ -40,10 +41,10 @@ export default class Home_garzon extends React.Component {
                                     store.all_mesas.length > 0 &&
                                     store.all_mesas.map((items, i) => {
                                         return (
-                                                    <div className="col-2 border border-dark mt-5 ml-1" key={i} >
+                                                    <Link className="col-2 border border-dark mt-5 ml-5" key={i} to="/garzon_home/<int:id>/menu">
                                                         <div className="table1"><i id="icono_utensils" className="fas fa-utensils fa-3x"></i></div>
                                                         <p>{items.nombre_mesa}</p>
-                                                    </div>
+                                                    </Link>
                                         )
                                     })
                                 }
