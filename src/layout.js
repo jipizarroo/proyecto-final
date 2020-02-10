@@ -12,11 +12,8 @@ import Menu from './views/menu';
 import Admi_Usuario from './views/admi_Usuario';
 import Admin_mesas from './views/admin_mesas';
 import Settings_mesas from './views/settings_mesas';
-<<<<<<< HEAD
 import Home_garzon from './views/home_garzon';
-=======
 import Resumen from './components/resumen_pedido';
->>>>>>> jassan
 
 const Layout = props => {
     return (
