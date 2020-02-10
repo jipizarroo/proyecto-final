@@ -3,7 +3,7 @@ import { Context } from '../../store/appContext';
 
 
 const Modal_add_plaza = () => {
-    const { store, actions } = useContext(Context);
+    const { actions } = useContext(Context);
 
     return (
         <div className="modal fade" id="add_plaza" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">

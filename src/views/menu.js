@@ -69,7 +69,7 @@ const Menu = () => {
 
     function imprimir() {
         let request = {
-            "id_mesa": 6,
+            "id_mesa": 1,
             "productos": productos
         };
 
@@ -125,7 +125,7 @@ const Menu = () => {
                         </tbody>
                     </table>
                     <div className="total-cuenta">
-                        <button type="submit" className="btn btn-primary float-center" onClick={imprimir}>Imprimir</button>
+                        <Link to="/resumen" type="submit" className="btn btn-primary float-center" onClick={imprimir}>Imprimir</Link>
                         <input readOnly className="float-right" placeholder="monto final" value={total} />
                         <label className="float-right pr-3 pt-1">TOTAL</label>
                     </div>

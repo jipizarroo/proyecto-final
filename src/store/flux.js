@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             last_name: '',
             email: '',
             password: '',
-            currentUser: {},
+            currentUser: "Jassan",
             nombre: '',
             precio: '',
             descripcion: '',

@@ -3,7 +3,7 @@ import { Context } from '../../store/appContext';
 
 
 const Modal_mod_mesa = props => {
-    const { store, actions } = useContext(Context);
+    const { actions } = useContext(Context);
 
     return (
         <div className="modal fade" id={"mod_mesa" + props.items.id} tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
