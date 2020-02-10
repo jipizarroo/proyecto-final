@@ -23,8 +23,63 @@ const getState = ({ getStore, getActions, setStore }) => {
             plaza_id: '',
             all_plazas: [],
             nombre_plaza: '',
+            current_Error: null,
+            isAuthenticated: false,
+            isAdmin: false,
+            isActive: true,
         },
         actions: {
+            getLogin: (e, url, history) => {
+                e.preventDefault();
+                const store = getStore();
+                const data = {
+                    email: store.email,
+                    password: store.password,
+                }
+                fetch(store.path + '/login', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(resp => resp.json())
+                .then(data => {
+                    console.log(data)
+                if (data.msg){
+                    setStore({
+                        current_Error: data
+                    })
+                }
+                else{                    
+                    setStore({
+                        email: '',
+                        password: '',
+                        currentUser: data,
+                        current_Error: null,
+                        isAuthenticated: true
+                    });
+
+                    sessionStorage.setItem('currentUser', JSON.stringify(data))
+                    sessionStorage.setItem('isAuthenticated', true)
+                    history.push('/admin_home')
+                    getActions().getUsers();
+                    getActions().getCategories();
+                    getActions().getItem();
+                    getActions().getMesas();
+                    getActions().getPlazas();
+                    
+                }
+                })
+            },
+            isAuthenticated: () => {
+                if(sessionStorage.getItem('currentUser') && sessionStorage.getItem('isAuthenticated')){
+                    setStore({
+                        isAuthenticated: sessionStorage.getItem('isAuthenticated'),
+                        currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
+                    })
+                }
+            },
             createUser: () => {
                 const store = getStore();
                 const data = {
@@ -37,7 +92,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
 
                 })
@@ -65,7 +121,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -92,7 +149,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(store.path + '/api/users', {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -114,7 +172,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
 
                 })
@@ -137,7 +196,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
 
                 })
@@ -148,7 +208,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(store.path + '/api/categories', {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -171,7 +232,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
 
                 })
@@ -193,7 +255,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(store.path + '/api/items', {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -210,7 +273,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 return fetch(store.path + '/api/categories/' + id, {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -234,7 +298,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -255,7 +320,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(store.path + '/api/items/' + id, {
                     method: 'DELETE',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -276,7 +342,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(store.path + '/api/users/' + id, {
                     method: 'DELETE',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -293,7 +360,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(store.path + '/api/mesas', {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
+
                     }
                 })
                 .then(resp => resp.json())
@@ -313,7 +382,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-type': 'application/json'
+                        'Content-type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                 .then(resp => resp.json())
@@ -335,7 +405,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                 .then(resp => resp.json())
@@ -352,7 +423,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(store.path + '/api/mesas/'+ id, {
                     method: 'DELETE',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                     .then(resp => resp.json())
@@ -369,7 +441,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(store.path + '/api/plazas', {
                     method: 'GET', 
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                 .then(resp => resp.json())
@@ -388,7 +461,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                   method: 'POST',
                   body: JSON.stringify(data),
                   headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + store.currentUser.access_token
                   }
               })
               .then(resp => resp.json())
@@ -410,7 +484,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
                 .then(resp => resp.json())
@@ -431,7 +506,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     fetch(store.path + '/api/filtros/' + id, {
                         method: 'GET',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + store.currentUser.access_token
                         }                    
                     })
                     .then(resp => resp.json())

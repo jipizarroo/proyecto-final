@@ -38,13 +38,13 @@ const Layout = props => {
 
 
                 <Route exact path="/garzon_home" component={Home_garzon} />
-                <Route exact path ="/garzon_home/:id/menu" component={Menu}/>
+                <Route exact path ="/garzon_home/:id/menu" render={(props) => <Menu id={props.match.params.id} />}/>
+            
 
 
 
 
-
-                {/* <Route render={() => <h1>Not Found</h1>} /> */}
+                <Route render={() => <h1>Not Found</h1>} />
             </Switch>
             {/*<Footer />*/}
         </BrowserRouter>
