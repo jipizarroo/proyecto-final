@@ -58,7 +58,7 @@ const Menu = () => {
 
     let productos = [];
     pedidos.forEach(p => {
-        if(p.cantidad > 0) {
+        if (p.cantidad > 0) {
             let producto = {
                 "id_producto": p.id,
                 "cantidad": p.cantidad
@@ -67,16 +67,14 @@ const Menu = () => {
         }
     });
 
-
     function imprimir() {
         let request = {
-           "id_mesa": 6,
-           "productos": productos
-         };
+            "id_mesa": 6,
+            "productos": productos
+        };
 
         actions.addPedido(request);
     }
-
 
     return (
         <div className="container mt-5">
@@ -87,10 +85,7 @@ const Menu = () => {
                             store.all_categories.map((item, i) => {
                                 return (
                                     <div className="col-md-6" key={i}>
-                                        <div className="card"
-                                            onClick={() => showModalPedido(item)}
-                                        >
-
+                                        <div className="card" onClick={() => showModalPedido(item)}>
                                             <img src="http://placehold.it/200x100" className="card-img-top" alt="..." />
                                             <div className="card-body">
                                                 <h5 className="card-title">{item.description}</h5>
@@ -114,18 +109,15 @@ const Menu = () => {
                         <tbody>
                             {
                                 pedidos.map((item, i) => {
-
                                     if (item.cantidad != undefined && item.cantidad != 0) {
                                         return (
-                                            <>
-                                                <tr key={i}>
-                                                    <td scope="row">{item.cantidad}</td>
-                                                    <td>{item.nombre}</td>
-                                                    <td>{item.precio}</td>
-                                                    <td>{item.cantidad * item.precio}</td>
-                                                    <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + item.id}></i></td>
-                                                </tr>
-                                            </>
+                                            <tr key={i}>
+                                                <td scope="row">{item.cantidad}</td>
+                                                <td>{item.nombre}</td>
+                                                <td>{item.precio}</td>
+                                                <td>{item.cantidad * item.precio}</td>
+                                                <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + item.id}></i></td>
+                                            </tr>
                                         )
                                     }
                                 })

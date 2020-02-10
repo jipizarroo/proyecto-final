@@ -10,18 +10,18 @@ const getState = ({ getStore, getActions, setStore }) => {
             nombre: '',
             precio: '',
             descripcion: '',
-            all_users: {},
-            all_items: {},
+            all_users: [],
+            all_items: [],
             description: '',
             icon: '',
             category_id: 0,
             all_categories: [],
             category_items: [],
-            all_mesas: {},
+            all_mesas: [],
             nombre_mesa: '',
             cantidad_mesa: '',
             plaza_id: '',
-            all_plazas: {},
+            all_plazas: [],
             nombre_plaza: '',
         },
         actions: {
@@ -43,7 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             name: '',
                             last_name: '',
@@ -70,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             name: '',
                             last_name: '',
@@ -97,7 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             all_users: data
                         })
@@ -120,7 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             name: '',
                             description: '',
@@ -153,7 +153,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({ all_categories: data })
                     })
 
@@ -177,7 +177,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             nombre: '',
                             precio: '',
@@ -198,7 +198,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             all_items: data
                         })
@@ -215,7 +215,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             category_items: data
                         })
@@ -239,7 +239,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             nombre: '',
                             precio: '',
@@ -260,7 +260,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             all_items: data
                         })
@@ -281,7 +281,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             all_users: data
                         })
@@ -340,7 +340,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .then(resp => resp.json())
                 .then(data => {
-                    console.log(data)
+                    //console.log(data)
                     setStore({
                         nombre_mesa: '',
                     });
@@ -357,7 +357,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(data)
+                        //console.log(data)
                         setStore({
                             all_mesas: data
                         })
@@ -393,7 +393,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               })
               .then(resp => resp.json())
               .then(data => {
-                  console.log(data)
+                  //console.log(data)
                   setStore({
                       nombre_plaza: '',
                   })
@@ -415,7 +415,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                 .then(resp => resp.json())
                 .then(data => {
-                    console.log(data)
+                    //console.log(data)
                     setStore({
                         nombre_plaza: '',
                     });
