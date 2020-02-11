@@ -17,7 +17,7 @@ const Menu = () => {
         setCategoryItems(() => store.all_items.filter(i => i.category_id == item.id));
         setCategoryDesc(() => item.description);
 
-        console.log(store.all_items);
+        //console.log(store.all_items);
 
         $('#menu_add').modal('show');
     }
@@ -43,8 +43,6 @@ const Menu = () => {
         else
             setPedidos(() => categoryItems.filter(i => i.cantidad > 0));
 
-
-
         let suma = 0;
 
         pedidos.forEach(i => {
@@ -61,6 +59,7 @@ const Menu = () => {
         if (p.cantidad > 0) {
             let producto = {
                 "id_producto": p.id,
+                "nombre": p.nombre,
                 "cantidad": p.cantidad
             }
             productos.push(producto);
@@ -72,8 +71,9 @@ const Menu = () => {
             "id_mesa": 1,
             "productos": productos
         };
-
+        //console.log(request)
         actions.addPedido(request);
+        actions.getInfo();
     }
 
     return (

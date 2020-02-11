@@ -2,12 +2,10 @@ import React, { useContext } from 'react'
 import { Context } from './../store/appContext';
 
 
-const Resumen = (props) => {
+const Resumen = () => {
 
     const { store } = useContext(Context);
- 
-    //console.log(store.all_users)
-    //console.log(store.all_mesas)
+    //console.log(store.info_pedido)
 
     return (
         <div className="container mt-5">
@@ -17,16 +15,11 @@ const Resumen = (props) => {
                     </div>
             </div>
             <div className="row border">
-                {
-                    store.all_users.map((i) => {
-                        console.log(i)
-                        return (
-                            <div className="col-md-12" key={i}>
-                                Usuario: {i.name}  {i.last_name}
-                            </div>
-                        )
-                    })
-                }
+
+                <div className="col-md-12">
+                    Usuario: {store.info_pedido.user}
+                </div>
+
                 <div className="col-md-12">
                     Mesa:
                 </div>

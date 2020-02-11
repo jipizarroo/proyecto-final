@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             last_name: '',
             email: '',
             password: '',
-            currentUser: "Jassan",
+            currentUser: '',
             nombre: '',
             precio: '',
             descripcion: '',
@@ -23,7 +23,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             plaza_id: '',
             all_plazas: [],
             nombre_plaza: '',
+            info_pedido: {},
         },
+
         actions: {
             createUser: () => {
                 const store = getStore();
@@ -104,7 +106,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
             },
 
-            addCategory: (history) => {
+            addCategory: () => {
                 const store = getStore();
                 const data = {
                     description: store.description,
@@ -159,7 +161,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             },
 
-            addItem: (history) => {
+            addItem: () => {
                 const store = getStore();
                 const data = {
                     nombre: store.nombre,
@@ -288,6 +290,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                 getActions().getUsers();
             },
+
             getMesas: () => {
                 const store = getStore();
                 fetch(store.path + '/api/mesas', {
@@ -296,13 +299,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    setStore({
-                        all_mesas: data
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            all_mesas: data
+                        })
                     })
-                })
             },
+
             createMesa: () => {
                 const store = getStore();
                 const data = {
@@ -316,40 +320,42 @@ const getState = ({ getStore, getActions, setStore }) => {
                         'Content-type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    setStore({
-                        cantidad_mesa: '',
-                        plaza_id: '',
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            cantidad_mesa: '',
+                            plaza_id: '',
+                        })
                     })
-                })
                 getActions().getMesas();
             },
+
             putMesa: (id) => {
                 const store = getStore();
                 const data = {
                     nombre_mesa: store.nombre_mesa,
 
                 }
-                fetch(store.path + '/api/mesas/' + id , {
+                fetch(store.path + '/api/mesas/' + id, {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    //console.log(data)
-                    setStore({
-                        nombre_mesa: '',
-                    });
-                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        //console.log(data)
+                        setStore({
+                            nombre_mesa: '',
+                        });
+                    })
                 getActions().getMesas();
             },
+
             delMesa: (id) => {
                 const store = getStore();
-                fetch(store.path + '/api/mesas/'+ id, {
+                fetch(store.path + '/api/mesas/' + id, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -362,65 +368,85 @@ const getState = ({ getStore, getActions, setStore }) => {
                             all_mesas: data
                         })
                     })
-                    getActions().getMesas();
+                getActions().getMesas();
             },
+
             getPlazas: () => {
                 const store = getStore();
                 fetch(store.path + '/api/plazas', {
-                    method: 'GET', 
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    setStore({
-                        all_plazas: data
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            all_plazas: data
+                        })
                     })
-                })
             },
+
             postPlazas: () => {
-              const store = getStore();
-              const data = {
-                  nombre_plaza: store.nombre_plaza
-              }
-              fetch(store.path + '/api/plazas', {
-                  method: 'POST',
-                  body: JSON.stringify(data),
-                  headers: {
-                    'Content-Type': 'application/json'
-                  }
-              })
-              .then(resp => resp.json())
-              .then(data => {
-                  //console.log(data)
-                  setStore({
-                      nombre_plaza: '',
-                  })
-              })
-              getActions().getPlazas();
+                const store = getStore();
+                const data = {
+                    nombre_plaza: store.nombre_plaza
+                }
+                fetch(store.path + '/api/plazas', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        //console.log(data)
+                        setStore({
+                            nombre_plaza: '',
+                        })
+                    })
+                getActions().getPlazas();
             },
+
             putPlaza: (id) => {
                 const store = getStore();
                 const data = {
                     nombre_plaza: store.nombre_plaza,
 
                 }
-                fetch(store.path + '/api/plazas/' + id , {
+                fetch(store.path + '/api/plazas/' + id, {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    //console.log(data)
-                    setStore({
-                        nombre_plaza: '',
-                    });
-                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        //console.log(data)
+                        setStore({
+                            nombre_plaza: '',
+                        });
+                    })
                 getActions().getPlazas();
+            },
+
+            getInfo: () => {
+                const store = getStore();
+                fetch(store.path + '/api/info-pedidos/2', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                            console.log(data)
+                        setStore({
+                            info_pedido: data
+                        })
+                    })
             },
         }
     };
