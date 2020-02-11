@@ -131,14 +131,12 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
+                        console.log(data)
                         setStore({
                             name: '',
                             last_name: '',
                             email: '',
                             password: '',
-                            isAdmin: '',
-                            isActive: '',
                         });
                     })
                 getActions().getUsers();
@@ -514,9 +512,30 @@ const getState = ({ getStore, getActions, setStore }) => {
                         });
                     })
                 getActions().getPlazas();
-            },
-            
-                        getInfo: () => {
+            },           
+            filtrarMesas: (id) =>{
+                if (!id > 0){
+                    getActions().getMesas();
+                }
+                else{
+                    const store = getStore();
+                    fetch(store.path + '/api/filtros/'+ id,{
+                        method:'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + store.currentUser.access_token
+                        }
+                    })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        setStore({
+                            all_mesas: data
+                        });
+                    })
+                }
+            },      
+            getInfo: () => {
                             const store = getStore();
                             fetch(store.path + '/api/info-pedidos/2', {
                                 method: 'GET',
@@ -532,31 +551,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                                     })
                                 })
                         }
-                    },
-
-            filtrarMesas: (id) => {
-                if (!id > 0){
-                    getActions().getMesas();
-                }
-                else {
-                    const store = getStore();
-                    fetch(store.path + '/api/filtros/' + id, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + store.currentUser.access_token
-                        }                    
-                    })
-                    .then(resp => resp.json())
-                    .then(data => {
-                        console.log(data)
-                        setStore({
-                            all_mesas: data
-                        });
-                    })                
-                }
             },
-                    
+
     };
 
 }

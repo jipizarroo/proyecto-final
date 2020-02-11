@@ -49,11 +49,11 @@ export default class Mod_user extends React.Component {
                                                 <div className="form-row">
                                                     <div className="form-group col-2">
                                                         <label className="d-block text-muted">Administrador</label>
-                                                        <input type="checkbox" id="isAdmin" name="isAdmin" className=""  onChange={e => actions.handleCheckBox(e)} />
+                                                        <input type="checkbox" id="isAdmin" name="isAdmin" defaultChecked={this.props.isAdmin}  onClick={e => actions.handleCheckBox(e)} />
                                                     </div>
                                                     <div className="form-group col-2">
                                                         <label className="d-block text-muted">Usuario Activo</label>
-                                                        <input type="checkbox" id="isActive" name="isActive" className="" onChange={e => actions.handleCheckBox(e)} />
+                                                        <input type="checkbox" id="isActive" name="isActive" defaultChecked={this.props.isActive} onClick={e => actions.handleCheckBox(e)} />
                                                     </div>
                                                 </div>
                                             </div>

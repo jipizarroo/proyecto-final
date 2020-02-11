@@ -76,8 +76,8 @@ export default class Admi_Usuario extends React.Component {
                                                                             <td>{items.name}</td>
                                                                             <td>{items.last_name}</td>
                                                                             <td>{items.email}</td>
-                                                                            <td>{items.isActive}</td>
-                                                                            <td>{items.isAdmin}</td>
+                                                                            <td><input type="checkbox" disable="disable" checked={items.isActive} /></td>
+                                                                            <td><input type="checkbox" disable="disable" checked={items.isAdmin} /></td>
                                                                             <td className="btn btn-primary" onClick={this.showModal_mod_register.bind(this, items)}>Modificar</td>
                                                                             <td className="btn btn-primary" onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i></td>
                                                                         </tr>
@@ -92,7 +92,7 @@ export default class Admi_Usuario extends React.Component {
                                     <div className="row">
                                         <div className="col-md-12">
 
-                                            <Link className="btn btn-primary float-right" to="/admin_dashboard">Regresar </Link>
+                                            <Link className="btn btn-primary float-right" to="/admin_home">Regresar </Link>
                                         </div>
                                     </div>
                                 </div>
