@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             last_name: '',
             email: '',
             password: '',
-            currentUser: {},
+            currentUser: '',
             nombre: '',
             precio: '',
             descripcion: '',
@@ -27,7 +27,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             isAuthenticated: false,
             isAdmin: false,
             isActive: true,
+            info_pedido: {},
         },
+
         actions: {
             getLogin: (e, url, history) => {
                 e.preventDefault();
@@ -171,7 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
             },
 
-            addCategory: (history) => {
+            addCategory: () => {
                 const store = getStore();
                 const data = {
                     description: store.description,
@@ -229,7 +231,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             },
 
-            addItem: (history) => {
+            addItem: () => {
                 const store = getStore();
                 const data = {
                     nombre: store.nombre,
@@ -364,6 +366,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                 getActions().getUsers();
             },
+
             getMesas: () => {
                 const store = getStore();
                 fetch(store.path + '/api/mesas', {
@@ -374,13 +377,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    setStore({
-                        all_mesas: data
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            all_mesas: data
+                        })
                     })
-                })
             },
+
             createMesa: () => {
                 const store = getStore();
                 const data = {
@@ -395,22 +399,23 @@ const getState = ({ getStore, getActions, setStore }) => {
                         'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    setStore({
-                        cantidad_mesa: '',
-                        plaza_id: '',
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            cantidad_mesa: '',
+                            plaza_id: '',
+                        })
                     })
-                })
                 getActions().getMesas();
             },
+
             putMesa: (id) => {
                 const store = getStore();
                 const data = {
                     nombre_mesa: store.nombre_mesa,
 
                 }
-                fetch(store.path + '/api/mesas/' + id , {
+                fetch(store.path + '/api/mesas/' + id, {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
@@ -418,18 +423,19 @@ const getState = ({ getStore, getActions, setStore }) => {
                         'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    //console.log(data)
-                    setStore({
-                        nombre_mesa: '',
-                    });
-                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        //console.log(data)
+                        setStore({
+                            nombre_mesa: '',
+                        });
+                    })
                 getActions().getMesas();
             },
+
             delMesa: (id) => {
                 const store = getStore();
-                fetch(store.path + '/api/mesas/'+ id, {
+                fetch(store.path + '/api/mesas/' + id, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -443,24 +449,26 @@ const getState = ({ getStore, getActions, setStore }) => {
                             all_mesas: data
                         })
                     })
-                    getActions().getMesas();
+                getActions().getMesas();
             },
+
             getPlazas: () => {
                 const store = getStore();
                 fetch(store.path + '/api/plazas', {
-                    method: 'GET', 
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    setStore({
-                        all_plazas: data
+                    .then(resp => resp.json())
+                    .then(data => {
+                        setStore({
+                            all_plazas: data
+                        })
                     })
-                })
             },
+
             postPlazas: () => {
               const store = getStore();
               const data = {
@@ -483,13 +491,14 @@ const getState = ({ getStore, getActions, setStore }) => {
               })
               getActions().getPlazas();
             },
+
             putPlaza: (id) => {
                 const store = getStore();
                 const data = {
                     nombre_plaza: store.nombre_plaza,
 
                 }
-                fetch(store.path + '/api/plazas/' + id , {
+                fetch(store.path + '/api/plazas/' + id, {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
@@ -497,15 +506,34 @@ const getState = ({ getStore, getActions, setStore }) => {
                         'Authorization': 'Bearer ' + store.currentUser.access_token
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    //console.log(data)
-                    setStore({
-                        nombre_plaza: '',
-                    });
-                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        //console.log(data)
+                        setStore({
+                            nombre_plaza: '',
+                        });
+                    })
                 getActions().getPlazas();
             },
+            
+                        getInfo: () => {
+                            const store = getStore();
+                            fetch(store.path + '/api/info-pedidos/2', {
+                                method: 'GET',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                                .then(resp => resp.json())
+                                .then(data => {
+                                        console.log(data)
+                                    setStore({
+                                        info_pedido: data
+                                    })
+                                })
+                        }
+                    },
+
             filtrarMesas: (id) => {
                 if (!id > 0){
                     getActions().getMesas();
@@ -527,9 +555,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                         });
                     })                
                 }
-                    
             },
-        }
+                    
     };
 
 }
