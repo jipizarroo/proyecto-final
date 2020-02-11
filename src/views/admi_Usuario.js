@@ -52,9 +52,9 @@ export default class Admi_Usuario extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-6">
+                                    <div className="col-md-12">
                                         <div className="row">
-                                            <div className="col-md-12">
+                                            <div className="col-12">
                                                 <table className="table table-bordered">
                                                     <thead>
                                                         <tr>
@@ -62,6 +62,8 @@ export default class Admi_Usuario extends React.Component {
                                                             <th>Nombre</th>
                                                             <th>Apellido</th>
                                                             <th>Email</th>
+                                                            <th>Usuario activo</th>
+                                                            <th>Admin</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -74,8 +76,10 @@ export default class Admi_Usuario extends React.Component {
                                                                             <td>{items.name}</td>
                                                                             <td>{items.last_name}</td>
                                                                             <td>{items.email}</td>
+                                                                            <td>{items.isActive}</td>
+                                                                            <td>{items.isAdmin}</td>
                                                                             <td className="btn btn-primary" onClick={this.showModal_mod_register.bind(this, items)}>Modificar</td>
-                                                                            <td onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i></td>
+                                                                            <td className="btn btn-primary" onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i></td>
                                                                         </tr>
                                                                 )
                                                             })

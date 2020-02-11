@@ -41,7 +41,7 @@ export default class Home_garzon extends React.Component {
                                     store.all_mesas.length > 0 &&
                                     store.all_mesas.map((items, i) => {
                                         return (
-                                                    <Link className="col-2 border border-dark mt-5 ml-5" key={i} to="/garzon_home/<int:id>/menu">
+                                                    <Link className="col-2 border border-dark mt-5 ml-5" key={i} to={"/garzon_home/"+ items.id +"/menu"}>
                                                         <div className="table1"><i id="icono_utensils" className="fas fa-utensils fa-3x"></i></div>
                                                         <p>{items.nombre_mesa}</p>
                                                     </Link>
