@@ -4,6 +4,7 @@ import '../../css/register.css';
 
 
 export default class Mod_user extends React.Component {
+    
 
 
     render() {
@@ -44,21 +45,27 @@ export default class Mod_user extends React.Component {
                                                 <div className="col-6">
                                                 </div>
                                             </div>
-                                            <div className="form-row">
-                                                <div className="form-group col-6">
-                                                    <label htmlFor="password">Password</label>
-                                                    <input type="password" name="password" className="form-control" id="password_form" placeholder="Set new password" onChange={e => actions.handleChange(e)} />
+                                            <div className="form">
+                                                <div className="form-row">
+                                                    <div className="form-group col-2">
+                                                        <label className="d-block text-muted">Administrador</label>
+                                                        <input type="checkbox" id="isAdmin" name="isAdmin" className=""  onChange={e => actions.handleCheckBox(e)} />
+                                                    </div>
+                                                    <div className="form-group col-2">
+                                                        <label className="d-block text-muted">Usuario Activo</label>
+                                                        <input type="checkbox" id="isActive" name="isActive" className="" onChange={e => actions.handleCheckBox(e)} />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                                <div className="modal-footer ">
-                                                    <div className="form-row">
-                                                        <div className="form-group col-11 d-flex justify-content-end">
-                                                            <button type="submit" className="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                                            <button type="submit" className="btn btn-primary ml-3" onClick={() => actions.modifyUser(this.props.id)} data-dismiss="modal">Agregar</button>
-                                                        </div>
-                                                    </div>
+                                        <div className="modal-footer ">
+                                            <div className="form-row">
+                                                <div className="form-group col-11 d-flex justify-content-end">
+                                                    <button type="submit" className="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" className="btn btn-primary ml-3" onClick={() => actions.modifyUser(this.props.id)} data-dismiss="modal">Agregar</button>
                                                 </div>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>

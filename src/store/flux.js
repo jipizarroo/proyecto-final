@@ -116,6 +116,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     last_name: store.last_name,
                     email: store.email,
                     password: store.password,
+                    isAdmin: store.isAdmin,
+                    isActive: store.isActive
                 }
                 fetch(store.path + '/api/users/' + id, {
                     method: 'PUT',
@@ -132,7 +134,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                             name: '',
                             last_name: '',
                             email: '',
-                            password: ''
+                            password: '',
+                            isAdmin: '',
+                            isActive: '',
                         });
                     })
                 getActions().getUsers();
@@ -142,6 +146,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({
                     [e.target.name]: e.target.value
                 });
+            },
+            handleCheckBox: e =>{
+                setStore({
+                    [e.target.name]: e.target.checked
+                })
             },
 
             getUsers: () => {
