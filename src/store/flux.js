@@ -82,6 +82,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                 }
             },
+            logOut:(history) => {
+                sessionStorage.removeItem('currentUser')
+                sessionStorage.removeItem('isAuthenticated')
+                history.push('/')   
+            },
             createUser: () => {
                 const store = getStore();
                 const data = {

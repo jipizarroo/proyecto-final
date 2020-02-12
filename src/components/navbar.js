@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Context } from './../store/appContext';
 
-const Navbar = () => {
+const Navbar = props => {
+    const {store, actions} = useContext(Context);
     return (
 
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,7 +20,7 @@ const Navbar = () => {
         <Link className="nav-link" to="/config">Configuracion</Link>
       </li>
       <li className="nav-item active">
-        <Link className="nav-link" to="/log_out">Salir</Link>
+  
       </li>
     </ul>
   </div>
