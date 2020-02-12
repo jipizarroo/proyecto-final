@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { Context } from './../store/appContext';
 import { Link } from 'react-router-dom';
 import './../css/home_admin.css';
 
 
-class Home_admin extends React.Component {
+const Home_admin = props => {
+    const {store, actions} = useContext(Context);
 
-    render() {
+    useEffect(() => {
+            if (store.isAuthenticated === false)
+            {props.history.push("/")
+            }
+            else if ((store.isAuthenticated) && (store.currentUser.user.isAdmin === false))
+            {props.history.push("/garzon_home")  
+            }else{
+
+            }
+        });
+
         return (
             <div className="container mt-5">
                 <div className="row d-flex justify-content-between" id="HomeAmenus">
@@ -45,5 +57,4 @@ class Home_admin extends React.Component {
             </div>
         )
     }
-}
 export default Home_admin;

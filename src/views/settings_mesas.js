@@ -1,6 +1,6 @@
 import React from 'react';
 import { Context } from '../store/appContext';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import $ from 'jquery';
 import Modal_add_mesa from '../components/mesas/modal_agregar_mesas';
 import Modal_mod_mesa from '../components/mesas/modal_modificar_mesa';
@@ -35,6 +35,11 @@ export default class Settings_mesas extends React.Component {
             <Context.Consumer>
                 {
                     ({ store, actions, }) => {
+                        if(store.isAuthenticated === false){
+                            return <Redirect to="/"/>
+                        }else if((store.isAuthenticated) && (store.currentUser.user.isAdmin === false)){
+                            return <Redirect to="/garzon_home" />
+                        }
                         return (
                             <>
                                 <Modal_add_mesa />

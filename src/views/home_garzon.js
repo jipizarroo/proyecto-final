@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/home.css';
 import $ from 'jquery';
 import { Context } from '../store/appContext';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class Home_garzon extends React.Component {
 
@@ -15,7 +15,10 @@ export default class Home_garzon extends React.Component {
             <Context.Consumer>
                 {
                     ({ store, actions, }) => {
-
+                        if(store.isAuthenticated === false){
+                            return <Redirect to="/" />
+                        }else if((store.isAuthenticated) && (store.currentUser.user.isAdmin === false))
+                            return <Redirect to="/garzon_home" />
                         return (
                             <>
                                 <div className="container">
