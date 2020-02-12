@@ -7,7 +7,7 @@ const Modificar_item = (props) => {
     const { store, actions } = useContext(Context);
 
     return (
-        <div className="modal fade" id={"moditem"+props.items.id} tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal fade" id={"moditem"} tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                     <div className="modal-header">

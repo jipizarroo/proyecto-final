@@ -17,15 +17,12 @@ const Menu = () => {
         setCategoryItems(() => store.all_items.filter(i => i.category_id == item.id));
         setCategoryDesc(() => item.description);
 
-        //console.log(store.all_items);
-
         $('#menu_add').modal('show');
     }
 
     function updateTotal() {
 
         if (pedidos.length > 0) {
-            console.log(categoryItems)
             for (let i = 0; i < categoryItems.length; i++) {
                 let tmp = categoryItems[i];
                 let j;
@@ -66,14 +63,12 @@ const Menu = () => {
         }
     });
 
-    function imprimir() {
+    async function imprimir() {
         let request = {
             "id_mesa": 1,
             "productos": productos
         };
-        //console.log(request)
-        actions.addPedido(request);
-        actions.getInfo();
+        await actions.addPedido(request);
     }
 
     return (

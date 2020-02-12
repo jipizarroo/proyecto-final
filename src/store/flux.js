@@ -27,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             isAuthenticated: false,
             isAdmin: false,
             isActive: true,
-            info_pedido: {},
+            resumen_pedido: null,
         },
 
         actions: {
@@ -45,37 +45,37 @@ const getState = ({ getStore, getActions, setStore }) => {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(resp => resp.json())
-                .then(data => {
-                    console.log(data)
-                if (data.msg){
-                    setStore({
-                        current_Error: data
-                    })
-                }
-                else{                    
-                    setStore({
-                        email: '',
-                        password: '',
-                        currentUser: data,
-                        current_Error: null,
-                        isAuthenticated: true
-                    });
+                    .then(resp => resp.json())
+                    .then(data => {
+                        //console.log(data)
+                        if (data.msg) {
+                            setStore({
+                                current_Error: data
+                            })
+                        }
+                        else {
+                            setStore({
+                                email: '',
+                                password: '',
+                                currentUser: data,
+                                current_Error: null,
+                                isAuthenticated: true
+                            });
 
-                    sessionStorage.setItem('currentUser', JSON.stringify(data))
-                    sessionStorage.setItem('isAuthenticated', true)
-                    history.push('/admin_home')
-                    getActions().getUsers();
-                    getActions().getCategories();
-                    getActions().getItem();
-                    getActions().getMesas();
-                    getActions().getPlazas();
-                    
-                }
-                })
+                            sessionStorage.setItem('currentUser', JSON.stringify(data))
+                            sessionStorage.setItem('isAuthenticated', true)
+                            history.push('/admin_home')
+                            getActions().getUsers();
+                            getActions().getCategories();
+                            getActions().getItem();
+                            getActions().getMesas();
+                            getActions().getPlazas();
+
+                        }
+                    })
             },
             isAuthenticated: () => {
-                if(sessionStorage.getItem('currentUser') && sessionStorage.getItem('isAuthenticated')){
+                if (sessionStorage.getItem('currentUser') && sessionStorage.getItem('isAuthenticated')) {
                     setStore({
                         isAuthenticated: sessionStorage.getItem('isAuthenticated'),
                         currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
@@ -149,7 +149,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     [e.target.name]: e.target.value
                 });
             },
-            handleCheckBox: e =>{
+            handleCheckBox: e => {
                 setStore({
                     [e.target.name]: e.target.checked
                 })
@@ -212,6 +212,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
 
                 })
+                .then(resp => resp.json())
+                .then(data => setStore({resumen_pedido: data}))
             },
 
             getCategories: () => {
@@ -470,26 +472,26 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
             postPlazas: () => {
-              const store = getStore();
-              const data = {
-                  nombre_plaza: store.nombre_plaza
-              }
-              fetch(store.path + '/api/plazas', {
-                  method: 'POST',
-                  body: JSON.stringify(data),
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + store.currentUser.access_token
-                  }
-              })
-              .then(resp => resp.json())
-              .then(data => {
-                  //console.log(data)
-                  setStore({
-                      nombre_plaza: '',
-                  })
-              })
-              getActions().getPlazas();
+                const store = getStore();
+                const data = {
+                    nombre_plaza: store.nombre_plaza
+                }
+                fetch(store.path + '/api/plazas', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        //console.log(data)
+                        setStore({
+                            nombre_plaza: '',
+                        })
+                    })
+                getActions().getPlazas();
             },
 
             putPlaza: (id) => {
@@ -515,27 +517,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                 getActions().getPlazas();
             },
-            
-                        getInfo: () => {
-                            const store = getStore();
-                            fetch(store.path + '/api/info-pedidos/2', {
-                                method: 'GET',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                                .then(resp => resp.json())
-                                .then(data => {
-                                        console.log(data)
-                                    setStore({
-                                        info_pedido: data
-                                    })
-                                })
-                        }
-                    },
 
             filtrarMesas: (id) => {
-                if (!id > 0){
+                if (!id > 0) {
                     getActions().getMesas();
                 }
                 else {
@@ -545,20 +529,37 @@ const getState = ({ getStore, getActions, setStore }) => {
                         headers: {
                             'Content-Type': 'application/json',
                             'Authorization': 'Bearer ' + store.currentUser.access_token
-                        }                    
+                        }
                     })
-                    .then(resp => resp.json())
-                    .then(data => {
-                        console.log(data)
-                        setStore({
-                            all_mesas: data
-                        });
-                    })                
+                        .then(resp => resp.json())
+                        .then(data => {
+                            //console.log(data)
+                            setStore({
+                                all_mesas: data
+                            });
+                        })
                 }
             },
-                    
-    };
 
+            getInfo: (id) => {
+                const store = getStore();
+                fetch(store.path + '/api/info-pedidos/' + id, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(store.currentUser)
+                        setStore({
+                            resumen_pedido: data
+                        })
+                    })
+            }
+        },
+    };
 }
 
 export default getState;
