@@ -297,15 +297,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
             },
 
-            modifyItem: (id) => {
+            modifyItem: (item) => {
                 const store = getStore();
-                const data = {
-                    nombre: store.nombre,
-                    precio: store.precio,
-                    descripcion: store.descripcion,
-                    category_id: store.category_id
-                }
-                fetch(store.path + '/api/items/' + id, {
+                const data = item
+                fetch(store.path + '/api/items/' + item.id, {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
