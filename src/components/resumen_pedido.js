@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Context } from './../store/appContext';
+import { Link } from 'react-router-dom';
 
 
 const Resumen = () => {
@@ -8,13 +9,14 @@ const Resumen = () => {
 
     return (
         <div className="container mt-5">
+            <div className="row d-flex justify-content-end">
+                <Link to="/garzon_home" type="button" className="btn btn-info">Regresar</Link></div>
             <div className="row">
                 <div className="col-md-12 border">
                     Pedido No. {store.resumen_pedido == null ? "" : store.resumen_pedido.info_pedido.id}
                 </div>
             </div>
             <div className="row border">
-
                 <div className="col-md-12">
                     Usuario: {store.resumen_pedido == null ? "" : store.resumen_pedido.info_pedido.user.name}
                 </div>
@@ -53,10 +55,11 @@ const Resumen = () => {
                 </table>
             </div>
             <div className="row">
-                <div className="col-md-9"></div>
-                        <div className="col-md-3 border">
-                            {store.resumen_pedido == null ? 0 : store.resumen_pedido.total}
-                        </div>
+                <div className="col-md-7"></div>
+                <div className="col-md-2 d-flex justify-content-end">A pagar:</div>
+                <div className="col-md-3 border">
+                    {store.resumen_pedido == null ? 0 : store.resumen_pedido.total}
+                </div>
             </div>
         </div>
     )
