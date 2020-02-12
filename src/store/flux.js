@@ -47,7 +47,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         if (data.msg) {
                             setStore({
                                 current_Error: data
@@ -106,7 +105,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             name: '',
                             last_name: '',
@@ -169,7 +167,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             all_users: data
                         })
@@ -193,7 +190,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             name: '',
                             description: '',
@@ -230,7 +226,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({ all_categories: data })
                     })
 
@@ -255,7 +250,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             nombre: '',
                             precio: '',
@@ -277,7 +271,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             all_items: data
                         })
@@ -295,7 +288,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             category_items: data
                         })
@@ -320,7 +312,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             nombre: '',
                             precio: '',
@@ -342,7 +333,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             all_items: data
                         })
@@ -430,7 +420,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             nombre_mesa: '',
                         });
@@ -449,7 +438,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             all_mesas: data
                         })
@@ -489,7 +477,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             nombre_plaza: '',
                         })
@@ -513,7 +500,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        //console.log(data)
                         setStore({
                             nombre_plaza: '',
                         });
@@ -535,7 +521,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                         .then(resp => resp.json())
                         .then(data => {
-                            //console.log(data)
                             setStore({
                                 all_mesas: data
                             });
@@ -554,7 +539,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                 })
                     .then(resp => resp.json())
                     .then(data => {
-                        console.log(store.currentUser)
                         setStore({
                             resumen_pedido: data
                         })
