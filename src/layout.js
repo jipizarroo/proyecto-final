@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './views/login';
 import Navbar from './components/navbar'
 import injectContext from './store/appContext'
-import Footer from './components/footer';
+//import Footer from './components/footer';
 import Home_admin from './views/home_admin';
 import Productos from './views/productos';
 import Add_categoria from './views/add_categoria';
