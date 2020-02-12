@@ -13,7 +13,7 @@ const Modificar_item = (props) => {
                     <div className="modal-header">
                         <div className="container mt-5">
                             <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
-                                <span className="navbar-brand">Modificar Item {props.items.nombre}</span>
+                                <span className="navbar-brand">Modificar Item {props.item != null? props.item.nombre : ""}</span>
                                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                     <span className="navbar-toggler-icon"></span>
                                 </button>
@@ -22,11 +22,11 @@ const Modificar_item = (props) => {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <label for="formGroupExampleInput">Nombre</label>
-                                        <input type="text" className="form-control" placeholder={props.items.nombre} onChange={e => actions.handleChange(e)} />
+                                        <input type="text" className="form-control" placeholder={props.item != null? props.item.nombre : ""} onChange={e => actions.handleChange(e)} />
                                     </div>
                                     <div className="col-md-3">
                                         <label for="formGroupExampleInput">Precio</label>
-                                        <input type="text" className="form-control" placeholder={props.items.precio} onChange={e => actions.handleChange(e)} />
+                                        <input type="text" className="form-control" placeholder={props.item != null? props.item.precio : ""} onChange={e => actions.handleChange(e)} />
                                     </div>
                                 </div>
                             </form>
@@ -46,7 +46,7 @@ const Modificar_item = (props) => {
                                 </div>
                                 <div className="col-md-3">
                                     <label for="formGroupExampleInput">Descripcion</label>
-                                    <textarea rows="10" cols="30" placeholder={props.items.descripcion} name="descripcion" onChange={e => actions.handleChange(e)}></textarea>
+                                    <textarea rows="10" cols="30" placeholder={props.item != null? props.item.descripcion : ""} name="descripcion" onChange={e => actions.handleChange(e)}></textarea>
                                 </div>
                             </div>
                             <div className="row pt-5">
@@ -57,7 +57,7 @@ const Modificar_item = (props) => {
                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 </div>
                                 <div className="col-md-3">
-                                    <button type="submit" className="btn btn-success mr-3" onClick={() => actions.modifyItem(props.items.id)} data-dismiss="modal">Modificar</button>
+                                    <button type="submit" className="btn btn-success mr-3" onClick={() => actions.modifyItem(props.item.id)} data-dismiss="modal">Modificar</button>
                                 </div>
                             </div>
                         </div>

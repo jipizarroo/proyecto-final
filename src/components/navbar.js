@@ -4,7 +4,7 @@ import { Context } from './../store/appContext';
 
 const Navbar = () => {
 
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const user = store.currentUser.user;
 
   return (
