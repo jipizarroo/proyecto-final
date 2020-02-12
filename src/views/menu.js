@@ -1,16 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './../store/appContext';
 import Agregar_menu from '../components/modal_menu_categoria';
 import $ from 'jquery';
 
 
-const Menu = () => {
+const Menu = props => {
     const { store, actions } = useContext(Context);
     const [categoryDesc, setCategoryDesc] = useState("")
     const [categoryItems, setCategoryItems] = useState([])
     const [pedidos, setPedidos] = useState([])
     const [total, setTotal] = useState(0)
+
+    useEffect(() => {
+        if(store.isAuthenticated === false){
+            props.history.push("/")
+        }
+    })
 
 
     function showModalPedido(item) {

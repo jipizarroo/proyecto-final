@@ -7,7 +7,6 @@ import injectContext from './store/appContext'
 import Home_admin from './views/home_admin';
 import Productos from './views/productos';
 import Add_categoria from './views/add_categoria';
-import Horario from './views/horario';
 import Menu from './views/menu';
 import Admi_Usuario from './views/admi_Usuario';
 import Admin_mesas from './views/admin_mesas';
@@ -26,7 +25,6 @@ const Layout = props => {
                 <Route exact path="/admin_home/productos/add_categoria" component={Add_categoria} />
                 <Route exact path="/admin_home/productos" component={Productos} />
                 <Route exact path ="/admin_home/users" component={Admi_Usuario}/>
-                <Route exact path ="/admin_home/horario" component={Horario}/>
                 <Route exact path ="/admin_home/mesas/settings" component={Settings_mesas}/>
                 <Route exact path ="/admin_home/mesas" component={Admin_mesas}/>
                 <Route exact path="/admin_home" component={Home_admin} />

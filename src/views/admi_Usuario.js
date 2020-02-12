@@ -3,14 +3,14 @@ import { Context } from './../store/appContext';
 import Register from '../components/users/modal_register';
 import Mod_user from '../components/users/modal_mod_users';
 import Mod_delete_user from '../components/users/modal_delete_user';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import $ from 'jquery';
 
 
 export default class Admi_Usuario extends React.Component {
-
-    constructor(){
-        super();
+    
+    constructor(props){
+        super(props);
         this.state = {
             userEdit: {}
         }
@@ -31,12 +31,15 @@ export default class Admi_Usuario extends React.Component {
         $('#modal_delete_user').modal('show');
     }
 
-
     render() {
         return (
             <Context.Consumer>
                 {
                     ({ store, actions, }) => {
+                        if(store.isAuthenticated === false){
+                            return <Redirect to="/" />
+                        }else if((store.isAuthenticated) && (store.currentUser.user.isAdmin === false))
+                            return <Redirect to="/garzon_home" />
                         return (
                             <>
                                 <Register />

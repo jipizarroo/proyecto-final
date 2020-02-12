@@ -64,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                             sessionStorage.setItem('currentUser', JSON.stringify(data))
                             sessionStorage.setItem('isAuthenticated', true)
-                            history.push('/admin_home')
+                            history.push("/admin_home")
                             getActions().getUsers();
                             getActions().getCategories();
                             getActions().getItem();
@@ -74,6 +74,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                         }
                     })
             },
+            logOut: () =>{
+            sessionStorage.removeItem('currentUser')
+            sessionStorage.removeItem('isAuthenticated')
+            setStore({
+                isAuthenticated:false,
+                currentUser: {},
+            })
+            },
             isAuthenticated: () => {
                 if (sessionStorage.getItem('currentUser') && sessionStorage.getItem('isAuthenticated')) {
                     setStore({
@@ -81,11 +89,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                         currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
                     })
                 }
-            },
-            logOut:(history) => {
-                sessionStorage.removeItem('currentUser')
-                sessionStorage.removeItem('isAuthenticated')
-                history.push('/')   
             },
             createUser: () => {
                 const store = getStore();

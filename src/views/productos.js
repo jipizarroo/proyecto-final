@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Context } from './../store/appContext';
 import $ from 'jquery';
 import Add_categoria from './add_categoria';
@@ -10,6 +10,14 @@ import { Link } from 'react-router-dom';
 const Productos = (props) => {
 
     const { store } = useContext(Context);
+    useEffect(() => {
+        if(store.isAuthenticated === false){
+            props.history.push("/")
+        }
+        else if ((store.isAuthenticated) && (store.currentUser.user.isAdmin === false)){
+            props.history.push("/garzon_home")
+        }
+    })
 
     function showModalPedido() {
         $('#addcategory').modal('show');

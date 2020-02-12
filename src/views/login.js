@@ -7,14 +7,12 @@ import { Link } from 'react-router-dom';
      const {store, actions} = useContext(Context);
 
      useEffect(() => {
-        if((store.isAuthenticated) && (store.isAdmin)) 
-        {props.history.push("/admin_home")
-        }
-        else if ((store.isAuthenticated) && (store.isAdmin === false))
-        {props.history.push("/garzon_home")
-        }
-        else{
-      
+        if(store.isAuthenticated === true){
+            if(store.currentUser.user.isAdmin === true)
+            {props.history.push("/admin_home")}
+            else{
+                {props.history.push("/garzon_home")}
+            }     
         }
     });
 

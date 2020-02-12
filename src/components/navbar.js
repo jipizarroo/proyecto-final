@@ -19,6 +19,8 @@ const Navbar = props => {
       <li className="nav-item active">
         <Link className="nav-link" to="/config">Configuracion</Link>
       </li>
+        <Link className="nav-link" to="/" onClick={() => actions.logOut()}>Log Out</Link>
+
       <li className="nav-item active">
   
       </li>
