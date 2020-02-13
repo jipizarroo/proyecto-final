@@ -70,11 +70,11 @@ const Productos = (props) => {
                                     return (
                                         <>
                                             <tr key={i}>
-                                                <td scope="row">{items.id}</td>
-                                                <td>{items.category_descripcion}</td>
-                                                <td>{items.nombre}</td>
-                                                <td>{items.descripcion}</td>
-                                                <td>{Math.round(items.precio)}</td>
+                                                <td scope="row">{item.id}</td>
+                                                <td>{item.category_descripcion}</td>
+                                                <td>{item.nombre}</td>
+                                                <td>{item.descripcion}</td>
+                                                <td>{Math.round(item.precio)}</td>
                                                 <td>
                                                     <button className="btn btn-primary" data-toggle="modal" onClick={() => modifyItem(item)}>Modificar</button>
                                                 </td>
