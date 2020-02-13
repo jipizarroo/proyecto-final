@@ -11,9 +11,6 @@ const Resumen = (props) => {
         if(store.isAuthenticated === false){
             props.history.push("/")
         }
-        else if (store.isAuthenticated){
-            props.history.push("/garzon_home")
-        }
     })       
 
 
