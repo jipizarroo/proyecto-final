@@ -110,7 +110,7 @@ export default class Settings_mesas extends React.Component {
                                     <div className="row">
                                         <div className="col-md-12">
 
-                                            <Link className="btn btn-primary float-right" to="/admin_dashboard">Regresar </Link>
+                                            <Link className="btn btn-primary float-right" to="/admin_home">Regresar </Link>
                                         </div>
                                     </div>
                                 </div>

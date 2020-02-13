@@ -22,12 +22,12 @@ const Add_item = () => {
                                 <div className="row">
                                     <div className="col-md-6">
                                         <label for="formGroupExampleInput">Nombre</label>
-                                        <input type="text" className="form-control" name="nombre" placeholder="xxxxxxxxxxx"
+                                        <input type="text" className="form-control" name="nombre" value={store.nombre}
                                             onChange={e => actions.handleChange(e)} />
                                     </div>
                                     <div className="col-md-3">
                                         <label for="formGroupExampleInput">Precio</label>
-                                        <input type="text" className="form-control" name="precio" placeholder="xxxxxxxxxxxxx"
+                                        <input type="text" className="form-control" name="precio" value={store.precio}
                                             onChange={e => actions.handleChange(e)} />
                                     </div>
                                     <div className="button col-md-3">
@@ -51,16 +51,10 @@ const Add_item = () => {
                                 </div>
                                 <div className="col-md-3">
                                     <label for="formGroupExampleInput">Descripcion</label>
-                                    <textarea rows="10" cols="20" placeholder="Agregar Descripcion" name="descripcion" onChange={e => actions.handleChange(e)}></textarea>
+                                    <textarea rows="10" cols="20" value={store.descripcion} name="descripcion" onChange={e => actions.handleChange(e)}></textarea>
                                 </div>
                             </div>
                             <div className="row pt-5">
-                                <div className="col-md-1">
-                                    <button type="button" className="btn btn-primary">Importar</button>
-                                </div>
-                                <div className="col-md-8 pt-3" id="info">
-                                    <p>Texto Informativo</p>
-                                </div>
                                 <div className="col-md-3">
                                     <button type="submit" onClick={() => actions.addItem()} data-dismiss='modal' className="btn btn-secondary mr-3">Agregar</button>
                                     <button data-dismiss='modal' to="/productos" type="submit" className="btn btn-success">Cancelar</button>

@@ -17,8 +17,7 @@ export default class Home_garzon extends React.Component {
                     ({ store, actions, }) => {
                         if(store.isAuthenticated === false){
                             return <Redirect to="/" />
-                        }else if((store.isAuthenticated) && (store.currentUser.user.isAdmin === false))
-                            return <Redirect to="/garzon_home" />
+                        }
                         return (
                             <>
                                 <div className="container">

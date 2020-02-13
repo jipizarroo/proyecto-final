@@ -1,33 +1,46 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './../store/appContext';
+import '../css/navbar.css';
 
-const Navbar = props => {
-    const {store, actions} = useContext(Context);
-    return (
+const Navbar = () => {
+  const { store, actions } = useContext(Context);
 
-<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <Link  className="navbar-brand" to="/admin_home">LOGO</Link>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-    <ul className="navbar-nav">
-      <li className="nav-item active">
-        <Link className="nav-link" to="/#">Bienvenido: xxxxxxxxxx</Link>
-      </li>
-      <li className="nav-item active">
-        <Link className="nav-link" to="/config">Configuracion</Link>
-      </li>
-        <Link className="nav-link" to="/" onClick={() => actions.logOut()}>Log Out</Link>
 
-      <li className="nav-item active">
-  
-      </li>
-    </ul>
-  </div>
-</nav>
-    )
+  return (
+    <>
+      {
+        store.isAuthenticated === false ? (
+
+          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item active">
+                  <Link className="nav-link">Bienvenido a RestaurAPP</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        ) : (
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav d-flex justify-content-between">
+                  <li className="nav-item active">
+                    <Link className="nav-link">RestaurAPP</Link>
+                  </li>
+                  <li className="nav-item active">
+                    <Link className="nav-link">Usuario: {store.currentUser.user.name} {store.currentUser.user.last_name}</Link>
+                  </li>
+                  <li className="nav-item active">
+                    <Link className="nav-link" to="/" onClick={() => actions.logOut()}><i className="fas fa-sign-out-alt"></i></Link>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          )
+      }
+    </>
+  )
 }
 
 export default Navbar;

@@ -7,16 +7,16 @@ import $ from 'jquery';
 
 const Menu = props => {
     const { store, actions } = useContext(Context);
-    const [categoryDesc, setCategoryDesc] = useState("")
-    const [categoryItems, setCategoryItems] = useState([])
-    const [pedidos, setPedidos] = useState([])
-    const [total, setTotal] = useState(0)
-
     useEffect(() => {
         if(store.isAuthenticated === false){
             props.history.push("/")
         }
     })
+    const [categoryDesc, setCategoryDesc] = useState("")
+    const [categoryItems, setCategoryItems] = useState([])
+    const [pedidos, setPedidos] = useState([])
+    const [total, setTotal] = useState(0)
+
 
 
     function showModalPedido(item) {
@@ -116,7 +116,7 @@ const Menu = props => {
                                                 <td scope="row">{item.cantidad}</td>
                                                 <td>{item.nombre}</td>
                                                 <td>{item.precio}</td>
-                                                <td>{item.cantidad * item.precio}</td>
+                                                <td>{Math.round(item.cantidad * item.precio)}</td>
                                                 <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + item.id}></i></td>
                                             </tr>
                                         )

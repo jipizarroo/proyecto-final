@@ -1,11 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from './../store/appContext';
 import { Link } from 'react-router-dom';
 
 
-const Resumen = () => {
+const Resumen = (props) => {
 
     const { store } = useContext(Context);
+
+    useEffect(() => {
+        if(store.isAuthenticated === false){
+            props.history.push("/")
+        }
+        else if (store.isAuthenticated){
+            props.history.push("/garzon_home")
+        }
+    })       
+
 
     return (
         <div className="container mt-5">

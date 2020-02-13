@@ -28,7 +28,6 @@ const Layout = props => {
                 <Route exact path ="/admin_home/mesas/settings" component={Settings_mesas}/>
                 <Route exact path ="/admin_home/mesas" component={Admin_mesas}/>
                 <Route exact path="/admin_home" component={Home_admin} />
-                <Route exact path="/resumen" component={Resumen} />
 
 
 
@@ -37,6 +36,7 @@ const Layout = props => {
 
                 <Route exact path="/garzon_home" component={Home_garzon} />
                 <Route exact path ="/garzon_home/:id/menu" render={(props) => <Menu id={props.match.params.id} />}/>
+                <Route exact path="/resumen" component={Resumen} />
             
 
 
