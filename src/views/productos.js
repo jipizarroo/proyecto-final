@@ -74,7 +74,7 @@ const Productos = (props) => {
                                                 <td>{item.category_descripcion}</td>
                                                 <td>{item.nombre}</td>
                                                 <td>{item.descripcion}</td>
-                                                <td>{item.precio}</td>
+                                                <td>{Math.round(item.precio)}</td>
                                                 <td>
                                                     <button className="btn btn-primary" data-toggle="modal" onClick={() => modifyItem(item)}>Modificar</button>
                                                 </td>

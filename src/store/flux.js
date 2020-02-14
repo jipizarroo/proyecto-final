@@ -25,8 +25,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             nombre_plaza: '',
             current_Error: null,
             isAuthenticated: false,
-            isAdmin: false,
-            isActive: true,
             resumen_pedido: null,
         },
 

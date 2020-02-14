@@ -44,8 +44,7 @@ import { Link } from 'react-router-dom';
                              </div>
                          </div>
                          <div className="card-footer">
-                             <button className="btn btn-primary btn-block"  onClick={ e => actions.getLogin(e, '/login', props.history)}>Login</button>  
-                             <a className= "d-flex justify-content-center" href="">¿Olvidaste tu clave?</a>
+                             <button className="btn btn-primary btn-block"  onClick={ e => actions.getLogin(e, '/login', props.history)}>Login</button> 
                          </div>
                      </div>
                  </div>

@@ -41,19 +41,6 @@ const Home_admin = props => {
                         </Link>
                     </div>
                 </div>
-                <div className="row d-flex justify-content-between" id="HomeAmenus">
-                    <div className="usuarios">
-                        <Link to="/admin_home/users"> <button type="button" className="btn btn-outline-primary">Usuarios
-                    </button>
-                        </Link>
-                    </div>
-                    <div className="productos">
-                        <Link  to="/admin_home/productos"> <button type="button" className="btn btn-outline-primary">
-                            Productos
-                    </button>
-                        </Link>
-                    </div>
-                </div>
             </div>
         )
     }
