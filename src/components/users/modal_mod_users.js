@@ -5,8 +5,6 @@ import '../../css/register.css';
 
 export default class Mod_user extends React.Component {
     
-
-
     render() {
 
         return (
