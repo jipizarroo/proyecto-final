@@ -12,9 +12,9 @@ const Navbar = () => {
       {
         store.isAuthenticated === false ? (
 
-          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-              <ul className="navbar-nav">
+          <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav d-flex justify-content-center">
                 <li className="nav-item active">
                   <Link className="nav-link">Bienvenido a RestaurAPP</Link>
                 </li>
