@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from './../store/appContext';
 import $ from 'jquery';
 import Add_categoria from './add_categoria';
@@ -11,12 +11,28 @@ const Productos = (props) => {
 
     const { store } = useContext(Context);
 
+    const [itemActual, setItemActual] = useState(null);
+
+    useEffect(() => {
+        if(store.isAuthenticated === false){
+            props.history.push("/")
+        }
+        else if ((store.isAuthenticated) && (store.currentUser.user.isAdmin === false)){
+            props.history.push("/garzon_home")
+        }
+    })
+
     function showModalPedido() {
         $('#addcategory').modal('show');
     }
 
     function showModalItem() {
         $('#additem').modal('show');
+    }
+
+    function modifyItem(item) {
+        setItemActual(() => item);
+        $('#moditem').modal('show');
     }
 
     return (
@@ -49,22 +65,21 @@ const Productos = (props) => {
                         <tbody>
                             {
                                 store.all_items.length > 0 &&
-                                store.all_items.map((items, i) => {
+                                store.all_items.map((item, i) => {
 
                                     return (
                                         <>
                                             <tr key={i}>
-                                                <td scope="row">{items.id}</td>
-                                                <td>{items.category_descripcion}</td>
-                                                <td>{items.nombre}</td>
-                                                <td>{items.descripcion}</td>
-                                                <td>{items.precio}</td>
+                                                <td scope="row">{item.id}</td>
+                                                <td>{item.category_descripcion}</td>
+                                                <td>{item.nombre}</td>
+                                                <td>{item.descripcion}</td>
+                                                <td>{Math.round(item.precio)}</td>
                                                 <td>
-                                                    <button className="btn btn-primary" data-toggle="modal" data-target={"#moditem"}>Modificar </button>
-                                                    <Modificar_item items={items} />
+                                                    <button className="btn btn-primary" data-toggle="modal" onClick={() => modifyItem(item)}>Modificar</button>
                                                 </td>
-                                                <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + items.id}></i>
-                                                    <ModalEliminar items={items} />
+                                                <td><i className="fa fa-trash-alt" data-toggle="modal" data-target={"#staticBackdrop" + item.id}></i>
+                                                    <ModalEliminar items={item} />
                                                 </td>
                                             </tr>
                                         </>
@@ -73,6 +88,8 @@ const Productos = (props) => {
                             }
                         </tbody>
                     </table>
+
+                    <Modificar_item item={itemActual} />
                 </div>
             </div>
             <Add_categoria />

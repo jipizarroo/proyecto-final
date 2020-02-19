@@ -1,16 +1,16 @@
 import React from 'react';
 import { Context } from './../store/appContext';
-import Register from '../components/modal_register';
-import Mod_user from '../components/modal_mod_users';
-import Mod_delete_user from '../components/modal_delete_user';
-import { Link } from 'react-router-dom';
+import Register from '../components/users/modal_register';
+import Mod_user from '../components/users/modal_mod_users';
+import Mod_delete_user from '../components/users/modal_delete_user';
+import { Link, Redirect } from 'react-router-dom';
 import $ from 'jquery';
 
 
 export default class Admi_Usuario extends React.Component {
-
-    constructor(){
-        super();
+    
+    constructor(props){
+        super(props);
         this.state = {
             userEdit: {}
         }
@@ -31,12 +31,15 @@ export default class Admi_Usuario extends React.Component {
         $('#modal_delete_user').modal('show');
     }
 
-
     render() {
         return (
             <Context.Consumer>
                 {
                     ({ store, actions, }) => {
+                        if(store.isAuthenticated === false){
+                            return <Redirect to="/" />
+                        }else if((store.isAuthenticated) && (store.currentUser.user.isAdmin === false))
+                            return <Redirect to="/garzon_home" />
                         return (
                             <>
                                 <Register />
@@ -52,9 +55,9 @@ export default class Admi_Usuario extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-6">
+                                    <div className="col-md-12">
                                         <div className="row">
-                                            <div className="col-md-12">
+                                            <div className="col-12">
                                                 <table className="table table-bordered">
                                                     <thead>
                                                         <tr>
@@ -62,6 +65,8 @@ export default class Admi_Usuario extends React.Component {
                                                             <th>Nombre</th>
                                                             <th>Apellido</th>
                                                             <th>Email</th>
+                                                            <th>Usuario activo</th>
+                                                            <th>Admin</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -74,8 +79,10 @@ export default class Admi_Usuario extends React.Component {
                                                                             <td>{items.name}</td>
                                                                             <td>{items.last_name}</td>
                                                                             <td>{items.email}</td>
+                                                                            <td><input type="checkbox" disable="disable" checked={items.isActive} /></td>
+                                                                            <td><input type="checkbox" disable="disable" checked={items.isAdmin} /></td>
                                                                             <td className="btn btn-primary" onClick={this.showModal_mod_register.bind(this, items)}>Modificar</td>
-                                                                            <td onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i></td>
+                                                                            <td className="btn btn-primary" onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i></td>
                                                                         </tr>
                                                                 )
                                                             })
@@ -88,7 +95,7 @@ export default class Admi_Usuario extends React.Component {
                                     <div className="row">
                                         <div className="col-md-12">
 
-                                            <Link className="btn btn-primary float-right" to="/admin_dashboard">Regresar </Link>
+                                            <Link className="btn btn-primary float-right" to="/admin_home">Regresar </Link>
                                         </div>
                                     </div>
                                 </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Context } from '../store/appContext';
+import { Context } from '../../store/appContext';
 
 export default class Mod_delete_user extends React.Component {
 

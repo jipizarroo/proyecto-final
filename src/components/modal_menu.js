@@ -1,5 +1,4 @@
 import React from 'react';
-import Modal_ingredientes from './modal_ingredientes'
 
 
 
@@ -45,7 +44,7 @@ class Modal_menu extends React.Component {
                                                 <button type="button" className="btn btn-secondary">Msg</button>
                                             </div>
                                             <div className="collapse" id="collapseIngrediente2">
-                                                <Modal_ingredientes />
+
                                             </div>
                                         </div>
                                     </div>
@@ -77,7 +76,7 @@ class Modal_menu extends React.Component {
                                             </div>
                                             <div class="collapse" id="collapseIngrediente2">
                                                 <div class="card card-body">
-                                                    <Modal_ingredientes />
+
                                                 </div>
                                             </div>
                                         </div>

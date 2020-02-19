@@ -1,5 +1,6 @@
 import React from 'react';
 import { Context } from '../store/appContext';
+import { Link, Redirect } from 'react-router-dom';
 
 class Add_categoria extends React.Component {
    
@@ -8,6 +9,10 @@ class Add_categoria extends React.Component {
             <Context.Consumer>
                 {
                     ({ store, actions }) => {
+                        if(store.isAuthenticated === false){
+                            return <Redirect to="/" />
+                        }else if((store.isAuthenticated) && (store.currentUser.user.isAdmin === false))
+                            return <Redirect to="/garzon_home" />
                         return (
                             <div className="modal fade" id="addcategory" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div className="modal-dialog" role="document">
@@ -21,14 +26,7 @@ class Add_categoria extends React.Component {
                                                     <div className="row">
                                                         <div className="col-md-6">
                                                             <label for="formGroupExampleInput">Nombre</label>
-                                                            <input type="text" name="description" className="form-control" placeholder="xxxxxxxxxxx" onChange={e => actions.handleChange(e)} />
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <form>
-                                                    <div className="row mt-5">
-                                                        <div className="col-md-6">
-                                                            <label for="formGroupExampleInput">LOGO</label>
+                                                            <input type="text" name="description" className="form-control" value={store.description} onChange={e => actions.handleChange(e)} />
                                                         </div>
                                                     </div>
                                                 </form>

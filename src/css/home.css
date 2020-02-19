@@ -1,5 +1,14 @@
 .table1{
     height: 150px;
-    width: 10px;
+    width: 15px;
+    margin-top: 0;
+    padding-top: 0;
 }
 
+#icono_utensils {
+    position: absolute;
+    left: 0;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+  }

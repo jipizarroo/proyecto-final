@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './views/login';
-import Home from './views/home'
 import Navbar from './components/navbar'
 import injectContext from './store/appContext'
-import Footer from './components/footer';
-import Modal_ingredientes from './components/modal_ingredientes';
+//import Footer from './components/footer';
 import Home_admin from './views/home_admin';
-import Ventas_garzon from './views/ventas_garzon';
 import Productos from './views/productos';
 import Add_categoria from './views/add_categoria';
-import Horario from './views/horario';
 import Menu from './views/menu';
 import Admi_Usuario from './views/admi_Usuario';
+import Admin_mesas from './views/admin_mesas';
+import Settings_mesas from './views/settings_mesas';
+import Home_garzon from './views/home_garzon';
+import Resumen from './components/resumen_pedido';
 
 const Layout = props => {
     return (
@@ -25,7 +25,8 @@ const Layout = props => {
                 <Route exact path="/admin_home/productos/add_categoria" component={Add_categoria} />
                 <Route exact path="/admin_home/productos" component={Productos} />
                 <Route exact path ="/admin_home/users" component={Admi_Usuario}/>
-                <Route exact path ="/admin_home/horario" component={Horario}/>
+                <Route exact path ="/admin_home/mesas/settings" component={Settings_mesas}/>
+                <Route exact path ="/admin_home/mesas" component={Admin_mesas}/>
                 <Route exact path="/admin_home" component={Home_admin} />
 
 
@@ -33,18 +34,17 @@ const Layout = props => {
 
 
 
-                <Route exact path="/garzon_home/config/ventas" component={Ventas_garzon} />
-                <Route exact path ="/garzon_home/:id/menu" component={Menu}/>
-                <Route exact path="/garzon_home" component={Home} />
+                <Route exact path="/garzon_home" component={Home_garzon} />
+                <Route exact path ="/garzon_home/:id/menu" render={(props) => <Menu id={props.match.params.id} />}/>
+                <Route exact path="/resumen" component={Resumen} />
+            
 
 
 
 
-
-                <Route exact path="/home/modal_ingredientes" component={Modal_ingredientes} />
-                {/* <Route render={() => <h1>Not Found</h1>} /> */}
+                <Route render={() => <h1>Not Found</h1>} />
             </Switch>
-            <Footer />
+            {/*<Footer />*/}
         </BrowserRouter>
     )
 }

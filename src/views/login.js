@@ -1,10 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Context } from './../store/appContext';
 import { Link } from 'react-router-dom';
 
 
  const Login = props => {
-     const {actions} = useContext(Context);
+     const {store, actions} = useContext(Context);
+
+     useEffect(() => {
+        if(store.isAuthenticated === true){
+            if(store.currentUser.user.isAdmin === true)
+            {props.history.push("/admin_home")}
+            else{
+                {props.history.push("/garzon_home")}
+            }     
+        }
+    });
+
      return (
          <div className="container">
              <div className="row">
@@ -15,8 +26,15 @@ import { Link } from 'react-router-dom';
                          </div>
                          <div className="card-body">
                              <div className="form-group">
-                                 <label htmlFor="username" className="form-label">Username:</label>
-                                 <input type="text" id="username" name="username" className="form-control"
+                         {store.current_Error===null?"":
+                         
+                         
+                         store.current_Error.msg
+                         }
+                             </div>
+                             <div className="form-group">
+                                 <label htmlFor="email" className="form-label">Username:</label>
+                                 <input type="text" id="email" name="email" className="form-control"
                                  onChange={ e => actions.handleChange(e)} />
                              </div>
                              <div className="form-group">
@@ -26,8 +44,7 @@ import { Link } from 'react-router-dom';
                              </div>
                          </div>
                          <div className="card-footer">
-                             <Link className="btn btn-primary btn-block" to="/admin_home">Login</Link>  
-                             <a className= "d-flex justify-content-center" href="">¿Olvidaste tu clave?</a>
+                             <button className="btn btn-primary btn-block"  onClick={ e => actions.getLogin(e, '/login', props.history)}>Login</button> 
                          </div>
                      </div>
                  </div>
