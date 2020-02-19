@@ -5,11 +5,11 @@ import Mod_user from '../components/users/modal_mod_users';
 import Mod_delete_user from '../components/users/modal_delete_user';
 import { Link, Redirect } from 'react-router-dom';
 import $ from 'jquery';
-
+import '../css/admi_Usuario.css';
 
 export default class Admi_Usuario extends React.Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
         this.state = {
             userEdit: {}
@@ -18,13 +18,13 @@ export default class Admi_Usuario extends React.Component {
     showModalregister() {
         $('#modalregister').modal('show');
     }
-    showModal_mod_register(item){
+    showModal_mod_register(item) {
         this.setState({
             userEdit: item
         })
         $('#modal_mod_user').modal('show');
     }
-    showModal_delete_register(item){
+    showModal_delete_register(item) {
         this.setState({
             userEdit: item
         })
@@ -36,37 +36,33 @@ export default class Admi_Usuario extends React.Component {
             <Context.Consumer>
                 {
                     ({ store, actions, }) => {
-                        if(store.isAuthenticated === false){
+                        if (store.isAuthenticated === false) {
                             return <Redirect to="/" />
-                        }else if((store.isAuthenticated) && (store.currentUser.user.isAdmin === false))
+                        } else if ((store.isAuthenticated) && (store.currentUser.user.isAdmin === false))
                             return <Redirect to="/garzon_home" />
                         return (
                             <>
                                 <Register />
-                                <Mod_user {...this.state.userEdit}/>
-                                <Mod_delete_user {...this.state.userEdit}/>
+                                <Mod_user {...this.state.userEdit} />
+                                <Mod_delete_user {...this.state.userEdit} />
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-3">
-                                            <div className="row">
-                                                <div className="col-md-12">
                                                     <button className="btn btn-primary" onClick={this.showModalregister.bind()}>Agregar</button>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-12">
                                         <div className="row">
-                                            <div className="col-12">
-                                                <table className="table table-bordered">
+                                            <div className="col-10">
+                                                <table className="table table-bordered" id="usuarios">
                                                     <thead>
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Nombre</th>
                                                             <th>Apellido</th>
                                                             <th>Email</th>
-                                                            <th>Usuario activo</th>
+                                                            <th>Activo</th>
                                                             <th>Admin</th>
+
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -74,16 +70,16 @@ export default class Admi_Usuario extends React.Component {
                                                             store.all_users.length > 0 &&
                                                             store.all_users.map((items, i) => {
                                                                 return (
-                                                                        <tr key={i}>
-                                                                            <td scope="row">{items.id}</td>
-                                                                            <td>{items.name}</td>
-                                                                            <td>{items.last_name}</td>
-                                                                            <td>{items.email}</td>
-                                                                            <td><input type="checkbox" disable="disable" checked={items.isActive} /></td>
-                                                                            <td><input type="checkbox" disable="disable" checked={items.isAdmin} /></td>
-                                                                            <td className="btn btn-primary" onClick={this.showModal_mod_register.bind(this, items)}>Modificar</td>
-                                                                            <td className="btn btn-primary" onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i></td>
-                                                                        </tr>
+                                                                    <tr key={i}>
+                                                                        <th scope="row">{items.id}</th>
+                                                                        <td>{items.name}</td>
+                                                                        <td>{items.last_name}</td>
+                                                                        <td>{items.email}</td>
+                                                                        <td><input className="ml-4" type="checkbox" disable="disable" checked={items.isActive} /></td>
+                                                                        <td><input className="ml-4" type="checkbox" disable="disable" checked={items.isAdmin} /></td>
+                                                                        <td><button className="btn btn-dark btn-block" onClick={this.showModal_mod_register.bind(this, items)}>Modificar</button></td>
+                                                                        <td><button className="btn btn-danger btn-block" onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i> </button></td>
+                                                                    </tr>
                                                                 )
                                                             })
                                                         }
@@ -91,7 +87,6 @@ export default class Admi_Usuario extends React.Component {
                                                 </table>
                                             </div>
                                         </div>
-                                    </div>
                                     <div className="row">
                                         <div className="col-md-12">
 
