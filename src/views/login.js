@@ -27,11 +27,11 @@ import './../css/login.css';
                          </div>
                          <div className="card-body">
                              <div className="form-group">
-                         {store.current_Error===null?"":
+                         {store.getLogin_Error===null?"":
                          
                          
                          ( <div className="alert alert-danger d-flex justify-content-center" role="alert">
-                             {store.current_Error.msg}
+                             {store.getLogin_Error.msg}
                          </div> )
                          
                          }

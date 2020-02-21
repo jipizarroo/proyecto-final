@@ -47,12 +47,12 @@ export default class Admi_Usuario extends React.Component {
                                 <Mod_delete_user {...this.state.userEdit} />
                                 <div className="container">
                                     <div className="row">
-                                        <div className="col-md-3">
-                                                    <button className="btn btn-primary" onClick={this.showModalregister.bind()}>Agregar</button>
+                                        <div className="col-md-3 mb-5 mt-5">
+                                                    <button className="btn btn-primary" onClick={this.showModalregister.bind()}>Agregar Usuario</button>
                                         </div>
                                     </div>
-                                        <div className="row">
-                                            <div className="col-10">
+                                        <div className="row d-flex justify-content-center mb-5">
+                                            <div className="col-10 ">
                                                 <table className="table table-bordered" id="usuarios">
                                                     <thead>
                                                         <tr>

@@ -23,9 +23,12 @@ const getState = ({ getStore, getActions, setStore }) => {
             plaza_id: '',
             all_plazas: [],
             nombre_plaza: '',
-            current_Error: null,
             isAuthenticated: false,
             resumen_pedido: null,
+            getLogin_Error: null,
+            createUser_Error: null,
+            isAdmin: '',
+            isActive: '', 
         },
 
         actions: {
@@ -47,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .then(data => {
                         if (data.msg) {
                             setStore({
-                                current_Error: data
+                                getLogin_Error: data
                             })
                         }
                         else {
@@ -55,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 email: '',
                                 password: '',
                                 currentUser: data,
-                                current_Error: null,
+                                getLogin_Error: null,
                                 isAuthenticated: true
                             });
 
@@ -86,34 +89,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                         currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
                     })
                 }
-            },
-            createUser: () => {
-                const store = getStore();
-                const data = {
-                    name: store.name,
-                    last_name: store.last_name,
-                    email: store.email,
-                    password: store.password,
-                }
-                fetch(store.path + '/api/users', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + store.currentUser.access_token
-                    }
-
-                })
-                    .then(resp => resp.json())
-                    .then(data => {
-                        setStore({
-                            name: '',
-                            last_name: '',
-                            email: '',
-                            password: ''
-                        });
-                        getActions().getUsers();
-                    })
             },
             modifyUser: (id) => {
                 const store = getStore();
@@ -147,6 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
             handleChange: e => {
+
                 setStore({
                     [e.target.name]: e.target.value
                 });
@@ -156,7 +132,43 @@ const getState = ({ getStore, getActions, setStore }) => {
                     [e.target.name]: e.target.checked
                 })
             },
+            createUser: (history) => {
+                const store = getStore();
+                const data = {
+                    name: store.name,
+                    last_name: store.last_name,
+                    email: store.email,
+                    password: store.password,
+                }
+                fetch(store.path + '/api/users', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
+                    }
 
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        console.log(data)
+                        if(data.msg){
+                            setStore({
+                                createUser_Error: data
+                            })
+                        }
+                        else {
+                            setStore({
+                                name: '',
+                                last_name: '',
+                                email: '',
+                                password: '',
+                                createUser_Error: null,
+                            });
+                        }
+                        getActions().getUsers();
+                    })
+            },
             getUsers: () => {
                 const store = getStore();
                 fetch(store.path + '/api/users', {
@@ -173,7 +185,28 @@ const getState = ({ getStore, getActions, setStore }) => {
                         })
                     })
             },
-
+            deleteUser: (id) => {
+                const store = getStore();
+                // const data = {
+                //     all_users: store.all_users
+                // }
+                fetch(store.path + '/api/users/' + id, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + store.currentUser.access_token
+                    }
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        //console.log(data)
+                        setStore({
+                            all_users: data
+                        })
+                        getActions().getUsers();
+                    })
+            },
+            
             addCategory: () => {
                 const store = getStore();
                 const data = {
@@ -334,28 +367,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                         })
                         getActions().getItem();
                     })
-            },
-
-            deleteUser: (id) => {
-                const store = getStore();
-                // const data = {
-                //     all_users: store.all_users
-                // }
-                fetch(store.path + '/api/users/' + id, {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + store.currentUser.access_token
-                    }
-                })
-                    .then(resp => resp.json())
-                    .then(data => {
-                        //console.log(data)
-                        setStore({
-                            all_users: data
-                        })
-                    })
-                getActions().getUsers();
             },
 
             getMesas: () => {
