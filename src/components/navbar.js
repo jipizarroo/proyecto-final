@@ -26,7 +26,7 @@ const Navbar = () => {
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav d-flex justify-content-between">
                   <li className="nav-item active">
-                    <Link className="nav-link">RestaurAPP</Link>
+                    <Link className="nav-link" to="/admin_home">RestaurAPP</Link>
                   </li>
                   <li className="nav-item active">
                     <Link className="nav-link">Usuario: {store.currentUser.user.name} {store.currentUser.user.last_name}</Link>
