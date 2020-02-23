@@ -46,9 +46,7 @@ export default class Settings_mesas extends React.Component {
                                 <Modal_add_plaza />
                                 <Modal_modificar_plaza />
 
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-md-12">
+                                <div className="container mt-5">
                                             <div className="row ">
                                                 <div className="col-md-12 d-flex justify-content-between">
                                                     <button className="btn btn-primary" onClick={this.showModalAddMesa.bind()} >Agregar Mesas</button>
@@ -56,11 +54,9 @@ export default class Settings_mesas extends React.Component {
                                                     <button className="btn btn-primary" onClick={this.showModalModPlaza.bind()}>Modificar plaza</button>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="row">
-                                            <div className="col-2">
+                                    
+                                        <div className="row mt-2">
+                                            <div className="col-8">
                                                 <select name="plaza_id" onChange={e => actions.filtrarMesas(e.target.value)} >
                                                     <option value="">Seleccionar Plaza</option>
                                                     {store.all_plazas.length > 0 &&
@@ -73,7 +69,7 @@ export default class Settings_mesas extends React.Component {
                                                         })}
                                                 </select>
                                             </div>
-                                            <div className="row">
+                                            <div className="row mt-3">
                                             <div className="col-10">
                                                 <table className="table table-bordered">
                                                     <thead>
@@ -106,7 +102,7 @@ export default class Settings_mesas extends React.Component {
                                             </div>
                                             </div>
                                         </div>
-                                    </div>
+                                  
                                     <div className="row">
                                         <div className="col-md-12">
 

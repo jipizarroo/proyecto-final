@@ -15,14 +15,14 @@ export default class Home_garzon extends React.Component {
             <Context.Consumer>
                 {
                     ({ store, actions, }) => {
-                        if(store.isAuthenticated === false){
+                        if (store.isAuthenticated === false) {
                             return <Redirect to="/" />
                         }
                         return (
                             <>
-                                <div className="container">
+                                <div className="container mt-5">
                                     <div className="row">
-                                        <div className="col-12">
+                                        <div className="col-6">
                                             <select name="plaza_id" onChange={e => actions.filtrarMesas(e.target.value)} >
                                                 <option value="">Todas Las Plazas</option>
                                                 {store.all_plazas.length > 0 &&
@@ -35,22 +35,27 @@ export default class Home_garzon extends React.Component {
                                                     })}
                                             </select>
                                         </div>
+                                        <div className="col-6">
+                                            <Link to="/admin_home/mesas" type="button" className="btn btn-info">
+                                                Regresar
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="container">
-                                <div className="row">
-                                {
-                                    store.all_mesas.length > 0 &&
-                                    store.all_mesas.map((items, i) => {
-                                        return (
-                                                    <Link className="col-2 border border-dark mt-5 ml-5" key={i} to={"/garzon_home/"+ items.id +"/menu"}>
+                                    <div className="row">
+                                        {
+                                            store.all_mesas.length > 0 &&
+                                            store.all_mesas.map((items, i) => {
+                                                return (
+                                                    <Link className="col-2 border border-dark mt-5 ml-5" key={i} to={"/garzon_home/" + items.id + "/menu"}>
                                                         <div className="table1"><i id="icono_utensils" className="fas fa-utensils fa-3x"></i></div>
                                                         <p>{items.nombre_mesa}</p>
                                                     </Link>
-                                        )
-                                    })
-                                }
-                                </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
                             </>
                         )

@@ -55,9 +55,9 @@ const Add_item = () => {
                                 </div>
                             </div>
                             <div className="row pt-5">
-                                <div className="col-md-3">
-                                    <button type="submit" onClick={() => actions.addItem()} data-dismiss='modal' className="btn btn-secondary mr-3">Agregar</button>
-                                    <button data-dismiss='modal' to="/productos" type="submit" className="btn btn-success">Cancelar</button>
+                                <div className="col-md-12 d-flex justify-content-end">
+                                    <button data-dismiss='modal' to="/productos" type="submit" className="btn btn-secondary">Cancelar</button>
+                                    <button type="submit" onClick={() => actions.addItem()} data-dismiss='modal' className="btn btn-success ml-3">Agregar</button>
                                 </div>
                             </div>
                         </div>
