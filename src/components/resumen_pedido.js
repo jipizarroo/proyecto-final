@@ -15,7 +15,7 @@ const Resumen = (props) => {
 
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 bg-white">
             <div className="row d-flex justify-content-end">
                 <Link to="/garzon_home" type="button" className="btn btn-info">Regresar</Link></div>
             <div className="row">
@@ -32,7 +32,7 @@ const Resumen = (props) => {
                     Mesa: {store.resumen_pedido == null ? "" : store.resumen_pedido.info_pedido.id_mesa}
                 </div>
                 <div className="col-md-12">
-                    Fecha: 17/05/2020
+                    Fecha: 24/02/2020
                     </div>
             </div>
             <div className="row border">
