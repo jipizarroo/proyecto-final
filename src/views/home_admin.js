@@ -26,7 +26,7 @@ const Home_admin = props => {
                 </div>
                 <div className="col-8">
                     <div className="botones_admin">
-                        <Link to="/admin_home/users" type="button" className="btn btn-dark btn-lg btn-block" id="botones">Usuarios
+                        <Link to="/admin_home/users" type="button" className="btn btn-dark btn-lg btn-block rounded-pill border-light" id="botones">Usuarios
                         </Link>
                     </div>
                 </div>
@@ -38,7 +38,7 @@ const Home_admin = props => {
                 </div>
                 <div className="col-8">
                     <div className="botones_admin">
-                        <Link to="/admin_home/productos" type="button" className="btn btn-dark btn-lg btn-block" id="botones">
+                        <Link to="/admin_home/productos" type="button" className="btn btn-dark btn-lg btn-block rounded-pill border-light" id="botones">
                             Productos
                         </Link>
                     </div>
@@ -52,7 +52,7 @@ const Home_admin = props => {
                 </div>
                 <div className="col-8">
                     <div className="botones_admin">
-                        <Link to="/admin_home/mesas" type="button" className="btn btn-dark btn-lg btn-block">
+                        <Link to="/admin_home/mesas" type="button" className="btn btn-dark btn-lg btn-block rounded-pill border-light">
                             Mesas
                         </Link>
                     </div>

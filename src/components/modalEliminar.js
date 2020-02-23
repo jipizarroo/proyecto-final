@@ -4,9 +4,7 @@ import { Context } from './../store/appContext';
 const ModalEliminar = props => {
     const { actions } = useContext(Context);
     return (
-
-        <div className="container">
-            <div className="modal fade" id={"staticBackdrop" + props.items.id} tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id={"staticBackdrop"+props.items.id} tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header bg-secondary text-light">
@@ -29,12 +27,6 @@ const ModalEliminar = props => {
                     </div>
                 </div>
             </div>
-
-        </div>
-
-
-
     )
-
 }
 export default ModalEliminar;

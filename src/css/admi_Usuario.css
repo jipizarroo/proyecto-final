@@ -11,10 +11,9 @@
     padding-top: 20px;
 }
 #usuarios td, #usuarios th {
-    border: 1px solid #ddd;
     padding: 8px;
   }
 
 #usuarios tr:hover{
-    background-color: #ddd;
+    background-color: #cccccc;
 }

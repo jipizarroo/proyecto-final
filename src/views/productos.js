@@ -6,6 +6,7 @@ import Add_item from './add_item';
 import ModalEliminar from '../components/modalEliminar';
 import Modificar_item from '../components/modal_modificar_item';
 import { Link } from 'react-router-dom';
+import '../css/productos.css';
 
 const Productos = (props) => {
 
@@ -41,18 +42,19 @@ const Productos = (props) => {
                 <div className="row mt-5 mb-5">
                     <div className="col-12 d-flex justify-content-between">
                         <button type="button" className="btn btn-dark" onClick={() => { showModalPedido() }}>Agregar Categoria</button>
-                        <button type="button" className="btn btn-dark ml-4" onClick={() => { showModalItem() }}>Agregar Item</button>
+                        <button type="button" className="btn btn-dark" onClick={() => { showModalItem() }}>Agregar Item</button>
                     </div>
                 </div>
-                <div className="row mt-2 mb-5">
-                    <table className="table table-bordered" id="table">
+                <div className="row d-flex justify-content-center">
+                    <div className="col-10">
+                    <table className="table table-striped table-dark" id="productos_table">
                         <thead>
                             <tr>
-                                <th className="columna1" scope="col">ID</th>
-                                <th className="columna2" scope="col">Categoria</th>
-                                <th className="columna3" scope="col">Nombre</th>
-                                <th className="columna4" scope="col">Descripcion</th>
-                                <th className="columna5" scope="col">Precio</th>
+                                <th>ID</th>
+                                <th>Categoria</th>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,7 +63,7 @@ const Productos = (props) => {
                                 store.all_items.map((item, i) => {
                                     
                                     return (
-                                        <>
+                                        
                                             <tr key={i}>
                                                 <td scope="row">{item.id}</td>
                                                 <td>{item.category_descripcion}</td>
@@ -71,17 +73,16 @@ const Productos = (props) => {
                                                 <td>
                                                     <button className="btn btn-dark btn-block" data-toggle="modal" onClick={() => modifyItem(item)}>Modificar</button>
                                                 </td>
-                                                <td><button className="btn btn-danger btn-block"data-toggle="modal" data-target={"#staticBackdrop" + item.id}><i className="fa fa-trash-alt" ></i></button>
-                                                    <ModalEliminar items={item} />
-                                                </td>
+                                                <td><button className="btn btn-danger btn-block" data-toggle="modal" data-target={"#staticBackdrop" + item.id}><i className="fas fa-trash-alt"></i></button>
+                                                <ModalEliminar items={item} /></td>    
                                             </tr>
-                                        </>
+
                                     )
                                 })
                             }
                         </tbody>
                     </table>
-
+                    </div>
                     <Modificar_item item={itemActual} />
                 </div>
                 <Link to="/admin_home" className="float-right"><button type="button" className="btn btn-primary">Regresar</button></Link>

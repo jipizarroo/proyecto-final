@@ -7,6 +7,7 @@ import Modal_mod_mesa from '../components/mesas/modal_modificar_mesa';
 import Modal_eliminar_mesa from '../components/mesas/modal_eliminar_mesas';
 import Modal_add_plaza from '../components/plazas/modal_agregar_plazas';
 import Modal_modificar_plaza from '../components/plazas/modal_modificar_plazas';
+import '../css/settings_mesa.css';
 
 export default class Settings_mesas extends React.Component {
 
@@ -49,9 +50,9 @@ export default class Settings_mesas extends React.Component {
                                 <div className="container">
                                     <div className="row mt-5 mb-5">
                                         <div className="col-md-12 d-flex justify-content-between">
-                                            <button className="btn btn-dark" onClick={this.showModalAddMesa.bind()} >Agregar Mesas</button>
-                                            <button className="btn btn-dark" onClick={this.showModalAddPlaza.bind()}>Agregar plaza</button>
-                                            <button className="btn btn-dark" onClick={this.showModalModPlaza.bind()}>Modificar plaza</button>
+                                            <button className="btn btn-dark border-white" onClick={this.showModalAddMesa.bind()} >Agregar Mesas</button>
+                                            <button className="btn btn-dark border-white" onClick={this.showModalAddPlaza.bind()}>Agregar plaza</button>
+                                            <button className="btn btn-dark border-white" onClick={this.showModalModPlaza.bind()}>Modificar plaza</button>
                                         </div>
                                     </div>
                                         <div className="row">
@@ -69,7 +70,7 @@ export default class Settings_mesas extends React.Component {
                                                 </select>
                                             </div>
                                                 <div className="col-6 ml-5 mr-5">
-                                                    <table className="table table-bordered">
+                                                    <table className="table table-striped table-dark" id="settings_table">
                                                         <thead>
                                                             <tr>
                                                                 <th>ID Mesa</th>
@@ -86,7 +87,7 @@ export default class Settings_mesas extends React.Component {
                                                                             <th scope="row" className="text-center">{items.id}</th>
                                                                             <td className="text-center">{items.plaza.nombre_plaza}</td>
                                                                             <td className="text-center">{items.nombre_mesa}</td>
-                                                                            <td><button className="btn btn-dark btn-block" data-toggle="modal" data-target={"#mod_mesa" + items.id} >Modificar</button>
+                                                                            <td><button className="btn btn-dark btn-block border-white" data-toggle="modal" data-target={"#mod_mesa" + items.id} >Modificar</button>
                                                                                 <Modal_mod_mesa items={items} /></td>
                                                                             <td><button className="btn btn-danger btn-block" data-toggle="modal" data-target={"#delete_mesa" + items.id}><i className="fas fa-trash-alt"></i></button>
                                                                                 <Modal_eliminar_mesa items={items} /></td>

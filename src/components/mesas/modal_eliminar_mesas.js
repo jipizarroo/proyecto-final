@@ -16,8 +16,10 @@ const Modal_eliminar_mesa = props => {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <h3>¿Esta seguro que desea eliminar la mesa: {props.items.nombre_mesa}? </h3>
-                        <h4>Toda la informacion de la mesa se vera eliminada si clickea Eliminar.</h4>
+                        <div className="alert alert-danger" role="alert">
+                        ¿Esta seguro que desea eliminar la mesa: {props.items.nombre_mesa}?
+                        Toda la informacion de la mesa se vera eliminada si clickea Eliminar.
+                        </div>
                     </div>
                     <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
                         <button type="submit" className="btn btn-dark" onClick={() => actions.delMesa(props.items.id)} data-dismiss="modal">Eliminar</button>
