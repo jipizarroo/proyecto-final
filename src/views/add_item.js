@@ -20,7 +20,7 @@ const Add_item = () => {
                         <form>
                             <div className="row">
                                 <div className="col-12">
-                                    <button type="reset" value="Reset" className="btn btn-dark float-right">Limpiar</button>
+                                    <button type="reset" value="Reset" className="btn btn-dark float-primary">Limpiar</button>
                                 </div>
                             </div>
                             <div className="form-row">

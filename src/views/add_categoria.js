@@ -33,7 +33,7 @@ class Add_categoria extends React.Component {
                                                 </div>
                                             </form>
                                         </div>
-                                        <div className="modal-footer d-flex justify-content-between">
+                                        <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
                                             <button type="button" className="btn btn-dark" data-dismiss='modal'>Cancelar</button>
                                             <button type="button" className="btn btn-dark" onClick={() => actions.addCategory(this.props.history)} data-dismiss='modal'>Agregar</button>
                                         </div>

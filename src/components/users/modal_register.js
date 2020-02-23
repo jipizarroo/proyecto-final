@@ -33,7 +33,7 @@ export default class Register extends React.Component {
                                                             </div>)
 
                                                         }
-                                                        <button type="reset" value="Reset" className=" float-right btn btn-dark">Limpiar</button>
+                                                        <button type="reset" value="Reset" className=" float-right btn btn-primary">Limpiar</button>
                                                     </div>
                                                 </div>
                                                 <div className="form-row">

@@ -9,9 +9,9 @@ const Modal_modificar_plaza = () => {
         <div className="modal fade" id="mod_mesa" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                    <div className="modal-header">
+                    <div className="modal-header bg-secondary text-light">
                         <h5 className="modal-title" id="exampleModalLabel">Formulario modificacion de plaza.</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close text-light" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -31,14 +31,19 @@ const Modal_modificar_plaza = () => {
                                             })}
                                     </select>
                                 </div>
-                                <label htmlFor="name">Modificar nombre a: </label>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group col-6">
+                                    <label htmlFor="name">Modificar nombre a: </label>
                                     <input type="name" name="nombre_plaza" className="form-control" id="name_form" onChange={e => actions.handleChange(e)} />
+                                </div>
                             </div>
-                            <div className="modal-footer d-flex justify-content-between">
-                                <button type="submit" className="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" className="btn btn-primary" onClick={() => actions.putPlaza(store.plaza_id)} data-dismiss="modal">Agregar</button>
-                            </div>
+
                         </form>
+                    </div>
+                    <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
+                        <button type="submit" className="btn btn-dark" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" className="btn btn-dark" onClick={() => actions.putPlaza(store.plaza_id)} data-dismiss="modal">Agregar</button>
                     </div>
                 </div>
             </div>

@@ -71,7 +71,7 @@ const Productos = (props) => {
                                                 <td>{item.descripcion}</td>
                                                 <td>{Math.round(item.precio)}</td>
                                                 <td>
-                                                    <button className="btn btn-dark btn-block" data-toggle="modal" onClick={() => modifyItem(item)}>Modificar</button>
+                                                    <button className="btn btn-dark btn-block border-white" data-toggle="modal" onClick={() => modifyItem(item)}>Modificar</button>
                                                 </td>
                                                 <td><button className="btn btn-danger btn-block" data-toggle="modal" data-target={"#staticBackdrop" + item.id}><i className="fas fa-trash-alt"></i></button>
                                                 <ModalEliminar items={item} /></td>    

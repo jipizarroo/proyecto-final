@@ -22,8 +22,8 @@ const Modal_eliminar_mesa = props => {
                         </div>
                     </div>
                     <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
-                        <button type="submit" className="btn btn-dark" onClick={() => actions.delMesa(props.items.id)} data-dismiss="modal">Eliminar</button>
                         <button type="submit" className="btn btn-dark" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" className="btn btn-dark" onClick={() => actions.delMesa(props.items.id)} data-dismiss="modal">Eliminar</button>
                     </div>
 
                 </div>
