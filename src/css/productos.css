@@ -1,0 +1,6 @@
+#productos_table td, #productos_table th{
+    padding: 8px;
+}
+#productos_table tr:hover{
+    background-color: #cccccc;
+}

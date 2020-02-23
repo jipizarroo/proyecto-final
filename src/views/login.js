@@ -21,17 +21,17 @@ import './../css/login.css';
          <div className="container">
              <div className="row">
                  <div className="col-md-4 offset-md-4" id="login">
-                     <div className="card mt-5">
+                     <div className="card mt-5 border-0">
                          <div className="card-header bg-dark text-light d-flex justify-content-center">
                              Login
                          </div>
                          <div className="card-body">
                              <div className="form-group">
-                         {store.current_Error===null?"":
+                         {store.getLogin_Error===null?"":
                          
                          
                          ( <div className="alert alert-danger d-flex justify-content-center" role="alert">
-                             {store.current_Error.msg}
+                             {store.getLogin_Error.msg}
                          </div> )
                          
                          }

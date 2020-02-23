@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Context } from './../store/appContext';
 import Agregar_menu from '../components/modal_menu_categoria';
 import $ from 'jquery';
+import './../css/menu.css';
 
 
 const Menu = props => {
@@ -87,9 +88,8 @@ const Menu = props => {
                                 return (
                                     <div className="col-md-6" key={i}>
                                         <div className="card" onClick={() => showModalPedido(item)}>
-                                            <img src="http://placehold.it/200x100" className="card-img-top" alt="..." />
                                             <div className="card-body">
-                                                <h5 className="card-title">{item.description}</h5>
+                                                <h5 className="text-center">{item.description}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -97,8 +97,8 @@ const Menu = props => {
                             })}
                     </div>
                 </div>
-                <div className="col-md-8">
-                    <table className="table table-bordered">
+                <div className="col-md-8" id="paper">
+                    <table className="table table-dark table-striped table-bordered" >
                         <thead>
                             <tr>
                                 <td>Cantidad</td>
@@ -133,7 +133,7 @@ const Menu = props => {
                 </div>
                 <div className="col-md-12">
                     <Link className="navbar-brand" to="/garzon_home"> <button type="sumbit" className="btn btn-primary">
-                        Go Back
+                        Regresar
                         </button>
                     </Link>
                 </div>

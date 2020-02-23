@@ -49,28 +49,31 @@ const Modificar_item = (props) => {
         <div className="modal fade" id={"moditem"} tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                    <div className="modal-header">
-                        <div className="container mt-5">
-                            <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
-                                <span className="navbar-brand">Modificar Item {props.item != null ? props.item.nombre : ""}</span>
-                                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span className="navbar-toggler-icon"></span>
-                                </button>
-                            </nav>
-                            <form>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label for="formGroupExampleInput">Nombre</label>
-                                        <input id="nombre_id" type="text" className="form-control" placeholder={props.item != null ? props.item.nombre : ""} />
-                                    </div>
-                                    <div className="col-md-3">
-                                        <label for="formGroupExampleInput">Precio</label>
-                                        <input id="precio_id" type="text" className="form-control" placeholder={props.item != null ? props.item.precio : ""} />
-                                    </div>
+                    <div className="modal-header bg-secondary text-light">
+                        <h5 className="modal-title">Formulario modificar Item {props.item != null ? props.item.nombre : ""}</h5>
+                        <button type="button" className="close text-light" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <form>
+                            <div className="row">
+                                <div className="col-12">
+                                    <button type="reset" value="Reset" className=" float-right btn btn-dark">Limpiar</button>
                                 </div>
-                            </form>
-                            <div className="row pt-5">
-                                <div className="col-md-5">
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group col-6">
+                                    <label for="formGroupExampleInput">Nombre</label>
+                                    <input id="nombre_id" type="text" className="form-control" placeholder={props.item != null ? props.item.nombre : ""} />
+                                </div>
+                                <div className="col-3">
+                                    <label for="formGroupExampleInput">Precio</label>
+                                    <input id="precio_id" type="text" className="form-control" placeholder={props.item != null ? props.item.precio : ""} />
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group col-md-6">
                                     <select name="category_id" id="category_id">
                                         <option value="0" disabled selected>Seleccione Categoria</option>
                                         {store.all_categories.length > 0 &&
@@ -83,23 +86,16 @@ const Modificar_item = (props) => {
                                             })}
                                     </select>
                                 </div>
-                                <div className="col-md-3">
+                                <div className="form-group col-3">
                                     <label for="formGroupExampleInput">Descripcion</label>
                                     <textarea id="descripcion_id" rows="10" cols="30" placeholder={props.item != null ? props.item.descripcion : ""} name="descripcion"></textarea>
                                 </div>
                             </div>
-                            <div className="row pt-5">
-                                <div className="col-md-6">
-                                    <button type="button" className="btn btn-dark">Limpiar</button>
-                                </div>
-                                <div className="col-md-3">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={clearForm}>Cancelar</button>
-                                </div>
-                                <div className="col-md-3">
-                                    <button type="submit" className="btn btn-success mr-3" onClick={modifyItem} data-dismiss="modal">Modificar</button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
+                    </div>
+                    <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
+                            <button type="button" className="btn btn-dark" data-dismiss="modal" onClick={clearForm}>Cancelar</button>
+                            <button type="submit" className="btn btn-dark" onClick={modifyItem} data-dismiss="modal">Modificar</button>
                     </div>
                 </div>
             </div>
