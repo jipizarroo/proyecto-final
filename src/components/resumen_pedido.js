@@ -13,7 +13,6 @@ const Resumen = (props) => {
         }
     })       
 
-
     return (
         <div className="container mt-5 bg-white">
             <div className="row d-flex justify-content-end">
