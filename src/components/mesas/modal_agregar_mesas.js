@@ -9,7 +9,7 @@ const Modal_add_mesa = () => {
         <div className="modal fade" id="add_mesa" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                    <div className="modal-header">
+                    <div className="modal-header bg-secondary text-light">
                         <h5 className="modal-title" id="exampleModalLabel">Formulario creacion mesas.</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -41,11 +41,11 @@ const Modal_add_mesa = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className="modal-footer d-flex justify-content-between">
-                                <button type="submit" className="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" className="btn btn-primary" onClick={() => actions.createMesa()} data-dismiss="modal">Agregar</button>
-                            </div>
                         </form>
+                    </div>
+                    <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
+                        <button type="submit" className="btn btn-dark" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" className="btn btn-dark" onClick={() => actions.createMesa()} data-dismiss="modal">Agregar</button>
                     </div>
                 </div>
             </div>
