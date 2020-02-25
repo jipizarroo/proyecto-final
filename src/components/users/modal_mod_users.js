@@ -25,13 +25,6 @@ export default class Mod_user extends React.Component {
                                             <form>
                                                 <div className="row">
                                                     <div className="col-12">
-                                                        {store.createUser_Error === null ? "" :
-
-                                                            (<div className="alert alert-danger d-flex justify-content-center" role="alert">
-                                                                {store.createUser_Error.msg}
-                                                            </div>)
-
-                                                        }
                                                         <button type="reset" className="float-right btn btn-primary">Limpiar</button>
                                                     </div>
                                                 </div>

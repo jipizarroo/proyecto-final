@@ -65,7 +65,7 @@ export default class Register extends React.Component {
                                         </div>
                                         <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
                                             <button type="submit" className="btn btn-dark" data-dismiss="modal">Cancelar</button>
-                                            <button type="submit" className="btn btn-dark" onClick={() => actions.createUser(this.props.history)}>Agregar</button>
+                                            <button type="submit" className="btn btn-dark" onClick={() => actions.createUser(this.props.history)} data-dismiss="modal">Agregar</button>
 
                                         </div>
                                     </div>

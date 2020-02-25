@@ -48,46 +48,60 @@ export default class Admi_Usuario extends React.Component {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-3 mb-5 mt-5">
-                                                    <button className="btn btn-primary" onClick={this.showModalregister.bind()}>Agregar Usuario</button>
+                                            <button className="btn btn-primary" onClick={this.showModalregister.bind()}>Agregar Usuario</button>
                                         </div>
                                     </div>
-                                        <div className="row d-flex justify-content-center mb-5">
-                                            <div className="col-10 ">
-                                                <table className="table table-striped table-dark" id="usuarios">
-                                                    <thead>
-                                                        <tr>
-                                                            <th className ="text-center">ID</th>
-                                                            <th className ="text-center">Nombre</th>
-                                                            <th className ="text-center">Apellido</th>
-                                                            <th className="text-center">Email</th>
-                                                            <th className ="text-center">Activo</th>
-                                                            <th className ="text-center">Admin</th>
-                                                            <th colSpan="2" className="text-center border-0">Acciones</th>
+                                    <div className="row d-flex justify-content-center mt-2 mb-2">
+                                        <div className="col-4">
+                                            {store.createUser_Error === null ? "" :
 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {
-                                                            store.all_users.length > 0 &&
-                                                            store.all_users.map((items, i) => {
-                                                                return (
-                                                                    <tr key={i}>
-                                                                        <th scope="row" className ="text-center">{items.id}</th>
-                                                                        <td className ="text-center">{items.name}</td>
-                                                                        <td className ="text-center">{items.last_name}</td>
-                                                                        <td className="text-center">{items.email}</td>
-                                                                        <td><input className="ml-4" type="checkbox" disable="disable" checked={items.isActive} /></td>
-                                                                        <td><input className="ml-4" type="checkbox" disable="disable" checked={items.isAdmin} /></td>
-                                                                        <td className="border-0"><button className="btn btn-dark btn-block border-white" onClick={this.showModal_mod_register.bind(this, items)}>Modificar</button></td>
-                                                                        <td className="border-0"><button className="btn btn-danger btn-block" onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i> </button></td>
-                                                                    </tr>
-                                                                )
-                                                            })
-                                                        }
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                (<div className="alert alert-danger d-flex justify-content-center" role="alert">
+                                                    <p>Error al crear nuevo usuario. <br/>
+                                                    Razón: {store.createUser_Error.msg}. <br/>
+                                                    Intente nuevamente por favor.
+                                                    </p>
+                                                </div>)
+
+                                            }
                                         </div>
+                                    </div>
+                                    <div className="row d-flex justify-content-center mb-5">
+                                        <div className="col-10 ">
+                                            <table className="table table-striped table-dark" id="usuarios">
+                                                <thead>
+                                                    <tr>
+                                                        <th className="text-center">ID</th>
+                                                        <th className="text-center">Nombre</th>
+                                                        <th className="text-center">Apellido</th>
+                                                        <th className="text-center">Email</th>
+                                                        <th className="text-center">Activo</th>
+                                                        <th className="text-center">Admin</th>
+                                                        <th colSpan="2" className="text-center border-0">Acciones</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {
+                                                        store.all_users.length > 0 &&
+                                                        store.all_users.map((items, i) => {
+                                                            return (
+                                                                <tr key={i}>
+                                                                    <th scope="row" className="text-center">{items.id}</th>
+                                                                    <td className="text-center">{items.name}</td>
+                                                                    <td className="text-center">{items.last_name}</td>
+                                                                    <td className="text-center">{items.email}</td>
+                                                                    <td><input className="ml-4" type="checkbox" disable="disable" checked={items.isActive} /></td>
+                                                                    <td><input className="ml-4" type="checkbox" disable="disable" checked={items.isAdmin} /></td>
+                                                                    <td className="border-0"><button className="btn btn-dark btn-block border-white" onClick={this.showModal_mod_register.bind(this, items)}>Modificar</button></td>
+                                                                    <td className="border-0"><button className="btn btn-danger btn-block" onClick={this.showModal_delete_register.bind(this, items)}><i className="fas fa-trash-alt"></i> </button></td>
+                                                                </tr>
+                                                            )
+                                                        })
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                     <div className="row">
                                         <div className="col-md-12">
 
