@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { Context } from './../store/appContext';
-import { Link } from 'react-router-dom';
 import './../css/login.css';
 
 
@@ -13,7 +12,7 @@ import './../css/login.css';
             {props.history.push("/admin_home")}
             else{
                 {props.history.push("/garzon_home")}
-            }     
+            }   
         }
     });
 

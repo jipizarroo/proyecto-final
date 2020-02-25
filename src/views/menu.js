@@ -21,7 +21,7 @@ const Menu = props => {
 
 
     function showModalPedido(item) {
-        setCategoryItems(() => store.all_items.filter(i => i.category_id == item.id));
+        setCategoryItems(() => store.all_items.filter(i => i.category_id === item.id));
         setCategoryDesc(() => item.description);
 
         $('#menu_add').modal('show');
@@ -35,12 +35,12 @@ const Menu = props => {
                 let j;
                 for (j = 0; j < pedidos.length; j++) {
                     let final = pedidos[j];
-                    if (final.id == tmp.id) {
+                    if (final.id === tmp.id) {
                         final.cantidad = tmp.cantidad;
                         break;
                     }
                 }
-                if (j == pedidos.length && tmp.cantidad > 0)
+                if (j === pedidos.length && tmp.cantidad > 0)
                     pedidos.push(tmp);
             }
         }
@@ -110,7 +110,7 @@ const Menu = props => {
                         <tbody>
                             {
                                 pedidos.map((item, i) => {
-                                    if (item.cantidad != undefined && item.cantidad != 0) {
+                                    if (item.cantidad !== undefined && item.cantidad !== 0) {
                                         return (
                                             <tr key={i}>
                                                 <td scope="row">{item.cantidad}</td>

@@ -29,7 +29,7 @@ const Navbar = () => {
                     <Link className="nav-link" to="/admin_home">RestaurAPP</Link>
                   </li>
                   <li className="nav-item active">
-                    <Link className="nav-link">Usuario: {store.currentUser.user.name} {store.currentUser.user.last_name}</Link>
+                    <span className="nav-link">Usuario: {store.currentUser.user.name} {store.currentUser.user.last_name}</span>
                   </li>
                   <li className="nav-item active">
                     <Link className="nav-link" to="/" onClick={() => actions.logOut()}><i className="fas fa-sign-out-alt"></i></Link>

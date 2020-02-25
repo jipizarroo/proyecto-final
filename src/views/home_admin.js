@@ -5,7 +5,7 @@ import './../css/home_admin.css';
 
 
 const Home_admin = props => {
-    const { store, actions } = useContext(Context);
+    const { store } = useContext(Context);
 
     useEffect(() => {
         if (store.isAuthenticated === false) {

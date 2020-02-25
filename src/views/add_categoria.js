@@ -1,6 +1,6 @@
 import React from 'react';
 import { Context } from '../store/appContext';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Add_categoria extends React.Component {
 
