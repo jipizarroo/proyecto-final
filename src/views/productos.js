@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from './../store/appContext';
 import $ from 'jquery';
@@ -12,13 +13,13 @@ const Productos = (props) => {
 
     const { store } = useContext(Context);
 
-    const [itemActual, setItemActual] = useState(null);
+    const [itemActual, setItemActual, filter, setFilter] = useState(null);
 
     useEffect(() => {
-        if(store.isAuthenticated === false){
+        if (store.isAuthenticated === false) {
             props.history.push("/")
         }
-        else if ((store.isAuthenticated) && (store.currentUser.user.isAdmin === false)){
+        else if ((store.isAuthenticated) && (store.currentUser.user.isAdmin === false)) {
             props.history.push("/garzon_home")
         }
     })
@@ -36,6 +37,10 @@ const Productos = (props) => {
         $('#moditem').modal('show');
     }
 
+    function filterInputHandler () {
+        setFilter(() => document.getElementById("inputFilter").value);
+    }
+
     return (
         <>
             <div className="container">
@@ -47,25 +52,31 @@ const Productos = (props) => {
                 </div>
                 <div className="row d-flex justify-content-center">
                     <div className="col-10">
-                    <table className="table table-striped table-dark" id="productos_table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Categoria</th>
-                                <th>Nombre</th>
-                                <th>Descripcion</th>
-                                <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                store.all_items.length > 0 &&
-                                store.all_items.map((item, i) => {
-                                    
-                                    return (
-                                        
-                                            <tr key={i}>
-                                                <td scope="row">{item.id}</td>
+                    <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-default">Filter</span>
+                    </div>
+                    <input id="inputFilter" onChange={filterInputHandler} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                </div>
+                        <table className="table table-striped table-dark" id="productos_table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Categoria</th>
+                                    <th>Nombre</th>
+                                    <th>Descripcion</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    store.all_items.length > 0 &&
+                                    store.all_items.map((item, i) => {
+
+                                        return (
+
+                                            <tr key={i} display={filter}>
+                                                <td>{item.id}</td>
                                                 <td>{item.category_descripcion}</td>
                                                 <td>{item.nombre}</td>
                                                 <td>{item.descripcion}</td>
@@ -74,14 +85,13 @@ const Productos = (props) => {
                                                     <button className="btn btn-dark btn-block border-white" data-toggle="modal" onClick={() => modifyItem(item)}>Modificar</button>
                                                 </td>
                                                 <td><button className="btn btn-danger btn-block" data-toggle="modal" data-target={"#staticBackdrop" + item.id}><i className="fas fa-trash-alt"></i></button>
-                                                <ModalEliminar items={item} /></td>    
+                                                    <ModalEliminar items={item} /></td>
                                             </tr>
-
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
                     </div>
                     <Modificar_item item={itemActual} />
                 </div>
