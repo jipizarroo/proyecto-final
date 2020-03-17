@@ -13,7 +13,9 @@ const Productos = (props) => {
 
     const { store } = useContext(Context);
 
-    const [itemActual, setItemActual, filter, setFilter] = useState(null);
+    const [itemActual, setItemActual] = useState(null);
+    const [filter, setFilter] = useState(store.all_items);
+
 
     useEffect(() => {
         if (store.isAuthenticated === false) {
@@ -38,7 +40,17 @@ const Productos = (props) => {
     }
 
     function filterInputHandler () {
-        setFilter(() => document.getElementById("inputFilter").value);
+        //console.log(document.getElementById("inputFilter").value);
+        setFilter(() => store.all_items.filter(item => {
+            let value = document.getElementById("inputFilter").value.toLowerCase();
+            return item.nombre.toLowerCase().includes(value) || 
+                   item.category_descripcion.toLowerCase().includes(value) ||
+                   item.descripcion.toLowerCase().includes(value);
+        }));
+
+        //setFilter(() => {
+          //  store.all_items = store.all_items.filter(item => item.nombre.includes(document.getElementById("inputFilter").value));
+        //})
     }
 
     return (
@@ -70,12 +82,10 @@ const Productos = (props) => {
                             </thead>
                             <tbody>
                                 {
-                                    store.all_items.length > 0 &&
-                                    store.all_items.map((item, i) => {
-
+                                    filter.length > 0 &&
+                                    filter.map((item, i) => {
                                         return (
-
-                                            <tr key={i} display={filter}>
+                                            <tr key={i}>
                                                 <td>{item.id}</td>
                                                 <td>{item.category_descripcion}</td>
                                                 <td>{item.nombre}</td>

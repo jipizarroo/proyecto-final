@@ -13,14 +13,14 @@ const ModalEliminar = props => {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <label></label>
                             <div className="alert alert-danger" role="alert">
                                 ¿Esta seguro que desea eliminar el producto: {props.items.nombre}?
                                 Toda la informacion del producto se vera eliminada si clickea Eliminar.
                             </div>
                         </div>
-                        <div class="modal-footer bg-secondary text-light d-flex justify-content-between">
+                        <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
                             <button type="button" data-dismiss="modal" className="btn btn-dark">Cancelar</button>
                             <button type="button" data-dismiss="modal" className="btn btn-dark" onClick={() => actions.delItem(props.items.id)}>Eliminar</button>
                         </div>
