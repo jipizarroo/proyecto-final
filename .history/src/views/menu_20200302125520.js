@@ -113,7 +113,7 @@ const Menu = props => {
                                     if (item.cantidad !== undefined && item.cantidad !== 0) {
                                         return (
                                             <tr key={i}>
-                                                <td>{item.cantidad}</td>
+                                                <td scope="row">{item.cantidad}</td>
                                                 <td>{item.nombre}</td>
                                                 <td>{item.precio}</td>
                                                 <td>{Math.round(item.cantidad * item.precio)}</td>

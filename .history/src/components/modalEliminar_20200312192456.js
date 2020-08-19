@@ -17,7 +17,7 @@ const ModalEliminar = props => {
                             <label></label>
                             <div className="alert alert-danger" role="alert">
                                 ¿Esta seguro que desea eliminar el producto: {props.items.nombre}?
-                                Toda la informacion del producto se vera eliminada si clickea Eliminar.                            
+                                Toda la informacion del producto se vera eliminada si clickea Eliminar.
                             </div>
                         </div>
                         <div className="modal-footer bg-secondary text-light d-flex justify-content-between">
